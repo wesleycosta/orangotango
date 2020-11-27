@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Orangotango.Data.Models
+﻿namespace Orangotango.Business.Models
 {
     public class User : Entity
     {
@@ -9,7 +7,5 @@ namespace Orangotango.Data.Models
         public string NickName { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public DateTime DateOfBirth { get; set; }
-        public UserGenderType Gender { get; set; }
     }
 }

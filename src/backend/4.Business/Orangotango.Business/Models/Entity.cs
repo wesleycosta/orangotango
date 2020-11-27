@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Orangotango.Data.Models
+namespace Orangotango.Business.Models
 {
     public abstract class Entity
     {
@@ -14,22 +14,24 @@ namespace Orangotango.Data.Models
             Id = Guid.NewGuid();
         }
 
+        #region METHODS
+
         public override bool Equals(object obj)
         {
             var compareTo = obj as Entity;
 
             if (ReferenceEquals(this, compareTo)) return true;
-            if (ReferenceEquals(null, compareTo)) return false;
+            if (compareTo is null) return false;
 
             return Id.Equals(compareTo.Id);
         }
 
         public static bool operator ==(Entity a, Entity b)
         {
-            if (ReferenceEquals(a, null) && ReferenceEquals(b, null))
+            if (a is null && b is null)
                 return true;
 
-            if (ReferenceEquals(a, null) || ReferenceEquals(b, null))
+            if (a is null || b is null)
                 return false;
 
             return a.Equals(b);
@@ -42,12 +44,14 @@ namespace Orangotango.Data.Models
 
         public override int GetHashCode()
         {
-            return (GetType().GetHashCode() * 907) + Id.GetHashCode();
+            return GetType().GetHashCode() * 907 + Id.GetHashCode();
         }
 
         public override string ToString()
         {
             return GetType().Name + " [Id=" + Id + "]";
         }
+
+        #endregion
     }
 }

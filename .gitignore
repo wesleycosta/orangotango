@@ -2,4 +2,11 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/src/backend/1.APIs/1-1.Authentication/Orangotango.Authentication/bin/Debug/net5.0/ref
+/src/backend/1.APIs/1-1.Authentication/Orangotango.Authentication/bin/*
+/src/backend/1.APIs/1-2.Administrator/Orangotango.Administrator/bin/*
+/src/backend/3.Shared/3-1.Core/Orangotango.Core/bin/*
+/src/backend/3.Shared/3-2.DependencyInjection/Orangotango.DependencyInjection/bin/*
+/src/backend/3.Shared/3-3.MessageBus/Orangotango.MessageBus/bin/*
+/src/backend/4.Business/Orangotango.Business/bin/bin/*
+/src/backend/5.Data/Orangotango.Data/bin/*
+/src/backend/6.Tests/Oorangotango.Tests/bin/*

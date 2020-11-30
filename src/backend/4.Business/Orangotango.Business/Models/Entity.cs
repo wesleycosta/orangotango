@@ -4,7 +4,7 @@ namespace Orangotango.Business.Models
 {
     public abstract class Entity
     {
-        public Guid Id { get; protected set; }
+        public Guid Id { get; set; }
         public DateTime Created { get; set; }
         public DateTime LastUpdated { get; set; }
         public bool Active { get; set; }

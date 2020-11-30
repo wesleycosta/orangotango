@@ -1,0 +1,12 @@
+C:\Outros\orangotango\src\backend\3.Shared\3-3.MessageBus\Orangotango.MessageBus\bin\Debug\net5.0\Orangotango.MessageBus.deps.json
+C:\Outros\orangotango\src\backend\3.Shared\3-3.MessageBus\Orangotango.MessageBus\bin\Debug\net5.0\Orangotango.MessageBus.dll
+C:\Outros\orangotango\src\backend\3.Shared\3-3.MessageBus\Orangotango.MessageBus\bin\Debug\net5.0\ref\Orangotango.MessageBus.dll
+C:\Outros\orangotango\src\backend\3.Shared\3-3.MessageBus\Orangotango.MessageBus\bin\Debug\net5.0\Orangotango.MessageBus.pdb
+C:\Outros\orangotango\src\backend\3.Shared\3-3.MessageBus\Orangotango.MessageBus\obj\Debug\net5.0\Orangotango.MessageBus.csprojAssemblyReference.cache
+C:\Outros\orangotango\src\backend\3.Shared\3-3.MessageBus\Orangotango.MessageBus\obj\Debug\net5.0\Orangotango.MessageBus.GeneratedMSBuildEditorConfig.editorconfig
+C:\Outros\orangotango\src\backend\3.Shared\3-3.MessageBus\Orangotango.MessageBus\obj\Debug\net5.0\Orangotango.MessageBus.AssemblyInfoInputs.cache
+C:\Outros\orangotango\src\backend\3.Shared\3-3.MessageBus\Orangotango.MessageBus\obj\Debug\net5.0\Orangotango.MessageBus.AssemblyInfo.cs
+C:\Outros\orangotango\src\backend\3.Shared\3-3.MessageBus\Orangotango.MessageBus\obj\Debug\net5.0\Orangotango.MessageBus.csproj.CoreCompileInputs.cache
+C:\Outros\orangotango\src\backend\3.Shared\3-3.MessageBus\Orangotango.MessageBus\obj\Debug\net5.0\Orangotango.MessageBus.dll
+C:\Outros\orangotango\src\backend\3.Shared\3-3.MessageBus\Orangotango.MessageBus\obj\Debug\net5.0\ref\Orangotango.MessageBus.dll
+C:\Outros\orangotango\src\backend\3.Shared\3-3.MessageBus\Orangotango.MessageBus\obj\Debug\net5.0\Orangotango.MessageBus.pdb

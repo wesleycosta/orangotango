@@ -317,6 +317,7 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
+*.suo
 
 # OpenCover UI analysis results
 OpenCover/
@@ -338,3 +339,5 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+
+src/backend/4.Business/Orangotango.Business/obj/

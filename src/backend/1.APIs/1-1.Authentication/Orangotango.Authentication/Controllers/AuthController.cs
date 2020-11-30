@@ -1,14 +1,23 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Orangotango.Core.Authentication.Interfaces;
+using Orangotango.Core.Authentication.Models;
 
 namespace Orangotango.Authentication.Controllers
 {
     [Route("api/auth")]
     public class AuthController : Controller
     {
-        [HttpGet]
-        public IActionResult Get()
+        private readonly IJwtAuthentication _jwtAuthentication;
+
+        public AuthController(IJwtAuthentication jwtAuthentication)
         {
-            return Ok("deu certo");
+            _jwtAuthentication = jwtAuthentication;
+        }
+
+        [HttpGet]
+        public IActionResult Get(UserAuthViewModel user)
+        {
+            return Ok(_jwtAuthentication.GenareteToken(user));
         }
     }
 }

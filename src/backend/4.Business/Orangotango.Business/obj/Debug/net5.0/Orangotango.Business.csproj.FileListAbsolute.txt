@@ -9,3 +9,4 @@ C:\Outros\orangotango\src\backend\4.Business\Orangotango.Business\obj\Debug\net5
 C:\Outros\orangotango\src\backend\4.Business\Orangotango.Business\obj\Debug\net5.0\Orangotango.Business.dll
 C:\Outros\orangotango\src\backend\4.Business\Orangotango.Business\obj\Debug\net5.0\ref\Orangotango.Business.dll
 C:\Outros\orangotango\src\backend\4.Business\Orangotango.Business\obj\Debug\net5.0\Orangotango.Business.pdb
+C:\Outros\orangotango\src\backend\4.Business\Orangotango.Business\obj\Debug\net5.0\Orangotango.Business.csprojAssemblyReference.cache

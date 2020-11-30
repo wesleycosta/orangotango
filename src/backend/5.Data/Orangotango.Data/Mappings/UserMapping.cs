@@ -30,7 +30,7 @@ namespace Orangotango.Data.Mappings
                    .HasColumnName("Password")
                    .HasColumnType("VARCHAR(255)");
 
-            builder.ToTable("Users");
+            builder.ToTable("Users2");
         }
     }
 }

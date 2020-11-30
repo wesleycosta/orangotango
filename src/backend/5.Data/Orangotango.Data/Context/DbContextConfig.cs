@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
-using System;
 
 namespace Orangotango.Data.Context
 {
@@ -16,9 +15,9 @@ namespace Orangotango.Data.Context
             return services;
         }
 
-        public static void UpdateDatabase(this IServiceProvider service)
+        public static void UpdateDatabase(this IServiceScope serviceScope)
         {
-            using var context = service.GetService<OrangotangoContext>();
+            using var context = serviceScope.ServiceProvider.GetService<OrangotangoContext>();
             context.Database.Migrate();
         }
     }

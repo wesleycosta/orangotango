@@ -4,7 +4,7 @@ namespace Orangotango.DependencyInjection
 {
     public static class DependencyInjectionConfig
     {
-        public static IServiceCollection ConfigureDependencyInjection(this IServiceCollection services)
+        public static IServiceCollection ConfigureInfrastructureAndDependencyInjection(this IServiceCollection services)
         {
             services.AddInfrastructureConfig();
 

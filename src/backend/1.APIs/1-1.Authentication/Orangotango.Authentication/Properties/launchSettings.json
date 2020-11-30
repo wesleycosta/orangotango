@@ -1,31 +1,36 @@
-﻿{
-  "$schema": "http://json.schemastore.org/launchsettings.json",
+{
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:50671",
-      "sslPort": 44314
+      "applicationUrl": "http://localhost:5000",
+      "sslPort": 5000
     }
   },
+  "$schema": "http://json.schemastore.org/launchsettings.json",
   "profiles": {
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "Environment": "Dev",
+        "ConnectionString": "Host=localhost;Port=5432;Pooling=true;Database=Orangotango;UserId=postgres;Password=postgres;CommandTimeout=60;timeout=60;MaxPoolSize=200"
       }
     },
-    "Orangotango.Authentication": {
+    "Self Hosting": {
       "commandName": "Project",
-      "dotnetRunMessages": "true",
       "launchBrowser": true,
       "launchUrl": "swagger",
-      "applicationUrl": "https://localhost:5001;http://localhost:5000",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+        "Jwt.Audience": "https://localhost",
+        "Jwt.Issuer": "Orangotango",
+        "Jwt.Hours": "12",
+        "Environment": "Dev",
+        "ConnectionString": "Host=localhost;Port=5432;Pooling=true;Database=Orangotango;UserId=postgres;Password=postgres;CommandTimeout=60;timeout=60;MaxPoolSize=200",
+        "Jwt.Secret": "DEA9EF7E811D6DE6CDF909003D12D00E968FFE4596FB0B784C6996FB201F65AD"
+      },
+      "applicationUrl": "https://localhost:5000"
     }
   }
 }

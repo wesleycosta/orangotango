@@ -19,28 +19,24 @@ namespace Orangotango.Authentication
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.ConfigureDependencyInjection();
+            services.ConfigureInfrastructureAndDependencyInjection();
             services.AddControllers();
-
             services.AddSwaggerConfigAuth();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UpdateDatabase();
+
             if (env.IsDevelopment())
-            {
                 app.UseDeveloperExceptionPage();
-            }
 
             app.UseSwaggerConfigAuth();
             app.UseHttpsRedirection();
             app.UseRouting();
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseEndpoints(endpoints => endpoints.MapControllers());
         }
     }
 }

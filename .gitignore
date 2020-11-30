@@ -1,0 +1,5 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/src/backend/1.APIs/1-1.Authentication/Orangotango.Authentication/bin/Debug/net5.0/ref

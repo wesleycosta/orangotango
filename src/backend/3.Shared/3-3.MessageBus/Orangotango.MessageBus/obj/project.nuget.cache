@@ -1,8 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "74dTQJcPkmb52K52JOeLftpC1u7wlRYthgJRFR1d9JLPmfW/XhhXB95OqAnekyipAEaQcxuKi+rpqJxbRrRdHw==",
+  "dgSpecHash": "bgSWUjKTZPU5+tj97qpKXuW14yEl9Rx5jLm8BE709Ga154BKnyyFWeotYDSr4vmAaoj4FQ7WBIOfI2xgB8wsYA==",
   "success": true,
   "projectFilePath": "C:\\Outros\\orangotango\\src\\backend\\3.Shared\\3-3.MessageBus\\Orangotango.MessageBus\\Orangotango.MessageBus.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\wesle\\.nuget\\packages\\easynetq\\6.3.1\\easynetq.6.3.1.nupkg.sha512",
+    "C:\\Users\\wesle\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\wesle\\.nuget\\packages\\polly\\7.2.1\\polly.7.2.1.nupkg.sha512",
+    "C:\\Users\\wesle\\.nuget\\packages\\rabbitmq.client\\6.2.1\\rabbitmq.client.6.2.1.nupkg.sha512",
+    "C:\\Users\\wesle\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
+    "C:\\Users\\wesle\\.nuget\\packages\\system.threading.channels\\4.7.1\\system.threading.channels.4.7.1.nupkg.sha512"
+  ],
   "logs": []
 }

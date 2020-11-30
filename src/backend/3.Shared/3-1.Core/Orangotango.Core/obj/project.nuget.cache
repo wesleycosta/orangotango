@@ -1,8 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "rSuwp+nuaXrXYj3sHJ8nUT7Rrd62Q1vKDAgnWhWsZXF4w0zRrGElyShl5D4AGCESvd4e1zNgM2jx86sEGX3/gA==",
+  "dgSpecHash": "u1ZRSwBuR1LoZD/Mz5btHEru4UqtbXNGxo03qoPAUx71XAgQTft1wDLR1rNbZhEyUQaGkG6UckUMgHB4geslRg==",
   "success": true,
   "projectFilePath": "C:\\Outros\\orangotango\\src\\backend\\3.Shared\\3-1.Core\\Orangotango.Core\\Orangotango.Core.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\wesle\\.nuget\\packages\\fluentvalidation\\8.6.2\\fluentvalidation.8.6.2.nupkg.sha512",
+    "C:\\Users\\wesle\\.nuget\\packages\\mediatr\\9.0.0\\mediatr.9.0.0.nupkg.sha512",
+    "C:\\Users\\wesle\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\5.0.0\\microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\wesle\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\wesle\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
+    "C:\\Users\\wesle\\.nuget\\packages\\netdevpack\\1.1.0\\netdevpack.1.1.0.nupkg.sha512",
+    "C:\\Users\\wesle\\.nuget\\packages\\system.componentmodel.annotations\\4.4.1\\system.componentmodel.annotations.4.4.1.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -25,11 +25,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.2 - DependencyInjection",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.3 - MessageBus", "3.3 - MessageBus", "{7AFA08AC-60DD-4B1D-9612-0ABC89BEE73A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orangotango.Core", "3.Shared\3-1.Core\Orangotango.Core\Orangotango.Core.csproj", "{5D514AA8-D937-4C70-8071-0ACBF00A8904}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orangotango.Core", "3.Shared\3-1.Core\Orangotango.Core\Orangotango.Core.csproj", "{5D514AA8-D937-4C70-8071-0ACBF00A8904}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orangotango.DependencyInjection", "3.Shared\3-2.DependencyInjection\Orangotango.DependencyInjection\Orangotango.DependencyInjection.csproj", "{D1503D74-905B-4743-AA7F-AFF4BAA80FA4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orangotango.DependencyInjection", "3.Shared\3-2.DependencyInjection\Orangotango.DependencyInjection\Orangotango.DependencyInjection.csproj", "{D1503D74-905B-4743-AA7F-AFF4BAA80FA4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orangotango.MessageBus", "3.Shared\3-3.MessageBus\Orangotango.MessageBus\Orangotango.MessageBus.csproj", "{B23975C8-4596-4501-90C9-3FF4FC1904A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orangotango.MessageBus", "3.Shared\3-3.MessageBus\Orangotango.MessageBus\Orangotango.MessageBus.csproj", "{B23975C8-4596-4501-90C9-3FF4FC1904A1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Oorangotango.Tests", "6.Tests\Oorangotango.Tests\Oorangotango.Tests.csproj", "{8F55BE5B-E7F1-4701-9E1C-F10F17B2486C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-1.Authentication", "1-1.Authentication", "{BCA2A96B-FC75-4E82-B98D-629D39C165BF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-2.Administrator", "1-2.Administrator", "{8CCB804B-B0AC-4D9E-9149-5C288D6A1924}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orangotango.Authentication", "1.APIs\1-1.Authentication\Orangotango.Authentication\Orangotango.Authentication.csproj", "{24A80694-7BEC-4C35-B919-3F633E27BB72}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orangotango.Administrator", "1.APIs\1-2.Administrator\Orangotango.Administrator\Orangotango.Administrator.csproj", "{574ABC90-327E-4B62-A678-BDF69DD4F631}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +67,18 @@ Global
 		{B23975C8-4596-4501-90C9-3FF4FC1904A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B23975C8-4596-4501-90C9-3FF4FC1904A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B23975C8-4596-4501-90C9-3FF4FC1904A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F55BE5B-E7F1-4701-9E1C-F10F17B2486C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F55BE5B-E7F1-4701-9E1C-F10F17B2486C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F55BE5B-E7F1-4701-9E1C-F10F17B2486C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F55BE5B-E7F1-4701-9E1C-F10F17B2486C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24A80694-7BEC-4C35-B919-3F633E27BB72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24A80694-7BEC-4C35-B919-3F633E27BB72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24A80694-7BEC-4C35-B919-3F633E27BB72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24A80694-7BEC-4C35-B919-3F633E27BB72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{574ABC90-327E-4B62-A678-BDF69DD4F631}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{574ABC90-327E-4B62-A678-BDF69DD4F631}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{574ABC90-327E-4B62-A678-BDF69DD4F631}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{574ABC90-327E-4B62-A678-BDF69DD4F631}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -70,6 +92,11 @@ Global
 		{5D514AA8-D937-4C70-8071-0ACBF00A8904} = {0828B8C8-DA92-437A-8265-786EB08F7522}
 		{D1503D74-905B-4743-AA7F-AFF4BAA80FA4} = {337D06B5-F8BF-4D26-AF7E-A233287BF18A}
 		{B23975C8-4596-4501-90C9-3FF4FC1904A1} = {7AFA08AC-60DD-4B1D-9612-0ABC89BEE73A}
+		{8F55BE5B-E7F1-4701-9E1C-F10F17B2486C} = {35AB3569-31AD-4250-AA2C-E54C52E96CDC}
+		{BCA2A96B-FC75-4E82-B98D-629D39C165BF} = {DB40FB52-6680-4A38-8CA0-4ED2B7E44259}
+		{8CCB804B-B0AC-4D9E-9149-5C288D6A1924} = {DB40FB52-6680-4A38-8CA0-4ED2B7E44259}
+		{24A80694-7BEC-4C35-B919-3F633E27BB72} = {BCA2A96B-FC75-4E82-B98D-629D39C165BF}
+		{574ABC90-327E-4B62-A678-BDF69DD4F631} = {8CCB804B-B0AC-4D9E-9149-5C288D6A1924}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {30E1D7D7-A31B-4E47-AEA5-C0F5A4B6D1EF}

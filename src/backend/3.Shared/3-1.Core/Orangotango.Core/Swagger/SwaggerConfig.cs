@@ -9,20 +9,20 @@ namespace Orangotango.Core.Swagger
     {
         #region PROPERTIES
 
-        private static readonly string AUTHENTICATION_NAME = "Authentication V1";
+        private static readonly string API_NAME = "Orangotango API";
 
         #endregion
 
-        #region AUTHENTICATION
+        #region API
 
-        public static IServiceCollection AddSwaggerConfigAuth(this IServiceCollection services)
+        public static IServiceCollection AddSwaggerConfigApi(this IServiceCollection services)
         {
-            return AddSwaggerConfig(services, AUTHENTICATION_NAME);
+            return AddSwaggerConfig(services, API_NAME);
         }
 
-        public static IApplicationBuilder UseSwaggerConfigAuth(this IApplicationBuilder app)
+        public static IApplicationBuilder UseSwaggerConfigApi(this IApplicationBuilder app)
         {
-            return UseSwaggerConfig(app, AUTHENTICATION_NAME);
+            return UseSwaggerConfig(app, API_NAME);
         }
 
         #endregion

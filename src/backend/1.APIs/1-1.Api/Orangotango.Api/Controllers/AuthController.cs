@@ -2,7 +2,7 @@
 using Orangotango.Core.Authentication.Interfaces;
 using Orangotango.Core.Authentication.Models;
 
-namespace Orangotango.Authentication.Controllers
+namespace Orangotango.Api.Controllers
 {
     [Route("api/auth")]
     public class AuthController : Controller

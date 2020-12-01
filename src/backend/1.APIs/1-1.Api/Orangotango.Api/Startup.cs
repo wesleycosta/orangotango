@@ -6,7 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Orangotango.Core.Swagger;
 using Orangotango.DependencyInjection;
 
-namespace Orangotango.Authentication
+namespace Orangotango.Api
 {
     public class Startup
     {
@@ -21,7 +21,7 @@ namespace Orangotango.Authentication
         {
             services.ConfigureInfrastructureAndDependencyInjection();
             services.AddControllers();
-            services.AddSwaggerConfigAuth();
+            services.AddSwaggerConfigApi();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -31,7 +31,7 @@ namespace Orangotango.Authentication
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
 
-            app.UseSwaggerConfigAuth();
+            app.UseSwaggerConfigApi();
             app.UseHttpsRedirection();
             app.UseRouting();
             app.UseAuthorization();

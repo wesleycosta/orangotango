@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Orangotango.Authentication.Controllers
+namespace Orangotango.Api.Controllers
 {
     [Route("api/secret")]
     [Authorize("Bearer")]

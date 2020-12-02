@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\3.Shared\3-2.DependencyInjection\Orangotango.DependencyInjection\Orangotango.DependencyInjection.csproj" />
+    <ProjectReference Include="..\..\..\3.Shared\3-4.WebApi\Orangotango.WebApiShared\Orangotango.WebApiShared.csproj" />
     <ProjectReference Include="..\..\..\4.Business\Orangotango.Business\Orangotango.Business.csproj" />
   </ItemGroup>
 

@@ -42,11 +42,5 @@ namespace Orangotango.WebApiShared.Authentication.Configurations
 
             return services;
         }
-
-        public static IServiceCollection RegisterJwtAuthentication(this IServiceCollection services)
-        {
-            services.AddScoped<IJwtAuthentication, JwtAuthentication>();
-            return services;
-        }
     }
 }

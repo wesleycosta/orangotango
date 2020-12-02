@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Orangotango.Core.Authentication.Interfaces;
-using Orangotango.Core.Authentication.Models;
+using Orangotango.WebApiShared.Authentication.Interfaces;
+using Orangotango.WebApiShared.Authentication.ViewModels;
 
 namespace Orangotango.Api.Controllers
 {

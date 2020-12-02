@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Orangotango.WebApiShared.Authentication.Configurations;
+using Orangotango.WebApiShared.Authentication.Extensions;
+using System;
 using System.Security.Claims;
 
 namespace Orangotango.WebApiShared.User
@@ -12,7 +14,7 @@ namespace Orangotango.WebApiShared.User
                 throw new ArgumentException(nameof(principal));
             }
 
-            var claim = principal.FindFirst(ClaimTypes.NameIdentifier);
+            var claim = principal.FindFirst(ClaimJwtType.UserId);
             return claim?.Value;
         }
 
@@ -23,7 +25,7 @@ namespace Orangotango.WebApiShared.User
                 throw new ArgumentException(nameof(principal));
             }
 
-            var claim = principal.FindFirst("email");
+            var claim = principal.FindFirst(ClaimJwtType.UserEmail);
             return claim?.Value;
         }
 
@@ -34,7 +36,7 @@ namespace Orangotango.WebApiShared.User
                 throw new ArgumentException(nameof(principal));
             }
 
-            var claim = principal.FindFirst("JWT");
+            var claim = principal.FindFirst(ClaimJwtType.UserToken);
             return claim?.Value;
         }
 
@@ -45,7 +47,7 @@ namespace Orangotango.WebApiShared.User
                 throw new ArgumentException(nameof(principal));
             }
 
-            var claim = principal.FindFirst("RefreshToken");
+            var claim = principal.FindFirst(ClaimJwtType.UserRefreshToken);
             return claim?.Value;
         }
     }

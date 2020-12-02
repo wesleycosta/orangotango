@@ -1,5 +1,6 @@
 ﻿using Microsoft.IdentityModel.Tokens;
 using Orangotango.Core.Settings;
+using Orangotango.WebApiShared.Authentication.Configurations;
 using Orangotango.WebApiShared.Authentication.Interfaces;
 using Orangotango.WebApiShared.Authentication.ViewModels;
 using System;
@@ -18,7 +19,6 @@ namespace Orangotango.WebApiShared.Authentication
             _appSettings = appSettings;
         }
 
-
         #region METHODS
 
         public string GenareteToken(UserAuthViewModel user)
@@ -36,15 +36,17 @@ namespace Orangotango.WebApiShared.Authentication
             return tokenHandler.WriteToken(token);
         }
 
-        private static ClaimsIdentity GetClaims(UserAuthViewModel user) => new ClaimsIdentity
+        private static ClaimsIdentity GetClaims(UserAuthViewModel user) =>
+            new ClaimsIdentity
             (
-                new GenericIdentity(user.Id.ToString(), "Id"),
                 new[] {
-                    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString("N")),
-                    new Claim(JwtRegisteredClaimNames.NameId, user.Name),
-                    new Claim(JwtRegisteredClaimNames.Email, user.Email)
+                    CreateClaim(ClaimJwtType.UserId, user.Id),
+                    CreateClaim(ClaimJwtType.UserEmail, user.Email)
                 }
             );
+
+        private static Claim CreateClaim(ClaimJwtType type, object value) =>
+            new Claim(type.ToString(), value.ToString());
 
         #endregion
     }

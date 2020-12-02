@@ -26,10 +26,22 @@ namespace Orangotango.Data.Repository
             DbSet.Add(entity);
             await Task.CompletedTask;
         }
+        
+        public virtual async Task AddRange(List<TEntity> entities)
+        {
+            DbSet.AddRange(entities);
+            await Task.CompletedTask;
+        }
 
         public virtual async Task Update(TEntity entity)
         {
             DbSet.Update(entity);
+            await Task.CompletedTask;
+        }
+
+        public virtual async Task UpdateRange(List<TEntity> entities)
+        {
+            DbSet.UpdateRange(entities);
             await Task.CompletedTask;
         }
 
@@ -39,10 +51,18 @@ namespace Orangotango.Data.Repository
             await Task.CompletedTask;
         }
 
+        public virtual async Task RemoveRange(List<Guid> ids)
+        {
+            DbSet.RemoveRange(ids.Select(id => new TEntity { Id = id }));
+            await Task.CompletedTask;
+        }
+
         public async Task<bool> Commit()
         {
             return await Db.SaveChangesAsync() > 0;
         }
+
+        #region QUERIES
 
         public virtual async Task<TEntity> GetById(Guid id)
         {
@@ -60,6 +80,8 @@ namespace Orangotango.Data.Repository
                               .Where(predicate)
                               .ToListAsync();
         }
+
+        #endregion
 
         public void Dispose()
         {

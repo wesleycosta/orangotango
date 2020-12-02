@@ -2,12 +2,10 @@
 
 namespace Orangotango.DependencyInjection
 {
-    public static class DependencyInjectionConfig
+    internal static class DependencyInjectionConfig
     {
-        public static IServiceCollection ConfigureInfrastructureAndDependencyInjection(this IServiceCollection services)
+        public static IServiceCollection ConfigureDependencyInjectionConfig(this IServiceCollection services)
         {
-            services.AddInfrastructureConfig();
-
             return services;
         }
     }

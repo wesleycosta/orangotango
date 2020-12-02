@@ -25,8 +25,4 @@
     <ProjectReference Include="..\..\3-1.Core\Orangotango.Core\Orangotango.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 </Project>

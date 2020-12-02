@@ -1,24 +1,22 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Orangotango.WebApiShared.User;
+using Orangotango.Core.Notifications;
+using Orangotango.WebApiShared.Controllers;
 
 namespace Orangotango.Api.Controllers
 {
     [Route("api/secret")]
     [Authorize("Bearer")]
-    public class SecretController : Controller
+    public class SecretController : MainController
     {
-        private readonly IAspNetUser _aspNetUser;
-
-        public SecretController(IAspNetUser aspNetUser)
+        public SecretController(INotifier notifier) : base(notifier)
         {
-            _aspNetUser = aspNetUser;
         }
 
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok($"Secret {_aspNetUser.GetEmail()} {_aspNetUser.GetUserId()}");
+            return CustomResponse();
         }
     }
 }

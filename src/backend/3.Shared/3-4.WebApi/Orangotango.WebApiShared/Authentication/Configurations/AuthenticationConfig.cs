@@ -5,7 +5,7 @@ namespace Orangotango.WebApiShared.Authentication.Configurations
 {
     public static class AuthenticationConfig
     {
-        public static IServiceCollection RegisterAuthentication(this IServiceCollection services)
+        public static IServiceCollection AddAuthenticationService(this IServiceCollection services)
         {
             services.AddScoped<IJwtAuthentication, JwtAuthentication>();
             return services;

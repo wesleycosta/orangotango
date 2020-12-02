@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using Orangotango.Core.Notifications;
 using Orangotango.Core.Settings;
 using Orangotango.Data.Context;
 using Orangotango.WebApiShared.Authentication.Configurations;
@@ -10,10 +11,26 @@ namespace Orangotango.DependencyInjection
     {
         internal static IServiceCollection AddInfrastructureConfig(this IServiceCollection services)
         {
-            var appSettings = EnvironmentConfig.Builder();
-            services.AddSingleton(appSettings);
+            var appSettings = services.AddAppSettings();
             services.AddOrangotangoContext(appSettings.ConnectionString);
 
+            services.AddJwtnfrastructure(appSettings);
+            
+            services.AddNotification();
+
+            return services;
+        }
+
+        private static AppSettings AddAppSettings(this IServiceCollection services)
+        {
+            var appSettings = EnvironmentConfig.Builder();
+            services.AddSingleton(appSettings);
+
+            return appSettings;
+        }
+
+        private static IServiceCollection AddJwtnfrastructure(this IServiceCollection services, AppSettings appSettings)
+        {
             services.AddJwtAuthConfig(appSettings);
             services.AddAspNetUser();
 
@@ -23,7 +40,7 @@ namespace Orangotango.DependencyInjection
         private static IServiceCollection AddJwtAuthConfig(this IServiceCollection services, AppSettings appSettings)
         {
             services.AddJwtConfig(appSettings);
-            services.RegisterAuthentication();
+            services.AddAuthenticationService();
 
             return services;
         }

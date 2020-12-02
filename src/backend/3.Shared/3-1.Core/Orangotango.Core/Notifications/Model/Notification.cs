@@ -1,4 +1,4 @@
-﻿namespace Orangotango.Core.Notifications
+﻿namespace Orangotango.Core.Notifications.Model
 {
     public class Notification
     {

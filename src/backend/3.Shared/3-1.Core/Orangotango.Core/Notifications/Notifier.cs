@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Orangotango.Core.Notifications.Model;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Orangotango.Core.Notifications

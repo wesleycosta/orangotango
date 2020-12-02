@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Orangotango.Core.Notifications;
+using Orangotango.Core.Notifications.Model;
 using System.Linq;
 using System.Threading.Tasks;
 

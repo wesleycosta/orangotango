@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using Orangotango.Core.Notifications;
+using Orangotango.Core.Notifications.Configurations;
 using Orangotango.Core.Settings;
 using Orangotango.Data.Context;
 using Orangotango.WebApiShared.Authentication.Configurations;

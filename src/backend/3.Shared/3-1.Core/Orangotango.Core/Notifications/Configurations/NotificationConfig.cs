@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace Orangotango.Core.Notifications
+namespace Orangotango.Core.Notifications.Configurations
 {
     public static class NotificationConfig
     {

@@ -1,2 +1,2 @@
 # Orangotango
-Sistema para gerenciamento de episódios de series.
+Sistema para monitoramento de serviços.

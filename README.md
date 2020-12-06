@@ -1,7 +1,7 @@
 # Orangotango
 Sistema distribuído com uma arquitetura hexagonal para monitoramento de logs.
 
-## Tecnologias/Frameworks/Pacotes utilizado(a)s
+### Tecnologias/Frameworks/Pacotes utilizado(a)s
 * .NET 5;
 * Docker;
 * PostgreSQL;

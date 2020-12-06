@@ -6,7 +6,6 @@ using Orangotango.WebApiShared.Authentication.ViewModels;
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using System.Security.Principal;
 
 namespace Orangotango.WebApiShared.Authentication
 {

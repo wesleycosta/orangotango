@@ -41,6 +41,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.4 - WebApi", "3.4 - WebAp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orangotango.WebApiShared", "3.Shared\3-4.WebApi\Orangotango.WebApiShared\Orangotango.WebApiShared.csproj", "{8C3416CD-9A1E-4358-A430-F72629B55B21}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D65D23CF-E214-4C39-9DF9-1F2B09957B96}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

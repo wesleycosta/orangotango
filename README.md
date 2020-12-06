@@ -12,6 +12,6 @@ Sistema distribuído com uma arquitetura hexagonal para monitoramento de logs.
 * Fluent Validation;
 * JWT;
 * Identity;
-* NUnit.
+* NUnit;
 * Angular 2+.
 

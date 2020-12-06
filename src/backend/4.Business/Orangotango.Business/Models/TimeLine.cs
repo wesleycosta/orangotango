@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Orangotango.Core.DomainObjects;
+using System;
 
 namespace Orangotango.Business.Models
 {

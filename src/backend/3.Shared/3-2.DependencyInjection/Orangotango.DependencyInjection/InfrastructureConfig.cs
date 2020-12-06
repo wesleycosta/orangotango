@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using Orangotango.Core.Mediator;
 using Orangotango.Core.Notifications.Configurations;
 using Orangotango.Core.Settings;
 using Orangotango.Data.Context;
@@ -15,8 +16,9 @@ namespace Orangotango.DependencyInjection
             services.AddOrangotangoContext(appSettings.ConnectionString);
 
             services.AddJwtnfrastructure(appSettings);
-            
+
             services.AddNotification();
+            services.AddMediator();
 
             return services;
         }

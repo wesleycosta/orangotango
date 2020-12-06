@@ -1,13 +1,11 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Orangotango.Core.Notifications;
 using Orangotango.WebApiShared.Controllers;
 
 namespace Orangotango.Api.Controllers
 {
     [Route("api/secret")]
-    [Authorize("Bearer")]
-    public class SecretController : MainController
+    public class SecretController : MainControllerWithBearer
     {
         public SecretController(INotifier notifier) : base(notifier)
         {

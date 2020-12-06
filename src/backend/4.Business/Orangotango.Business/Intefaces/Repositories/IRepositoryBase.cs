@@ -1,4 +1,5 @@
-﻿using Orangotango.Business.Models;
+﻿using Orangotango.Core.Data;
+using Orangotango.Core.DomainObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Orangotango.Business.Intefaces.Repositories
 {
-    public interface IRepository<TEntity> : IDisposable where TEntity : Entity
+    public interface IRepositoryBase<TEntity> : IRepository<TEntity> where TEntity : IAggregateRoot
     {
         Task Add(TEntity entity);
         Task AddRange(List<TEntity> entities);

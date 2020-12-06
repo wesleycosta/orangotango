@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Orangotango.Core.Messages;
+using System;
+using System.Collections.Generic;
 
-namespace Orangotango.Business.Models
+namespace Orangotango.Core.DomainObjects
 {
-    public abstract class Entity
+    public abstract class Entity : IAggregateRoot
     {
         public Guid Id { get; set; }
         public DateTime Created { get; set; }
@@ -13,6 +15,26 @@ namespace Orangotango.Business.Models
         {
             Id = Guid.NewGuid();
         }
+
+        #region EVENTS
+
+        private List<Event> _eventNotification;
+        public IReadOnlyCollection<Event> EventNotification => _eventNotification?.AsReadOnly();
+
+        public void AddEvent(Event eventMessage)
+        {
+            _eventNotification ??= new List<Event>();
+            _eventNotification.Add(eventMessage);
+        }
+
+        public void RemoveEvent(Event eventItem) =>
+            _eventNotification?.Remove(eventItem);
+
+        public void ClearEvents() =>
+            _eventNotification?.Clear();
+
+
+        #endregion
 
         #region METHODS
 

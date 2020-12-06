@@ -1,4 +1,6 @@
-﻿namespace Orangotango.Business.Models
+﻿using Orangotango.Core.DomainObjects;
+
+namespace Orangotango.Business.Models
 {
     public class User : Entity
     {

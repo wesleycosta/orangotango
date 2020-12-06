@@ -6,16 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.0" NoWarn="NU1605" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="5.0.0" NoWarn="NU1605" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\..\3.Shared\3-2.DependencyInjection\Orangotango.DependencyInjection\Orangotango.DependencyInjection.csproj" />
     <ProjectReference Include="..\..\..\3.Shared\3-4.WebApi\Orangotango.WebApiShared\Orangotango.WebApiShared.csproj" />
     <ProjectReference Include="..\..\..\4.Business\Orangotango.Business\Orangotango.Business.csproj" />

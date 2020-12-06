@@ -1,17 +1,31 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Orangotango.Core.Data;
+using Orangotango.Core.Mediator;
+using Orangotango.Core.Messages;
+using Orangotango.Data.Extensions;
 
 namespace Orangotango.Data.Context
 {
-    public class OrangotangoContext : DbContext
+    public class OrangotangoContext : DbContext, IUnitOfWork
     {
-        public OrangotangoContext(DbContextOptions<OrangotangoContext> options) : base(options) { }
+        private readonly IMediatorHandler _mediatorHandler;
+
+        public OrangotangoContext(DbContextOptions<OrangotangoContext> options,
+                                  IMediatorHandler mediatorHandler) : base(options)
+        {
+            _mediatorHandler = mediatorHandler;
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Ignore<ValidationResult>();
+            modelBuilder.Ignore<Event>();
+
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(OrangotangoContext).Assembly);
 
             foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys()))
@@ -35,6 +49,16 @@ namespace Orangotango.Data.Context
             }
 
             return base.SaveChangesAsync(cancellationToken);
+        }
+
+        public async Task<bool> Commit()
+        {
+            var success = await base.SaveChangesAsync() > 0;
+
+            if (success)
+                await _mediatorHandler.PublishEvents(this);
+
+            return success;
         }
     }
 }

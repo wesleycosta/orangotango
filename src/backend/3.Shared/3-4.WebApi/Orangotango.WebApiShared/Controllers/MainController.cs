@@ -7,17 +7,15 @@ using System.Threading.Tasks;
 
 namespace Orangotango.WebApiShared.Controllers
 {
-    [ApiController]
-    [Produces("application/json")]
-    public class MainController : ControllerBase
+    public class MainController : Controller
     {
         #region PROPERTIES AND CONSTRUCTORS
 
-        private readonly INotifier _notifier;
+        public readonly INotifier Notifier;
 
         protected MainController(INotifier notifier)
         {
-            _notifier = notifier;
+            Notifier = notifier;
         }
 
         #endregion
@@ -25,7 +23,7 @@ namespace Orangotango.WebApiShared.Controllers
         #region METHODS
 
         protected bool IsValid() =>
-            !_notifier.HaveNotification();
+            !Notifier.HaveNotification();
 
         protected ActionResult CustomResponse(object result = null)
         {
@@ -39,13 +37,13 @@ namespace Orangotango.WebApiShared.Controllers
             return BadRequest(new
             {
                 success = false,
-                errors = _notifier.GetNotifications().Select(n => n.Message)
+                errors = Notifier.GetNotifications().Select(n => n.Message)
             });
         }
 
         private async Task AddNotificationModelState(ModelStateDictionary modelState)
         {
-            var notifications = await Task.FromResult(_notifier.GetNotifications());
+            var notifications = await Task.FromResult(Notifier.GetNotifications());
 
             notifications.ForEach(n => modelState.AddModelError(string.Empty, n.Message));
         }
@@ -73,7 +71,7 @@ namespace Orangotango.WebApiShared.Controllers
 
         protected void NotifyError(string message)
         {
-            _notifier.Handle(new Notification(message));
+            Notifier.Handle(new Notification(message));
         }
 
         #endregion

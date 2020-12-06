@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Orangotango.Business.Intefaces.Repositories;
 using Orangotango.Business.Models;
+using Orangotango.Core.Data;
+using Orangotango.Core.DomainObjects;
 using Orangotango.Data.Context;
 using System;
 using System.Collections.Generic;
@@ -10,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Orangotango.Data.Repository
 {
-    public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : Entity, new()
+    public abstract class Repository<TEntity> : IRepositoryBase<TEntity> where TEntity : Entity, new()
     {
         protected readonly OrangotangoContext Db;
         protected readonly DbSet<TEntity> DbSet;
@@ -21,12 +23,14 @@ namespace Orangotango.Data.Repository
             DbSet = db.Set<TEntity>();
         }
 
+        public IUnitOfWork UnitOfWork => Db;
+
         public virtual async Task Add(TEntity entity)
         {
             DbSet.Add(entity);
             await Task.CompletedTask;
         }
-        
+
         public virtual async Task AddRange(List<TEntity> entities)
         {
             DbSet.AddRange(entities);

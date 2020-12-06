@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Orangotango.Core.DomainObjects;
+using System.Collections.Generic;
 
 namespace Orangotango.Business.Models
 {

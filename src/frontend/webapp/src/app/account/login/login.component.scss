@@ -1,0 +1,29 @@
+@import "/src/colors.scss";
+
+.logotype {
+  img {
+    max-height: 150px;
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+h1 {
+  color: $primary;
+  font-family: 'Jura';
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: x-large;
+}
+
+.container {
+  background: #ffffff;
+  min-width: 350px;
+  border: 1px solid #dadce0;
+  padding: 30px;
+  border-radius: 5px;
+}
+
+.label {
+  font-weight: bold;
+}

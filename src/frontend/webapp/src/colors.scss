@@ -1,0 +1,8 @@
+@import "~@angular/material/theming";
+
+$primary:#ff5722;
+$orangotango-primary: mat-palette($mat-deep-orange);
+$orangotango-accent: mat-palette($mat-deep-orange, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$orangotango-warn: mat-palette($mat-deep-orange);

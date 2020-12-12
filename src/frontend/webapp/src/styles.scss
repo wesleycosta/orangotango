@@ -1,0 +1,96 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import "~@angular/material/theming";
+// Plus imports for other components in your app.
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "colors.scss";
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$orangotango-theme: mat-light-theme(
+  (
+    color: (
+      primary: $orangotango-primary,
+      accent: $orangotango-accent,
+      warn: $orangotango-warn,
+    ),
+  )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($orangotango-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+@font-face {
+  font-family: 'Jura';
+  src:  url('/src/assets/fonts/Jura-Bold.ttf') format('ttf'),
+        url('/src/assets/fonts/Jura-VariableFont_wght.ttf') format('ttf');
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: #fafafa;
+}
+
+.center-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+}
+
+.no-selected,
+h1,
+h2,
+h3,
+h4 {
+  -webkit-touch-callout: none !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+}
+
+.row-separator {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.login-input {
+  input,
+  mat-form-field,
+  button {
+    width: 100%;
+  }
+}
+
+mat-icon {
+  color: $primary;
+}
+
+
+.link:hover {
+  cursor: pointer;
+  color: $primary;
+  text-decoration: underline;
+}

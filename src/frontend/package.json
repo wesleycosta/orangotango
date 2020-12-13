@@ -23,6 +23,7 @@
     "@angular/platform-browser-dynamic": "~11.0.4",
     "@angular/router": "~11.0.4",
     "@types/events": "^3.0.0",
+    "angular-material-rail-drawer": "0.0.6",
     "bootstrap-4-grid": "^3.4.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",

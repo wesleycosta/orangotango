@@ -1,0 +1,29 @@
+@import "/src/colors.scss";
+
+.container,
+app-menu {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+.sidenav-container {
+  flex: 1;
+}
+
+mat-icon {
+  cursor: pointer !important;
+}
+
+span {
+  font-weight: bold;
+  color: #313030;
+  width: 120px;
+}

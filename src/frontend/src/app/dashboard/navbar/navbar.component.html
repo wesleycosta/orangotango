@@ -1,0 +1,30 @@
+<mat-toolbar>
+  <button mat-icon-button>
+    <mat-icon (click)="changeExpanded()">menu</mat-icon>
+  </button>
+
+  <span class="title no-selected">Orangotango</span>
+  <span class="spacer"></span>
+
+  <button mat-icon-button>
+    <mat-icon matTooltip="Notificações">notifications</mat-icon>
+  </button>
+  <button mat-icon-button>
+    <mat-icon matTooltip="Opções" [matMenuTriggerFor]="menu">apps</mat-icon>
+  </button>
+
+  <mat-menu #menu="matMenu">
+    <div mat-menu-item>
+      <mat-icon >star</mat-icon>
+      <mat-label>Minha Conta</mat-label>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div mat-menu-item>
+      <mat-icon >login</mat-icon>
+      <mat-label>Sair</mat-label>
+    </div>
+
+  </mat-menu>
+</mat-toolbar>

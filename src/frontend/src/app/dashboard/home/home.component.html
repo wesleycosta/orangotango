@@ -1,0 +1,25 @@
+<div class="container">
+  <app-navbar (expandedEvent)="changeExpanded($event)"></app-navbar>
+
+  <mat-sidenav-container class="sidenav-container" autosize>
+    <mat-sidenav #sidenav class="sidenav" mode="side" opened="true">
+      <mat-nav-list class="dashboard">
+        <a mat-list-item (click)="toggleActive($event)">
+          <mat-icon mat-list-icon>account_circle</mat-icon>
+          <span matLine *ngIf="isExpanded">Name</span>
+        </a>
+
+        <mat-divider></mat-divider>
+
+        <a mat-list-item (click)="toggleActive($event)">
+          <mat-icon mat-list-icon>inbox</mat-icon>
+          <span matLine *ngIf="isExpanded">Inbox</span>
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <div class="sidenav-content">
+      <h3>Main Content Goes Here !!!</h3>
+    </div>
+  </mat-sidenav-container>
+</div>

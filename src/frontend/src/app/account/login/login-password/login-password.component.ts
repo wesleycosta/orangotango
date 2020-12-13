@@ -17,7 +17,7 @@ export class LoginPasswordComponent implements OnInit {
     return this.showPassword ? 'text' : 'password';
   }
 
-  showPasswordClicked() {
+  showPasswordClicked(): void {
     this.showPassword = !this.showPassword;
   }
 

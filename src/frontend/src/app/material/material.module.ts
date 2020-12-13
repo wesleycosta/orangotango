@@ -8,6 +8,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 const modules = [
   MatInputModule,
@@ -19,6 +21,8 @@ const modules = [
   MatListModule,
   MatTooltipModule,
   MatMenuModule,
+  MatCardModule,
+  MatGridListModule,
 ];
 
 @NgModule({

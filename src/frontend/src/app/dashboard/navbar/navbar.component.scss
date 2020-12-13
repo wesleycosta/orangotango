@@ -3,19 +3,20 @@
 .spacer {
   flex: 1 1 auto;
 }
+
 mat-toolbar {
   background-color: $primary;
 }
 
 mat-icon {
   cursor: pointer !important;
-  color: #FFF;
+  color: #fff;
 }
 
 .title {
   color: $primary;
-  font-family: 'Jura';
+  font-family: "Jura";
   font-weight: 600;
-  color: #FFF;
+  color: #fff;
   text-transform: uppercase;
 }

@@ -1,4 +1,3 @@
-# Orangotango
 <img src="https://github.com/wesleycosta/orangotango/blob/master/docs/design/oragotango_with_title.PNG" />
 
 Sistema distribuído com uma arquitetura hexagonal para monitoramento de logs.

@@ -5,7 +5,7 @@ Sistema distribuído com uma arquitetura hexagonal para monitoramento de logs.
 ## Rodando o Back-End
 Para criar rapidamente o ambiente disponibilizamos as imagens Docker dos 2 recursos da aplicação:
 
-- [PostgresSQL]
+- [PostgreSQL]
 - [RabbitMQ]
 
 > **Requisito:** É necessário ter o docker instalado em seu sistema operacional (Linux, Windows ou Mac)

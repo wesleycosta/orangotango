@@ -10,7 +10,7 @@ Para criar rapidamente o ambiente disponibilizamos as imagens Docker dos 2 recur
 
 > **Requisito:** É necessário ter o docker instalado em seu sistema operacional (Linux, Windows ou Mac)
 
-### Subindo o docker compose do back-end
+### Subindo o docker compose
 * Acesse o diretório: `\development\orangotango`
 * Altere o diretório do volume da pasta data do postgres, para um caminho existente no seu computador: <br>
 ` volumes:`<br>

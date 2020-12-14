@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginEmailComponent } from './login/login-email/login-email.component';
 import { LoginPasswordComponent } from './login/login-password/login-password.component';
-import { MaterialModule } from '../material/material.module';
+import { MaterialModule } from '../../shared/layout/material/material.module';
 
 @NgModule({
   declarations: [LoginComponent, LoginEmailComponent, LoginPasswordComponent],

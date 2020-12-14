@@ -10,6 +10,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatBadgeModule } from '@angular/material/badge';
 
 const modules = [
   MatInputModule,
@@ -23,6 +24,7 @@ const modules = [
   MatMenuModule,
   MatCardModule,
   MatGridListModule,
+  MatBadgeModule,
 ];
 
 @NgModule({

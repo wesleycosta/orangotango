@@ -10,21 +10,22 @@
     <mat-icon matTooltip="Notificações">notifications</mat-icon>
   </button>
   <button mat-icon-button>
-    <mat-icon matTooltip="Opções" [matMenuTriggerFor]="menu">apps</mat-icon>
+    <mat-icon matTooltip="Opções" [matMenuTriggerFor]="menu"
+      >more_vert</mat-icon
+    >
   </button>
 
   <mat-menu #menu="matMenu">
-    <div mat-menu-item>
-      <mat-icon >star</mat-icon>
+    <nav mat-menu-item>
+      <mat-icon>star</mat-icon>
       <mat-label>Minha Conta</mat-label>
-    </div>
+    </nav>
 
     <mat-divider></mat-divider>
 
-    <div mat-menu-item>
-      <mat-icon >login</mat-icon>
+    <nav mat-menu-item [routerLink]="['account/login']">
+      <mat-icon>login</mat-icon>
       <mat-label>Sair</mat-label>
-    </div>
-
+    </nav>
   </mat-menu>
 </mat-toolbar>

@@ -13,6 +13,9 @@ Para criar rapidamente o ambiente disponibilizamos as imagens Docker dos 2 recur
 
 ### Subindo o docker compose do back-end
 * Acesse o diretório: `\development\orangotango`
+* Altere o diretório do volume da pasta data do postgres, para um caminho existente no seu computador: <br>
+` volumes:`<br>
+      `- C:/Outros/postgres/data:/var/lib/postgresql/data`
 * Rode o comando: ` docker-compose up` 
 
 #### Para parar a execução no console (executando no modo 'detached'):  

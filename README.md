@@ -11,11 +11,12 @@ Para criar rapidamente o ambiente disponibilizamos as imagens Docker dos 2 recur
 > **Requisito:** É necessário ter o docker instalado em seu sistema operacional (Linux, Windows ou Mac)
 
 ### Subindo o docker compose
-* Acesse o diretório: `\development\orangotango`
+* Acesse o diretório: `\development`
+* Abre o arquivo: `docker-compose-dev.yml up -d` 
 * Altere o diretório do volume da pasta data do postgres, para um caminho existente no seu computador: <br>
 ` volumes:`<br>
       `- C:/Outros/postgres/data:/var/lib/postgresql/data`
-* Rode o comando: ` docker-compose up` 
+* Rode o comando: `docker-compose -f docker-compose-dev.yml up -d` 
 
 #### Para parar a execução no console (executando no modo 'detached'):  
 - ` docker-compose down` 

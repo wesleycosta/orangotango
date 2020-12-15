@@ -3,7 +3,7 @@
 Sistema distribuído com uma arquitetura hexagonal para monitoramento de logs.
 
 ## Subindo o Ambiente de DEV
-### Subindo o Back-End
+### Rodando o Back-End
 Para criar rapidamente o ambiente disponibilizamos as imagens Docker dos 2 recursos da aplicação:
 
 - [PostgreSQL]

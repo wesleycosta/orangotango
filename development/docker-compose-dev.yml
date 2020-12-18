@@ -1,0 +1,31 @@
+version: "3"
+services:
+  orangotango-mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    ports:
+      - "90:27017"
+    volumes:
+      - C:\Outros\mongo\data:/data/db
+    networks:
+      - orangotango-network
+
+  orangotango-rabbitmq:
+    image: "rabbitmq:3-management"
+    hostname: "rabbit1"
+    environment:
+      RABBITMQ_DEFAULT_USER: "guest"
+      RABBITMQ_DEFAULT_PASS: "guest"
+      RABBITMQ_DEFAULT_VHOST: "/"
+    ports:
+    - "92:15672"
+    - "93:5672"
+    networks:
+      - orangotango-network
+  
+networks:
+  orangotango-network:
+    driver: bridge

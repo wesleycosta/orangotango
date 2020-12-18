@@ -29,4 +29,4 @@ Para criar rapidamente o ambiente disponibilizamos as imagens Docker dos 2 recur
 * Acesse o diretório: `\src\frontend`
 * Se for a primeira vez que irá executar o Web App, será necessário instalar os pacotes do angular, então rode o comando: `npm install` 
 * Rode o seguinte comando para iniciar a aplicação na porta 4200: `ng s`
-> **Requisito:** É necessário ter o node e o npm em seu sistema operacional
+> **Requisito:** É necessário ter o Node.js e o npm instalado em seu sistema operacional

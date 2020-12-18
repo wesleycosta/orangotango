@@ -1,0 +1,22 @@
+@import "/src/colors.scss";
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+mat-toolbar {
+  background-color: $primary;
+}
+
+mat-icon {
+  cursor: pointer !important;
+  color: #fff;
+}
+
+.title {
+  color: $primary;
+  font-family: "Jura";
+  font-weight: 600;
+  color: #fff;
+  text-transform: uppercase;
+}

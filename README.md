@@ -3,7 +3,7 @@
 Sistema distribuído com uma arquitetura hexagonal para monitoramento de logs.
 
 ## Subindo o Ambiente de DEV
-### Rodando o Back-End
+### 1 - Rodando o Back-End
 Para criar rapidamente o ambiente disponibilizamos as imagens Docker dos 2 recursos da aplicação:
 
 - [PostgreSQL]
@@ -25,7 +25,7 @@ Para criar rapidamente o ambiente disponibilizamos as imagens Docker dos 2 recur
 ##### Para parar a execução no console (executando no modo 'attached'):  
 - <kbd>Crtl</kbd> + <kbd>C</kbd>
 
-### Rodando o Web App
+### 2 - Rodando o Web App
 * Acesse o diretório: `\src\frontend`
 * Se for a primeira vez que irá executar o Web App, será necessário instalar os pacotes do angular, então rode o comando: `npm install` 
 * Rode o seguinte comando para iniciar a aplicação na porta 4200: `ng s`

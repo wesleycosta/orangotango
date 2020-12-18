@@ -9,9 +9,9 @@ Para criar rapidamente o ambiente disponibilizamos as imagens Docker dos 2 recur
 - [PostgreSQL]
 - [RabbitMQ]
 
-> **Requisito:** É necessário ter o docker instalado em seu sistema operacional (Linux, Windows ou Mac)
+> **Requisito:** É necessário ter o docker instalado em seu sistema operacional
 
-### Subindo o docker compose
+#### Subindo o docker compose
 * Acesse o diretório: `\development`
 * Abre o arquivo: `docker-compose-dev.yml up -d` 
 * Altere o diretório do volume da pasta data do postgres, para um caminho existente no seu computador: <br>
@@ -19,8 +19,14 @@ Para criar rapidamente o ambiente disponibilizamos as imagens Docker dos 2 recur
       `- C:/Outros/postgres/data:/var/lib/postgresql/data`
 * Rode o comando: `docker-compose -f docker-compose-dev.yml up -d` 
 
-#### Para parar a execução no console (executando no modo 'detached'):  
+##### Para parar a execução no console (executando no modo 'detached'):  
 - ` docker-compose down` 
 
-#### Para parar a execução no console (executando no modo 'attached'):  
+##### Para parar a execução no console (executando no modo 'attached'):  
 - <kbd>Crtl</kbd> + <kbd>C</kbd>
+
+### Rodando o Web App
+* Acesse o diretório: `\src\frontend`
+* Se for a primeira vez que irá executar o Web App, será necessário instalar os pacotes do angular, então rode o comando: `npm install` 
+* Rode o seguinte comando para iniciar a aplicação na porta 4200: `ng s`
+> **Requisito:** É necessário ter o node e o npm em seu sistema operacional

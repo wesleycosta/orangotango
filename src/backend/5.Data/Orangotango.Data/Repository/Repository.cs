@@ -14,73 +14,73 @@ namespace Orangotango.Data.Repository
 {
     public abstract class Repository<TEntity> : IRepositoryBase<TEntity> where TEntity : Entity, new()
     {
-        protected readonly OrangotangoContext Db;
-        protected readonly DbSet<TEntity> DbSet;
+        protected readonly OrangotangoContext _db;
+        protected readonly DbSet<TEntity> _dbSet;
 
         protected Repository(OrangotangoContext db)
         {
-            Db = db;
-            DbSet = db.Set<TEntity>();
+            this._db = db;
+            _dbSet = db.Set<TEntity>();
         }
 
-        public IUnitOfWork UnitOfWork => Db;
+        public IUnitOfWork UnitOfWork => _db;
 
         public virtual async Task Add(TEntity entity)
         {
-            DbSet.Add(entity);
+            _dbSet.Add(entity);
             await Task.CompletedTask;
         }
 
         public virtual async Task AddRange(List<TEntity> entities)
         {
-            DbSet.AddRange(entities);
+            _dbSet.AddRange(entities);
             await Task.CompletedTask;
         }
 
         public virtual async Task Update(TEntity entity)
         {
-            DbSet.Update(entity);
+            _dbSet.Update(entity);
             await Task.CompletedTask;
         }
 
         public virtual async Task UpdateRange(List<TEntity> entities)
         {
-            DbSet.UpdateRange(entities);
+            _dbSet.UpdateRange(entities);
             await Task.CompletedTask;
         }
 
         public virtual async Task Remove(Guid id)
         {
-            DbSet.Remove(new TEntity { Id = id });
+            _dbSet.Remove(new TEntity { Id = id });
             await Task.CompletedTask;
         }
 
         public virtual async Task RemoveRange(List<Guid> ids)
         {
-            DbSet.RemoveRange(ids.Select(id => new TEntity { Id = id }));
+            _dbSet.RemoveRange(ids.Select(id => new TEntity { Id = id }));
             await Task.CompletedTask;
         }
 
         public async Task<bool> Commit()
         {
-            return await Db.SaveChangesAsync() > 0;
+            return await _db.SaveChangesAsync() > 0;
         }
 
         #region QUERIES
 
         public virtual async Task<TEntity> GetById(Guid id)
         {
-            return await DbSet.FindAsync(id);
+            return await _dbSet.FindAsync(id);
         }
 
         public virtual async Task<List<TEntity>> GetAll()
         {
-            return await DbSet.ToListAsync();
+            return await _dbSet.ToListAsync();
         }
 
         public async Task<List<TEntity>> Search(Expression<Func<TEntity, bool>> predicate)
         {
-            return await DbSet.AsNoTracking()
+            return await _dbSet.AsNoTracking()
                               .Where(predicate)
                               .ToListAsync();
         }
@@ -89,7 +89,7 @@ namespace Orangotango.Data.Repository
 
         public void Dispose()
         {
-            Db?.Dispose();
+            _db?.Dispose();
         }
     }
 }

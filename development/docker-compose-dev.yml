@@ -1,15 +1,26 @@
 version: "3"
 services:
-  orangotango-mongo:
-    image: mongo
-    restart: always
+  orangotango-postgres:
+    image: postgres:13.1
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: root
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
     ports:
-      - "90:27017"
+      - "90:5432"
     volumes:
-      - C:\Outros\mongo\data:/data/db
+      - C:/Outros/postgres/data:/var/lib/postgresql/data 
+    networks:
+      - orangotango-network
+      
+  orangotango-pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "pg@admin.com"
+      PGADMIN_DEFAULT_PASSWORD: "postgres"
+    ports:
+      - "91:80"
+    depends_on:
+      - orangotango-postgres
     networks:
       - orangotango-network
 
@@ -23,6 +34,19 @@ services:
     ports:
     - "92:15672"
     - "93:5672"
+    networks:
+      - orangotango-network
+
+  orangotango-mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    ports:
+      - "94:27017"
+    volumes:
+      - C:\Outros\mongo\data:/data/db
     networks:
       - orangotango-network
   

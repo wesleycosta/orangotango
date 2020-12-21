@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Orangotango.Core.Swagger;
-using Orangotango.DependencyInjection;
+using Orangotango.DependencyInjection.Infrastructure;
 
 namespace Orangotango.Api
 {

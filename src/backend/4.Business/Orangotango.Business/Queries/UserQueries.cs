@@ -1,0 +1,37 @@
+﻿using AutoMapper;
+using Orangotango.Business.Intefaces.Queries;
+using Orangotango.Business.Intefaces.Repositories;
+using Orangotango.Business.Models.DomainObjects;
+using Orangotango.Business.ViewModels;
+using System;
+using System.Threading.Tasks;
+
+namespace Orangotango.Business.Queries
+{
+    public class UserQueries : IUserQueries
+    {
+        private readonly IUserRepository _userRepository;
+        private readonly IMapper _mapper;
+
+        public UserQueries(IUserRepository userRepository,
+                           IMapper mapper)
+        {
+            _userRepository = userRepository;
+            _mapper = mapper;
+        }
+
+        public async Task<UserViewModel> GetUserByEmail(string email)
+        {
+            try
+            {
+                var users = await _userRepository.GetAll();
+                var user = await _userRepository.GetUserByEmail(new Email(email));
+                return _mapper.Map<UserViewModel>(user);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+    }
+}

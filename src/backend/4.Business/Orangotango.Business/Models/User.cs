@@ -1,4 +1,5 @@
-﻿using Orangotango.Core.DomainObjects;
+﻿using Orangotango.Business.Models.DomainObjects;
+using Orangotango.Core.DomainObjects;
 
 namespace Orangotango.Business.Models
 {
@@ -7,7 +8,7 @@ namespace Orangotango.Business.Models
         public string FristName { get; set; }
         public string LastName { get; set; }
         public string NickName { get; set; }
-        public string Email { get; set; }
+        public Email Email { get; set; }
         public string Password { get; set; }
     }
 }

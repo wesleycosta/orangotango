@@ -1,12 +1,14 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Orangotango.Core.Mediator;
 using Orangotango.Core.Notifications.Configurations;
 using Orangotango.Core.Settings;
 using Orangotango.Data.Context;
+using Orangotango.DependencyInjection.Infrastructure;
 using Orangotango.WebApiShared.Authentication.Configurations;
 
-namespace Orangotango.DependencyInjection
+namespace Orangotango.DependencyInjection.Infrastructure
 {
     public static class InfrastructureConfig
     {
@@ -19,6 +21,7 @@ namespace Orangotango.DependencyInjection
 
             services.AddNotification();
             services.AddMediator();
+            services.AddAutoMapperConfig();
 
             return services;
         }
@@ -44,6 +47,12 @@ namespace Orangotango.DependencyInjection
             services.AddJwtConfig(appSettings);
             services.AddAuthenticationService();
 
+            return services;
+        }
+
+        private static IServiceCollection AddAutoMapperConfig(this IServiceCollection services)
+        {
+            services.AddAutoMapper(typeof(InfrastructureConfig));
             return services;
         }
 

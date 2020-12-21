@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Orangotango.Business.Models;
+using Orangotango.Business.Models.DomainObjects;
 
 namespace Orangotango.Data.Mappings
 {
@@ -22,15 +23,19 @@ namespace Orangotango.Data.Mappings
                    .HasColumnName("NickName")
                    .HasColumnType("VARCHAR(128)");
 
-            builder.Property(p => p.Email)
-                   .HasColumnName("Email")
-                   .HasColumnType("VARCHAR(128)");
+            builder.OwnsOne(p => p.Email, q =>
+            {
+                q.Property(p => p.EmailAddress)
+                    .IsRequired()
+                    .HasColumnName("Email")
+                    .HasColumnType($"VARCHAR({Email.MAX_LENGTH})");
+            });
 
             builder.Property(p => p.Password)
                    .HasColumnName("Password")
                    .HasColumnType("VARCHAR(255)");
 
-            builder.ToTable("Users2");
+            builder.ToTable("Users");
         }
     }
 }

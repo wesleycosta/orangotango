@@ -12,7 +12,7 @@ namespace Orangotango.Api.Controllers
         private readonly IJwtAuthentication _jwtAuthentication;
 
         public AuthController(IJwtAuthentication jwtAuthentication,
-                             INotifier notifier) : base(notifier)
+                              INotifier notifier) : base(notifier)
         {
             _jwtAuthentication = jwtAuthentication;
         }

@@ -4,9 +4,9 @@ Sistema distribuído com uma arquitetura hexagonal para monitoramento de logs.
 
 ## Subindo o Ambiente de DEV
 ### 1 - Rodando o Back-End
-Para criar rapidamente o ambiente disponibilizamos as imagens Docker dos 2 recursos da aplicação:
+Para criar rapidamente o ambiente disponibilizamos magens Docker dos recursos da aplicação:
 
-- [PostgreSQL]
+- [MongoDB]
 - [RabbitMQ]
 
 > **Requisito:** É necessário ter o docker instalado em seu sistema operacional

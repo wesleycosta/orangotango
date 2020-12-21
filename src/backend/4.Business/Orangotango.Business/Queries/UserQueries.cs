@@ -3,7 +3,6 @@ using Orangotango.Business.Intefaces.Queries;
 using Orangotango.Business.Intefaces.Repositories;
 using Orangotango.Business.Models.DomainObjects;
 using Orangotango.Business.ViewModels;
-using System;
 using System.Threading.Tasks;
 
 namespace Orangotango.Business.Queries
@@ -22,16 +21,8 @@ namespace Orangotango.Business.Queries
 
         public async Task<UserViewModel> GetUserByEmail(string email)
         {
-            try
-            {
-                var users = await _userRepository.GetAll();
-                var user = await _userRepository.GetUserByEmail(new Email(email));
-                return _mapper.Map<UserViewModel>(user);
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
+            var user = await _userRepository.GetUserByEmail(new Email(email));
+            return _mapper.Map<UserViewModel>(user);
         }
     }
 }

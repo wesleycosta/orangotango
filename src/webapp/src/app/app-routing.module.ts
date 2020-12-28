@@ -1,6 +1,7 @@
 import { LayoutModule } from '@angular/cdk/layout';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { NotificationService } from './shared/services/notification.service';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -19,5 +20,6 @@ const routes: Routes = [
 @NgModule({
   imports: [LayoutModule, RouterModule.forRoot(routes)],
   exports: [RouterModule],
+  providers: [ NotificationService ],
 })
 export class AppRoutingModule {}

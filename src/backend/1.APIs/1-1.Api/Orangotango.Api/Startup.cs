@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Orangotango.Business.Hubs;
 using Orangotango.Core.Swagger;
 using Orangotango.DependencyInjection.Infrastructure;
 
@@ -22,6 +23,17 @@ namespace Orangotango.Api
             services.ConfigureInfrastructureAndDependencyInjection();
             services.AddControllers();
             services.AddSwaggerConfigApi();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("Allow",
+                     b => b.WithOrigins("http://localhost:4200")
+                           .AllowAnyMethod()
+                           .AllowAnyHeader()
+                           .AllowCredentials());
+            });
+
+            services.AddSignalR();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -33,10 +45,15 @@ namespace Orangotango.Api
 
             app.UseSwaggerConfigApi();
             app.UseHttpsRedirection();
+            app.UseCors("Allow");
             app.UseRouting();
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints => endpoints.MapControllers());
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+                endpoints.MapHub<NotificationHub>("/notification-hub");
+            });
         }
     }
 }

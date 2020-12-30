@@ -1,0 +1,24 @@
+<button mat-icon-button>
+  <mat-icon
+    [matBadge]="countNotifications"
+    [matBadgeHidden]="countNotifications === 0"
+    [matMenuTriggerFor]="notifications"
+    matBadgeSize="medium"
+    matBadgeColor="warn"
+    matBadgeColor="primary"
+    matTooltip="Notificações"
+    >notifications</mat-icon
+  >
+</button>
+
+<mat-menu #notifications="matMenu">
+  <nav mat-menu-item *ngIf="countNotifications === 0">
+    <mat-icon>star</mat-icon>
+    <mat-label>Nenhuma notificação</mat-label>
+  </nav>
+
+  <nav mat-menu-item *ngFor="let item of getNotifications">
+    <mat-icon>star</mat-icon>
+    <mat-label>{{ item }}</mat-label>
+  </nav>
+</mat-menu>

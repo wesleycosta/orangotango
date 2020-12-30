@@ -9,8 +9,7 @@ import { NotificationService } from '../../services/notification.service';
 export class NavigationComponent {
   isExpanded = false;
 
-  constructor(private notificationService: NotificationService) {
-    notificationService.connect();
+  constructor() {
   }
 
   public changeExpanded(event: any) {

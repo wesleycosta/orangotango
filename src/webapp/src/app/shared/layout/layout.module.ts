@@ -5,10 +5,10 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { MaterialModule } from './material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { NotificationComponent } from './notification/notification.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 @NgModule({
-  declarations: [NavbarComponent, NavigationComponent, NotificationComponent],
+  declarations: [NavbarComponent, NavigationComponent, NotificationsComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -16,6 +16,6 @@ import { NotificationComponent } from './notification/notification.component';
     MaterialModule,
     RouterModule,
   ],
-  exports: [NavbarComponent, NavigationComponent, NotificationComponent],
+  exports: [NavbarComponent, NavigationComponent],
 })
 export class LayoutModule {}

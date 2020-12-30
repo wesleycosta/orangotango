@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class NotificationService {
-  _hubConnection: HubConnection = new HubConnectionBuilder()
-  .withUrl('https://localhost:5000/notification-hub')
-  .build();
+  private _hubConnection: HubConnection = new HubConnectionBuilder()
+    .withUrl(`${environment.api_websocket}notification-hub`)
+    .build();
 
-  dictStocks = {
+  private dictStocks = {
     ITSA4: {
       startValue: 20.0,
       currentValue: 20.0,
@@ -25,21 +26,15 @@ export class NotificationService {
     },
   };
 
+  public notifications: any[] = [];
+
   connect(): void {
-    console.log('start');
-    this.createConnection();
     this.registerOnServerEvents();
     this.startConnection();
   }
 
   connectToNotification(symbol: string) {
     this._hubConnection.invoke('ConnectToNotification', symbol);
-  }
-
-  private createConnection() {
-    this._hubConnection = new HubConnectionBuilder()
-      .withUrl('https://localhost:5000/notification-hub')
-      .build();
   }
 
   private startConnection(): void {
@@ -50,14 +45,13 @@ export class NotificationService {
           this.connectToNotification(key);
         }
       })
-      .catch(() => {
-
-      });
+      .catch(() => {});
   }
 
   private registerOnServerEvents(): void {
     this._hubConnection.on('NotificationAll', (data: any) => {
       console.log(data);
+      this.notifications.push(data);
     });
   }
 }

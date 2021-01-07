@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Orangotango.Business.Hubs;
 using Orangotango.Business.Intefaces.Queries;
+using Orangotango.Business.Intefaces.Repositories;
 using Orangotango.Core.Notifications;
 using Orangotango.WebApiShared.Controllers;
 using System;
@@ -14,19 +15,47 @@ namespace Orangotango.Api.Controllers
     public class SecretController : MainControllerWithBearer
     {
         private readonly IUserQueries _userQueries;
-        private IHubContext<NotificationHub> _hub;
+        private readonly IHubContext<NotificationHub> _hub;
+        private readonly IUserRepository _userRepository;
 
         public SecretController(INotifier notifier,
                                 IUserQueries userQueries,
-                                IHubContext<NotificationHub> hub) : base(notifier)
+                                IHubContext<NotificationHub> hub,
+                                IUserRepository userRepository) : base(notifier)
         {
             _userQueries = userQueries;
             _hub = hub;
+            _userRepository = userRepository;
         }
 
         [HttpGet]
         public IActionResult Get()
         {
+            return CustomResponse();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> Insert()
+        {
+            try
+            {
+                _userRepository.Add(new Business.Models.User
+                {
+                    NickName = "Wesley",
+                    FristName = "Wesley",
+                    LastName = "Costa",
+                    Active = true,
+                    Email = new Business.Models.DomainObjects.Email("wesley_costa@outlook.com"),
+                    Password = "123"
+                });
+
+                await _userRepository.Commit();
+            }
+            catch (Exception ex)
+            {
+                return CustomResponse(ex.ToString());
+            }
             return CustomResponse();
         }
 

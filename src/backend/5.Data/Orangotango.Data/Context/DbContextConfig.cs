@@ -1,24 +1,14 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.EntityFrameworkCore;
+using Orangotango.Business.Intefaces.Infrastructure;
 
 namespace Orangotango.Data.Context
 {
-    public static class DbContextConfig
+    public static class MongoContextConfig
     {
-        public static IServiceCollection AddOrangotangoContext(this IServiceCollection services, string connection)
+        public static IServiceCollection AddMongoContext(this IServiceCollection services)
         {
-            services.AddDbContext<OrangotangoContext>(options =>
-            {
-                options.UseNpgsql(connection);
-            });
-
+            services.AddScoped<IMongoContext, MongoContext>();
             return services;
-        }
-
-        public static void UpdateDatabase(this IServiceScope serviceScope)
-        {
-            using var context = serviceScope.ServiceProvider.GetService<OrangotangoContext>();
-            context.Database.Migrate();
         }
     }
 }

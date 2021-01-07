@@ -7,10 +7,14 @@ namespace Orangotango.DependencyInjection
     {
         public static AppSettings Builder()
         {
+            var env = (EnvironmentType)Enum.Parse(typeof(EnvironmentType), Environment.GetEnvironmentVariable("Environment"));
+            var database = $"{Environment.GetEnvironmentVariable("DataBase")}_{env}".ToLower();
+
             return new AppSettings
             {
                 ConnectionString = Environment.GetEnvironmentVariable("ConnectionString"),
-                Environment = (EnvironmentType)Enum.Parse(typeof(EnvironmentType), Environment.GetEnvironmentVariable("Environment")),
+                DataBase = database,
+                Environment = env,
                 JwtSettings = GetJwtSettings()
             };
         }

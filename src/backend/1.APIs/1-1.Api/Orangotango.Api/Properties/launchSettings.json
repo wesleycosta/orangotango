@@ -27,8 +27,9 @@
         "Jwt.Issuer": "Orangotango",
         "Jwt.Hours": "12",
         "Environment": "Dev",
-        "ConnectionString": "Host=localhost;Port=5432;Pooling=true;Database=Orangotango;UserId=postgres;Password=postgres;CommandTimeout=60;timeout=60;MaxPoolSize=200",
-        "Jwt.Secret": "DEA9EF7E811D6DE6CDF909003D12D00E968FFE4596FB0B784C6996FB201F65AD"
+        "ConnectionString": "mongodb://root:root@mongodb-primary:27017",
+        "Jwt.Secret": "DEA9EF7E811D6DE6CDF909003D12D00E968FFE4596FB0B784C6996FB201F65AD",
+        "DataBase": "orangotango"
       },
       "applicationUrl": "https://localhost:5000"
     }

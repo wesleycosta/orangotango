@@ -14,9 +14,9 @@ namespace Orangotango.Core.Mediator
             _mediator = mediator;
         }
 
-        public async Task PublishEvent<T>(T evento) where T : Event
+        public async Task PublishEvent<T>(T eventMessage) where T : Event
         {
-            await _mediator.Publish(evento);
+            await _mediator.Publish(eventMessage);
         }
 
         public async Task<ValidationResult> SendCommand<T>(T comando) where T : Command

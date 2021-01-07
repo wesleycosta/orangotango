@@ -7,14 +7,14 @@ namespace Orangotango.Business.Models.DomainObjects
     {
         public const int MAX_LENGTH = 254;
         public const int MIN_LENGTH = 5;
-        public string EmailAddress { get; private set; }
+        public string Address { get; private set; }
 
         public Email(string emailAddress)
         {
             if (!IsValid(emailAddress))
                 throw new DomainException("E-mail inválido");
 
-            EmailAddress = emailAddress;
+            Address = emailAddress;
         }
 
         public static bool IsValid(string email)
@@ -28,7 +28,12 @@ namespace Orangotango.Business.Models.DomainObjects
             if (obj is not Email email)
                 return false;
 
-            return email.EmailAddress.Equals(EmailAddress);
+            return email.Address.Equals(Address);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 }

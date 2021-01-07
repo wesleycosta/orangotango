@@ -1,95 +1,86 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using MongoDB.Driver;
+using Orangotango.Business.Intefaces.Infrastructure;
 using Orangotango.Business.Intefaces.Repositories;
-using Orangotango.Business.Models;
 using Orangotango.Core.Data;
 using Orangotango.Core.DomainObjects;
-using Orangotango.Data.Context;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace Orangotango.Data.Repository
 {
     public abstract class Repository<TEntity> : IRepositoryBase<TEntity> where TEntity : Entity, new()
     {
-        protected readonly OrangotangoContext _db;
-        protected readonly DbSet<TEntity> _dbSet;
+        protected readonly IMongoContext _context;
+        protected IMongoCollection<TEntity> _dbSet;
+        public IUnitOfWork UnitOfWork => _context;
 
-        protected Repository(OrangotangoContext db)
+        protected Repository(IMongoContext context)
         {
-            this._db = db;
-            _dbSet = db.Set<TEntity>();
+            _context = context;
+            _dbSet = _context.GetCollection<TEntity>(typeof(TEntity).Name);
         }
 
-        public IUnitOfWork UnitOfWork => _db;
+        #region INSERTS AND UPDATEDS
 
-        public virtual async Task Add(TEntity entity)
+        public virtual void Add(TEntity entity)
         {
-            _dbSet.Add(entity);
-            await Task.CompletedTask;
+            entity.Created = DateTime.UtcNow;
+            _context.AddCommand(() => _dbSet.InsertOneAsync(entity));
         }
 
-        public virtual async Task AddRange(List<TEntity> entities)
+        public virtual void AddRange(List<TEntity> entities)
         {
-            _dbSet.AddRange(entities);
-            await Task.CompletedTask;
+            _context.AddCommand(() => _dbSet.InsertManyAsync(entities));
         }
 
-        public virtual async Task Update(TEntity entity)
+        public virtual void Update(TEntity entity)
         {
-            _dbSet.Update(entity);
-            await Task.CompletedTask;
+            entity.LastUpdated = DateTime.UtcNow;
+            _context.AddCommand(() => _dbSet.ReplaceOneAsync(Builders<TEntity>.Filter.Eq("Id", entity.Id), entity));
         }
 
-        public virtual async Task UpdateRange(List<TEntity> entities)
+        public virtual void UpdateRange(List<TEntity> entities)
         {
-            _dbSet.UpdateRange(entities);
-            await Task.CompletedTask;
+            entities.ForEach(p => Update(p));
         }
 
-        public virtual async Task Remove(Guid id)
+        public virtual void Remove(Guid id)
         {
-            _dbSet.Remove(new TEntity { Id = id });
-            await Task.CompletedTask;
+            _context.AddCommand(() => _dbSet.DeleteOneAsync(Builders<TEntity>.Filter.Eq("Id", id)));
         }
 
-        public virtual async Task RemoveRange(List<Guid> ids)
+        public virtual void RemoveRange(List<Guid> ids)
         {
-            _dbSet.RemoveRange(ids.Select(id => new TEntity { Id = id }));
-            await Task.CompletedTask;
+            _context.AddCommand(() => _dbSet.DeleteManyAsync(Builders<TEntity>.Filter.Eq("Id", ids)));
         }
 
         public async Task<bool> Commit()
         {
-            return await _db.SaveChangesAsync() > 0;
+            return await _context.SaveChanges() > 0;
         }
+
+        #endregion
 
         #region QUERIES
 
         public virtual async Task<TEntity> GetById(Guid id)
         {
-            return await _dbSet.FindAsync(id);
+            var data = await _dbSet.FindAsync(Builders<TEntity>.Filter.Eq("Id", id));
+            return await data.FirstOrDefaultAsync();
         }
 
         public virtual async Task<List<TEntity>> GetAll()
         {
-            return await _dbSet.ToListAsync();
-        }
-
-        public async Task<List<TEntity>> Search(Expression<Func<TEntity, bool>> predicate)
-        {
-            return await _dbSet.AsNoTracking()
-                              .Where(predicate)
-                              .ToListAsync();
+            var all = await _dbSet.FindAsync(Builders<TEntity>.Filter.Empty);
+            return await all.ToListAsync();
         }
 
         #endregion
 
         public void Dispose()
         {
-            _db?.Dispose();
+            _context?.Dispose();
         }
     }
 }

@@ -1,19 +1,40 @@
 version: "3"
 services:
-  orangotango-mongo:
-    image: mongo
-    restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: root
+  mongodb-primary:
+    image: 'bitnami/mongodb:latest'
     ports:
-      - "90:27017"
-    volumes:
-      - C:\Outros\mongo\data:/data/db
-    networks:
-      - orangotango-network
+      - "27017:27017"
+    environment:
+      - MONGODB_ADVERTISED_HOSTNAME=mongodb-primary
+      - MONGODB_REPLICA_SET_MODE=primary
+      - MONGODB_ROOT_PASSWORD=root
+      - MONGODB_REPLICA_SET_KEY=replicasetkey123
 
-  orangotango-rabbitmq:
+  mongodb-secondary:
+    image: 'bitnami/mongodb:latest'
+    depends_on:
+      - mongodb-primary
+    environment:
+      - MONGODB_ADVERTISED_HOSTNAME=mongodb-secondary
+      - MONGODB_REPLICA_SET_MODE=secondary
+      - MONGODB_INITIAL_PRIMARY_HOST=mongodb-primary
+      - MONGODB_INITIAL_PRIMARY_PORT_NUMBER=27017
+      - MONGODB_INITIAL_PRIMARY_ROOT_PASSWORD=root
+      - MONGODB_REPLICA_SET_KEY=replicasetkey123
+
+  mongodb-arbiter:
+    image: 'bitnami/mongodb:latest'
+    depends_on:
+      - mongodb-primary
+    environment:
+      - MONGODB_ADVERTISED_HOSTNAME=mongodb-arbiter
+      - MONGODB_REPLICA_SET_MODE=arbiter
+      - MONGODB_INITIAL_PRIMARY_HOST=mongodb-primary
+      - MONGODB_INITIAL_PRIMARY_PORT_NUMBER=27017
+      - MONGODB_INITIAL_PRIMARY_ROOT_PASSWORD=root
+      - MONGODB_REPLICA_SET_KEY=replicasetkey123
+
+  rabbitmq:
     image: "rabbitmq:3-management"
     hostname: "rabbit1"
     environment:

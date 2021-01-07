@@ -38,8 +38,6 @@ namespace Orangotango.Api
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UpdateDatabase();
-
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
 

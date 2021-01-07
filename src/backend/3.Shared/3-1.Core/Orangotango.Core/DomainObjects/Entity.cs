@@ -1,4 +1,6 @@
-﻿using Orangotango.Core.Messages;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+using Orangotango.Core.Messages;
 using System;
 using System.Collections.Generic;
 
@@ -6,6 +8,9 @@ namespace Orangotango.Core.DomainObjects
 {
     public abstract class Entity : IAggregateRoot
     {
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string ObjectId { get; set; }
         public Guid Id { get; set; }
         public DateTime Created { get; set; }
         public DateTime LastUpdated { get; set; }
@@ -32,7 +37,6 @@ namespace Orangotango.Core.DomainObjects
 
         public void ClearEvents() =>
             _eventNotification?.Clear();
-
 
         #endregion
 

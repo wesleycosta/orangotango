@@ -1,0 +1,14 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "172.16.47.206",
+            "port": 3332,
+            "driver": "PostgreSQL",
+            "name": "Easy Billing PROD",
+            "database": "greenyellow",
+            "username": "billingfvuser",
+            "password": "d0a77a0a70"
+        }
+    ]
+}

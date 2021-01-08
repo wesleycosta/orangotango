@@ -1,6 +1,6 @@
 <img src="https://github.com/wesleycosta/orangotango/blob/master/docs/design/oragotango_with_title.PNG" />
 
-Sistema para gerenciamento de reservas de hoteis e pousadas.
+Sistema para gerenciamento de reservas de hotéis e pousadas.
 
 ## Subindo o Ambiente de DEV
 ### 1 - Rodando o Back-End

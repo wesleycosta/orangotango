@@ -29,9 +29,10 @@ namespace Orangotango.Api.Controllers
         }
 
         [HttpGet]
-        public IActionResult Get()
+        [AllowAnonymous]
+        public async Task<IActionResult> Get(string id)
         {
-            return CustomResponse();
+            return CustomResponse(await _userRepository.GetById(new Guid(id)));
         }
 
         [HttpPost]
@@ -56,7 +57,8 @@ namespace Orangotango.Api.Controllers
             {
                 return CustomResponse(ex.ToString());
             }
-            return CustomResponse();
+
+            return CustomResponse(await _userRepository.GetAll());
         }
 
         [AllowAnonymous]

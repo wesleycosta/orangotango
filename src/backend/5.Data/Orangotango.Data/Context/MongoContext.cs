@@ -76,7 +76,7 @@ namespace Orangotango.Data.Context
 
             return success;
         }
-        
+
         public void Dispose()
         {
             Session?.Dispose();

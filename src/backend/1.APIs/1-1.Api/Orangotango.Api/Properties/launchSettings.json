@@ -27,7 +27,7 @@
         "Jwt.Issuer": "Orangotango",
         "Jwt.Hours": "12",
         "Environment": "Dev",
-        "ConnectionString": "mongodb://root:root@mongodb-primary:27017",
+        "ConnectionString": "mongodb://root:password123@localhost:27017",
         "Jwt.Secret": "DEA9EF7E811D6DE6CDF909003D12D00E968FFE4596FB0B784C6996FB201F65AD",
         "DataBase": "orangotango"
       },

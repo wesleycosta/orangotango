@@ -13,7 +13,7 @@ namespace Orangotango.Core.DomainObjects
         public string ObjectId { get; set; }
         public Guid Id { get; set; }
         public DateTime Created { get; set; }
-        public DateTime LastUpdated { get; set; }
+        public DateTime? LastUpdated { get; set; }
         public bool Active { get; set; }
 
         protected Entity()
@@ -24,7 +24,7 @@ namespace Orangotango.Core.DomainObjects
         #region EVENTS
 
         private List<Event> _eventNotification;
-        public IReadOnlyCollection<Event> EventNotification => _eventNotification?.AsReadOnly();
+        public IReadOnlyCollection<Event> GetEvents() => _eventNotification?.AsReadOnly();
 
         public void AddEvent(Event eventMessage)
         {

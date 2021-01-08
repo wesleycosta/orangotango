@@ -30,7 +30,7 @@ Para criar rapidamente o ambiente disponibilizamos magens Docker dos recursos da
 
 ## Arquitetura
 
-* Arquitetura construida com preocupações de separação de responsabilidades, seguindo as boas práticas de SOLID e Clean Code;
+Arquitetura construida com preocupações de separação de responsabilidades, seguindo as boas práticas de SOLID e Clean Code.
 * Domain Driven Design;
 * Domain Events;
 * Domain Notification;

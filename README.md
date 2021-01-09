@@ -1,6 +1,6 @@
 <img src="https://github.com/wesleycosta/orangotango/blob/master/docs/design/oragotango_with_title.PNG" />
 
-Sistema distribuído com uma arquitetura hexagonal para monitoramento de logs.
+Sistema para gerenciamento de reservas de hotéis e pousadas.
 
 ## Subindo o Ambiente de DEV
 ### 1 - Rodando o Back-End
@@ -13,10 +13,6 @@ Para criar rapidamente o ambiente disponibilizamos magens Docker dos recursos da
 
 #### Subindo o docker compose
 * Acesse o diretório: `\development`
-* Abre o arquivo: `docker-compose-dev.yml up -d` 
-* Altere o diretório do volume da pasta data do postgres, para um caminho existente no seu computador: <br>
-` volumes:`<br>
-      `- C:/Outros/postgres/data:/var/lib/postgresql/data`
 * Rode o comando: `docker-compose -f docker-compose-dev.yml up -d` 
 
 ##### Para parar a execução no console (executando no modo 'detached'):  
@@ -30,3 +26,16 @@ Para criar rapidamente o ambiente disponibilizamos magens Docker dos recursos da
 * Se for a primeira vez que irá executar o Web App, será necessário instalar os pacotes do angular, então rode o comando: `npm install` 
 * Rode o seguinte comando para iniciar a aplicação na porta 4200: `ng s`
 > **Requisito:** É necessário ter o Node.js e o npm instalado em seu sistema operacional
+
+
+## Arquitetura
+
+Arquitetura construida com preocupações de separação de responsabilidades, seguindo as boas práticas de SOLID e Clean Code.
+* Domain Driven Design;
+* Domain Events;
+* Domain Notification;
+* Domain Validations;
+* CQRS;
+* Event Sourcing;
+* Unit of Work;
+* Repository.

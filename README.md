@@ -46,8 +46,7 @@ Para criar rapidamente o ambiente disponibilizamos magens Docker dos recursos da
 * Swagger;
 * Angular 11;
 * Angular Material;
-* Gridster2;
-* Lodash.
+* Gridster2.
 
 ## Arquitetura
 

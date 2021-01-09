@@ -42,7 +42,13 @@ namespace Orangotango.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Insert()
         {
-            return CustomResponse(await _mediator.SendCommand(new RegisterUserCommand(Guid.NewGuid(), "Wesley Costa", "wesley_costa@outlook.com")));
+            var command = new RegisterUserCommand
+            {
+                Name = "Wesley Costa",
+                EmailAddress = "wesley_costa@outlook.com"
+            };
+
+            return CustomResponse(await _mediator.SendCommand(command));
         }
 
         [HttpGet("get-by-email")]

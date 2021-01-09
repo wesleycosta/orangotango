@@ -8,15 +8,13 @@ namespace Orangotango.Business.Application.Commands.Users
     public class RegisterUserCommand : Command
     {
         public Guid Id { get; private set; }
-        public string Name { get; private set; }
-        public string EmailAddress { get; private set; }
+        public string Name { get; init; }
+        public string EmailAddress { get; init; }
 
-        public RegisterUserCommand(Guid id, string name, string email)
+        public RegisterUserCommand()
         {
-            AggregateId = id;
-            Id = id;
-            Name = name;
-            EmailAddress = email;
+            Id = Guid.NewGuid();
+            AggregateId = Id;
         }
 
         public override bool IsValid()
@@ -31,15 +29,15 @@ namespace Orangotango.Business.Application.Commands.Users
             {
                 RuleFor(c => c.Id)
                     .NotEqual(Guid.Empty)
-                    .WithMessage("Id do cliente inválido");
+                    .WithMessage("Id do usuário inválido");
 
                 RuleFor(c => c.Name)
                     .NotEmpty()
-                    .WithMessage("O nome do cliente não foi informado");
+                    .WithMessage("O nome do usuário não foi informado");
 
                 RuleFor(c => c.EmailAddress)
                     .Must(TerEmailValido)
-                    .WithMessage("O e-mail informado não é válido.");
+                    .WithMessage("O e-mail informado é inválido");
             }
 
             protected static bool TerEmailValido(string email)

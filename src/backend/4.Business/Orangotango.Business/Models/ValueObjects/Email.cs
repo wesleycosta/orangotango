@@ -1,7 +1,7 @@
 ﻿using Orangotango.Core.DomainObjects;
 using System.Text.RegularExpressions;
 
-namespace Orangotango.Business.Models.DomainObjects
+namespace Orangotango.Business.Models.ValueObjects
 {
     public class Email
     {
@@ -34,6 +34,11 @@ namespace Orangotango.Business.Models.DomainObjects
         public override int GetHashCode()
         {
             return GetType().GetHashCode() * 907 + Address.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return Address;
         }
     }
 }

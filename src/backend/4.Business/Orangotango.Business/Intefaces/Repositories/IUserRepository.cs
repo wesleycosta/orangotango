@@ -1,5 +1,5 @@
 ﻿using Orangotango.Business.Models;
-using Orangotango.Business.Models.DomainObjects;
+using Orangotango.Business.Models.ValueObjects;
 using System.Threading.Tasks;
 
 namespace Orangotango.Business.Intefaces.Repositories

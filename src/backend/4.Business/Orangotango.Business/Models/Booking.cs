@@ -1,4 +1,4 @@
-﻿using Orangotango.Business.Models.DomainObjects;
+﻿using Orangotango.Business.Models.ValueObjects;
 using Orangotango.Core.DomainObjects;
 using System;
 

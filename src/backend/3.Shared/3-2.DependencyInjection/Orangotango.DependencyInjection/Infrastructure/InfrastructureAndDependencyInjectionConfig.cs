@@ -9,6 +9,7 @@ namespace Orangotango.DependencyInjection.Infrastructure
         {
             services.AddInfrastructureConfig();
             services.AddRepositories();
+            services.AddCommands();
             services.AddQueries();
 
             return services;

@@ -2,7 +2,7 @@
 using Orangotango.Business.Intefaces.Infrastructure;
 using Orangotango.Business.Intefaces.Repositories;
 using Orangotango.Business.Models;
-using Orangotango.Business.Models.DomainObjects;
+using Orangotango.Business.Models.ValueObjects;
 using System.Threading.Tasks;
 
 namespace Orangotango.Data.Repository
@@ -15,7 +15,7 @@ namespace Orangotango.Data.Repository
 
         public async Task<User> GetUserByEmail(Email email)
         {
-            var data = await _dbSet.FindAsync(Builders<User>.Filter.Eq("Email", email.Address));
+            var data = await _dbSet.FindAsync(Builders<User>.Filter.Eq("email.address", email.Address));
             return await data.FirstOrDefaultAsync();
         }
     }

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Orangotango.Business.Application.Queries;
 using Orangotango.Business.Intefaces.Queries;
-using Orangotango.Business.Queries;
 
 namespace Orangotango.DependencyInjection.ConfigurationServices
 {

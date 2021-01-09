@@ -1,7 +1,7 @@
 ﻿using Orangotango.Core.DomainObjects;
 using System;
 
-namespace Orangotango.Business.Models.DomainObjects
+namespace Orangotango.Business.Models.ValueObjects
 {
     public class DateRangeBooking
     {
@@ -43,6 +43,11 @@ namespace Orangotango.Business.Models.DomainObjects
         public override int GetHashCode()
         {
             return GetType().GetHashCode() * 907 + CheckInDate.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return $"{CheckInDate} of {CheckOutDate}";
         }
     }
 }

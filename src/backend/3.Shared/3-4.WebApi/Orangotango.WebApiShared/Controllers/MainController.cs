@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FluentValidation.Results;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Orangotango.Core.Notifications;
 using Orangotango.Core.Notifications.Model;
@@ -24,6 +25,14 @@ namespace Orangotango.WebApiShared.Controllers
 
         protected bool IsValid() =>
             !Notifier.HaveNotification();
+
+        protected ActionResult CustomResponse(ValidationResult validationResult)
+        {
+            foreach (var erro in validationResult.Errors)
+                NotifyError(erro.ErrorMessage);
+
+            return CustomResponse();
+        }
 
         protected ActionResult CustomResponse(object result = null)
         {

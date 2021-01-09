@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
 using Orangotango.Business.Intefaces.Queries;
 using Orangotango.Business.Intefaces.Repositories;
-using Orangotango.Business.Models.DomainObjects;
+using Orangotango.Business.Models.ValueObjects;
 using Orangotango.Business.ViewModels;
 using System.Threading.Tasks;
 
-namespace Orangotango.Business.Queries
+namespace Orangotango.Business.Application.Queries
 {
     public class UserQueries : IUserQueries
     {

@@ -3,7 +3,7 @@ using NetDevPackBr.Documentos.Validacao;
 using Orangotango.Core.DomainObjects;
 using System;
 
-namespace Orangotango.Business.Models.DomainObjects
+namespace Orangotango.Business.Models.ValueObjects
 {
     public class Cpf
     {
@@ -40,6 +40,11 @@ namespace Orangotango.Business.Models.DomainObjects
         public override int GetHashCode()
         {
             return GetType().GetHashCode() * 907 + Number.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return Number;
         }
     }
 }

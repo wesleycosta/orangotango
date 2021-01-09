@@ -1,7 +1,7 @@
 ﻿using Orangotango.Core.DomainObjects;
 using System;
 
-namespace Orangotango.Business.Models.DomainObjects
+namespace Orangotango.Business.Models.ValueObjects
 {
     public class DateOfBirth
     {
@@ -33,6 +33,11 @@ namespace Orangotango.Business.Models.DomainObjects
         public override int GetHashCode()
         {
             return GetType().GetHashCode() * 907 + Birthday.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return Birthday.ToString();
         }
     }
 }

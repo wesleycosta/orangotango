@@ -2,7 +2,7 @@
 using Orangotango.Business.Models;
 using Orangotango.Business.ViewModels;
 
-namespace Orangotango.Business.AutoMapper
+namespace Orangotango.Business.Configurations.AutoMapper
 {
     public class AutoMapperProfile : Profile
     {

@@ -23,7 +23,7 @@ Para criar rapidamente o ambiente disponibilizamos magens Docker dos recursos da
 
 #### Rodando o Web App
 * Acesse o diretório: `\src\webapp`
-* Se for a primeira vez que irá executar o Web App, será necessário instalar os pacotes do angular, então rode o comando: `npm install` 
+* Se for a primeira vez que irá executar o Web App, será necessário instalar as dependências, então rode o comando: `npm install` 
 * Rode o seguinte comando para iniciar a aplicação na porta 4200: `ng s`
 > **Requisito:** É necessário ter o Node.js e o npm instalado em seu sistema operacional
 

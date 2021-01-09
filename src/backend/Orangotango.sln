@@ -35,6 +35,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Workers", "2 - Workers"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orangotango.Api", "1.APIs\Orangotango.Api\Orangotango.Api.csproj", "{1C986249-064B-4756-ACBC-EBC5040204F1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6 - Tests", "6 - Tests", "{CB607E11-3021-49B6-8B38-D619FE3EAABC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orangotango.Tests", "6.Tests\Orangotango.Tests\Orangotango.Tests.csproj", "{7D4F9610-EA78-40D4-AECD-05FCE86837BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +73,10 @@ Global
 		{1C986249-064B-4756-ACBC-EBC5040204F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C986249-064B-4756-ACBC-EBC5040204F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C986249-064B-4756-ACBC-EBC5040204F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D4F9610-EA78-40D4-AECD-05FCE86837BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D4F9610-EA78-40D4-AECD-05FCE86837BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D4F9610-EA78-40D4-AECD-05FCE86837BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D4F9610-EA78-40D4-AECD-05FCE86837BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -85,6 +93,7 @@ Global
 		{E2E57AA8-4431-41EF-8B03-5BB05A98F0FA} = {342B8D47-C116-4A25-A418-93601602EF8A}
 		{8C3416CD-9A1E-4358-A430-F72629B55B21} = {E2E57AA8-4431-41EF-8B03-5BB05A98F0FA}
 		{1C986249-064B-4756-ACBC-EBC5040204F1} = {DB40FB52-6680-4A38-8CA0-4ED2B7E44259}
+		{7D4F9610-EA78-40D4-AECD-05FCE86837BD} = {CB607E11-3021-49B6-8B38-D619FE3EAABC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {30E1D7D7-A31B-4E47-AEA5-C0F5A4B6D1EF}

@@ -7,6 +7,7 @@ Sistema para gerenciamento de reservas de hotéis e pousadas.
 Para criar rapidamente o ambiente disponibilizamos magens Docker dos recursos da aplicação:
 
 - [MongoDB]
+- [Redis]
 - [RabbitMQ]
 
 > **Requisito:** É necessário ter o docker instalado em seu sistema operacional

@@ -5,7 +5,7 @@
 - 2 - Workers
 	- Worker Services que consomem uma fila do RabbitMQ e processa dados em backgroud;
 - 3 - Shared
-	- Camada compartilhada entre outros projetos
+	- Camada compartilhada entre projetos;
 - 4 - Business
 	- Camada de negócios, possue os models, commands e queries;
 - 5 - Data

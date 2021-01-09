@@ -43,7 +43,11 @@ Para criar rapidamente o ambiente disponibilizamos magens Docker dos recursos da
 * NetDevPackBr;
 * NUnit;
 * SignalR;
-* Swagger.
+* Swagger;
+* Angular 11;
+* Angular Material;
+* Gridster2;
+* Lodash.
 
 ## Arquitetura
 

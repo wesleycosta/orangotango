@@ -30,7 +30,7 @@ Para criar rapidamente o ambiente disponibilizamos magens Docker dos recursos da
 
 ## Modelagem de dados
 
-<img src="https://raw.githubusercontent.com/wesleycosta/orangotango/master/docs/class%20diagram/diagram.png" />
+<img src="https://raw.githubusercontent.com/wesleycosta/orangotango/master/docs/class%20diagram/diagram_updated.png" />
 
 ## Tecnologias utlizadas
 * .NET Core 5.0;

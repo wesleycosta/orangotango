@@ -8,6 +8,7 @@ Para criar rapidamente o ambiente disponibilizamos magens Docker dos recursos da
 
 - [MongoDB]
 - [RabbitMQ]
+- [Redis]
 
 > **Requisito:** É necessário ter o docker instalado em seu sistema operacional
 

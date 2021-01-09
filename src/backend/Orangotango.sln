@@ -37,7 +37,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orangotango.Api", "1.APIs\O
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6 - Tests", "6 - Tests", "{CB607E11-3021-49B6-8B38-D619FE3EAABC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orangotango.Tests", "6.Tests\Orangotango.Tests\Orangotango.Tests.csproj", "{7D4F9610-EA78-40D4-AECD-05FCE86837BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orangotango.Tests", "6.Tests\Orangotango.Tests\Orangotango.Tests.csproj", "{7D4F9610-EA78-40D4-AECD-05FCE86837BD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.1 - EmailWorker", "2.1 - EmailWorker", "{A8111650-3174-433B-95AF-3F568D092003}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orangotango.EmailWorker", "2.Workers\2-1.EmailWorker\Orangotango.EmailWorker\Orangotango.EmailWorker.csproj", "{EFCEDA10-E6C8-4D75-BC51-CEF2791C726B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -77,6 +81,10 @@ Global
 		{7D4F9610-EA78-40D4-AECD-05FCE86837BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D4F9610-EA78-40D4-AECD-05FCE86837BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D4F9610-EA78-40D4-AECD-05FCE86837BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFCEDA10-E6C8-4D75-BC51-CEF2791C726B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFCEDA10-E6C8-4D75-BC51-CEF2791C726B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFCEDA10-E6C8-4D75-BC51-CEF2791C726B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFCEDA10-E6C8-4D75-BC51-CEF2791C726B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -94,6 +102,8 @@ Global
 		{8C3416CD-9A1E-4358-A430-F72629B55B21} = {E2E57AA8-4431-41EF-8B03-5BB05A98F0FA}
 		{1C986249-064B-4756-ACBC-EBC5040204F1} = {DB40FB52-6680-4A38-8CA0-4ED2B7E44259}
 		{7D4F9610-EA78-40D4-AECD-05FCE86837BD} = {CB607E11-3021-49B6-8B38-D619FE3EAABC}
+		{A8111650-3174-433B-95AF-3F568D092003} = {3517BCE7-3B68-49FE-9F1C-A4CF3E52F7FA}
+		{EFCEDA10-E6C8-4D75-BC51-CEF2791C726B} = {A8111650-3174-433B-95AF-3F568D092003}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {30E1D7D7-A31B-4E47-AEA5-C0F5A4B6D1EF}

@@ -34,6 +34,12 @@ services:
       - MONGODB_INITIAL_PRIMARY_ROOT_PASSWORD=password123
       - MONGODB_REPLICA_SET_KEY=replicasetkey123
 
+  redis:
+    image: redis
+    command: redis-server --requirepass redis
+    ports:
+      - "6379:6379"
+
   rabbitmq:
     image: "rabbitmq:3-management"
     hostname: "rabbit1"
@@ -46,7 +52,7 @@ services:
     - "92:5672"
     networks:
       - orangotango-network
-  
+
 networks:
   orangotango-network:
     driver: bridge

@@ -32,6 +32,19 @@ Para criar rapidamente o ambiente disponibilizamos magens Docker dos recursos da
 
 <img src="https://raw.githubusercontent.com/wesleycosta/orangotango/master/docs/class%20diagram/diagram.png" />
 
+## Tecnologias utlizadas
+* .NET Core 5.0;
+* ASP.NET WebApi;
+* AutoMapper; 
+* FluentValidator;
+* JWT;
+* MediatR;
+* MongoDB Driver (MongoDB.Bson e MongoDB.Driver);
+* NetDevPackBr;
+* NUnit;
+* SignalR;
+* Swagger.
+
 ## Arquitetura
 
 Arquitetura construida com preocupações de separação de responsabilidades, seguindo as boas práticas de SOLID e Clean Code.

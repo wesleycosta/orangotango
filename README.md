@@ -1,9 +1,9 @@
-<img src="https://github.com/wesleycosta/orangotango/blob/master/docs/design/oragotango_with_title.PNG" />
+<img  height="256" src="https://github.com/wesleycosta/orangotango/blob/master/docs/design/oragotango_with_title.PNG" />
 
 Sistema para gerenciamento de reservas de hotéis e pousadas.
 
-## Subindo o Ambiente de DEV
-### 1 - Rodando o Back-End
+## Ambiente de DEV
+#### Rodando o Back-End
 Para criar rapidamente o ambiente disponibilizamos magens Docker dos recursos da aplicação:
 
 - [MongoDB]
@@ -21,12 +21,15 @@ Para criar rapidamente o ambiente disponibilizamos magens Docker dos recursos da
 ##### Para parar a execução no console (executando no modo 'attached'):  
 - <kbd>Crtl</kbd> + <kbd>C</kbd>
 
-### 2 - Rodando o Web App
+#### Rodando o Web App
 * Acesse o diretório: `\src\webapp`
-* Se for a primeira vez que irá executar o Web App, será necessário instalar os pacotes do angular, então rode o comando: `npm install` 
+* Se for a primeira vez que irá executar o Web App, será necessário instalar as dependências, então rode o comando: `npm install` 
 * Rode o seguinte comando para iniciar a aplicação na porta 4200: `ng s`
-> **Requisito:** É necessário ter o Node.js e o npm instalado em seu sistema operacional
+> **Requisito:** É necessário ter o Node.js, Angular CLI e o npm instalado em seu sistema operacional
 
+## Modelagem de dados
+
+<img src="https://raw.githubusercontent.com/wesleycosta/orangotango/master/docs/class%20diagram/diagram.png" />
 
 ## Arquitetura
 

@@ -3,10 +3,11 @@ using Orangotango.Core.DomainObjects;
 
 namespace Orangotango.Business.Models
 {
-    public class User : Entity
+    public class HouseGuest : Entity
     {
         public string Name { get; set; }
         public Email Email { get; set; }
-        public string Password { get; set; }
+        public Cpf Cpf { get; set; }
+        public DateOfBirth DateOfBirth { get; set; }
     }
 }

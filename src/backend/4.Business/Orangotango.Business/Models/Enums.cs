@@ -1,10 +1,10 @@
 ﻿namespace Orangotango.Business.Models
 {
-    public enum ApplicationType
+    public enum BookingStatusType
     {
-        API,
-        WebApp,
-        Service,
-        Queue
+        Cancelled,
+        PreBooking,
+        Booked,
+        CheckOut
     }
 }

@@ -26,18 +26,18 @@ namespace Orangotango.Data.Repository
         public virtual void Add(TEntity entity)
         {
             entity.Created = DateTime.UtcNow;
-            _context.AddCommand(() => _dbSet.InsertOneAsync(entity));
+            _context.AddCommand(() => _dbSet.InsertOneAsync(entity), entity);
         }
 
         public virtual void AddRange(List<TEntity> entities)
         {
-            _context.AddCommand(() => _dbSet.InsertManyAsync(entities));
+            _context.AddCommand(() => _dbSet.InsertManyAsync(entities), entities as List<Entity>);
         }
 
         public virtual void Update(TEntity entity)
         {
             entity.LastUpdated = DateTime.UtcNow;
-            _context.AddCommand(() => _dbSet.ReplaceOneAsync(Builders<TEntity>.Filter.Eq("Id", entity.Id), entity));
+            _context.AddCommand(() => _dbSet.ReplaceOneAsync(Builders<TEntity>.Filter.Eq("Id", entity.Id), entity), entity);
         }
 
         public virtual void UpdateRange(List<TEntity> entities)
@@ -57,7 +57,7 @@ namespace Orangotango.Data.Repository
 
         public async Task<bool> Commit()
         {
-            return await _context.SaveChanges() > 0;
+            return await _context.Commit();
         }
 
         #endregion

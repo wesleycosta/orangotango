@@ -4,7 +4,7 @@ using Orangotango.Business.Queries;
 
 namespace Orangotango.DependencyInjection.ConfigurationServices
 {
-    internal static class QueriesConfig
+    internal static class QueriesDependencyInjection
     {
         internal static IServiceCollection AddQueries(this IServiceCollection services)
         {

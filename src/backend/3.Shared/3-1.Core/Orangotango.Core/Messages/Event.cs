@@ -8,7 +8,7 @@ namespace Orangotango.Core.Messages
     {
         public DateTime Timestamp { get; private set; }
 
-        protected Event()
+        public Event()
         {
             Timestamp = DateTime.Now;
         }

@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.SignalR;
 using Orangotango.Business.Hubs;
 using Orangotango.Business.Intefaces.Queries;
 using Orangotango.Business.Intefaces.Repositories;
+using Orangotango.Business.Models;
+using Orangotango.Business.Models.DomainObjects;
+using Orangotango.Core.Messages;
 using Orangotango.Core.Notifications;
 using Orangotango.WebApiShared.Controllers;
 using System;
@@ -11,21 +14,24 @@ using System.Threading.Tasks;
 
 namespace Orangotango.Api.Controllers
 {
-    [Route("api/secret")]
-    public class SecretController : MainControllerWithBearer
+    [Route("api/tests")]
+    public class TestsController : MainControllerWithBearer
     {
         private readonly IUserQueries _userQueries;
         private readonly IHubContext<NotificationHub> _hub;
         private readonly IUserRepository _userRepository;
+        private readonly IRoomTypeRepository _roomTypeRepository;
 
-        public SecretController(INotifier notifier,
-                                IUserQueries userQueries,
-                                IHubContext<NotificationHub> hub,
-                                IUserRepository userRepository) : base(notifier)
+        public TestsController(INotifier notifier,
+                               IUserQueries userQueries,
+                               IHubContext<NotificationHub> hub,
+                               IUserRepository userRepository,
+                               IRoomTypeRepository roomTypeRepository) : base(notifier)
         {
             _userQueries = userQueries;
             _hub = hub;
             _userRepository = userRepository;
+            _roomTypeRepository = roomTypeRepository;
         }
 
         [HttpGet]
@@ -41,15 +47,21 @@ namespace Orangotango.Api.Controllers
         {
             try
             {
-                _userRepository.Add(new Business.Models.User
+                _userRepository.Add(new User
                 {
-                    NickName = "Wesley",
-                    FristName = "Wesley",
-                    LastName = "Costa",
+                    Name = "Wesley Costa",
                     Active = true,
-                    Email = new Business.Models.DomainObjects.Email("wesley_costa@outlook.com"),
+                    Email = new Email("wesley_costa@outlook.com"),
                     Password = "123"
                 });
+
+                var room = new RoomType
+                {
+                    Name = "Master"
+                };
+
+                _roomTypeRepository.Add(room);
+                room.AddEvent(new Event());
 
                 await _userRepository.Commit();
             }

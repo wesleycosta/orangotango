@@ -5,14 +5,14 @@ namespace Orangotango.Business.Models.DomainObjects
 {
     public class Email
     {
-        public const int MAX_LENGTH = 254;
-        public const int MIN_LENGTH = 5;
+        public static readonly byte MaxLength = 254;
+        public static readonly byte MinLength = 5;
         public string Address { get; private set; }
 
         public Email(string emailAddress)
         {
             if (!IsValid(emailAddress))
-                throw new DomainException("E-mail inválido");
+                throw new DomainException("E-mail invalid");
 
             Address = emailAddress;
         }
@@ -33,7 +33,7 @@ namespace Orangotango.Business.Models.DomainObjects
 
         public override int GetHashCode()
         {
-            return base.GetHashCode();
+            return GetType().GetHashCode() * 907 + Address.GetHashCode();
         }
     }
 }

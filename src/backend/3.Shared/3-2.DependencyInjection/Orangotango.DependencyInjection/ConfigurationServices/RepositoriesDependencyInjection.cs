@@ -4,11 +4,15 @@ using Orangotango.Data.Repository;
 
 namespace Orangotango.DependencyInjection.ConfigurationServices
 {
-    internal static class RepositoriesConfig
+    internal static class RepositoriesDependencyInjection
     {
         internal static IServiceCollection AddRepositories(this IServiceCollection services)
         {
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IBookingRepository, BookingRepository>();
+            services.AddScoped<IHouseGuestRepository, HouseGuestRepository>();
+            services.AddScoped<IRoomRepository, RoomRepository>();
+            services.AddScoped<IRoomTypeRepository, RoomTypeRepository>();
 
             return services;
         }

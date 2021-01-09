@@ -26,6 +26,11 @@ namespace Orangotango.Core.DomainObjects
         private List<Event> _eventNotification;
         public IReadOnlyCollection<Event> GetEvents() => _eventNotification?.AsReadOnly();
 
+        public bool ExistEvents()
+        {
+            return GetEvents()?.Count > 0;
+        }
+
         public void AddEvent(Event eventMessage)
         {
             _eventNotification ??= new List<Event>();

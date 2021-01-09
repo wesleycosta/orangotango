@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <PackageReference Include="MongoDB.Driver" Version="2.11.5" />
-    <PackageReference Include="ServiceStack.Core" Version="5.10.2" />
   </ItemGroup>
 
   <ItemGroup>

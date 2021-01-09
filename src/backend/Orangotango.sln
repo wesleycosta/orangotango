@@ -15,8 +15,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orangotango.Data", "5.Data\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orangotango.Business", "4.Business\Orangotango.Business\Orangotango.Business.csproj", "{643208B3-7C38-45D9-9CF7-B4638E57E03D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6 - Tests", "6 - Tests", "{35AB3569-31AD-4250-AA2C-E54C52E96CDC}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.1 - Core", "3.1 - Core", "{0828B8C8-DA92-437A-8265-786EB08F7522}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.2 - DependencyInjection", "3.2 - DependencyInjection", "{337D06B5-F8BF-4D26-AF7E-A233287BF18A}"
@@ -35,7 +33,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orangotango.WebApiShared", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Workers", "2 - Workers", "{3517BCE7-3B68-49FE-9F1C-A4CF3E52F7FA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orangotango.Api", "1.APIs\1-1.Api\Orangotango.Api\Orangotango.Api.csproj", "{1C986249-064B-4756-ACBC-EBC5040204F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orangotango.Api", "1.APIs\Orangotango.Api\Orangotango.Api.csproj", "{1C986249-064B-4756-ACBC-EBC5040204F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

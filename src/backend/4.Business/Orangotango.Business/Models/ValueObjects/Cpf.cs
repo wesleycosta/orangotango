@@ -13,13 +13,16 @@ namespace Orangotango.Business.Models.ValueObjects
         public Cpf(string number)
         {
             if (!IsValid(number))
-                throw new DomainException("E-mail invalid");
+                throw new DomainException("Cpf invalid");
 
             Number = number.OnlyNumbers(number);
         }
 
         public static bool IsValid(string cpf)
         {
+            if (string.IsNullOrEmpty(cpf))
+                return false;
+
             return new CpfValidador(cpf).EstaValido();
         }
 

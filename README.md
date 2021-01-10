@@ -33,7 +33,7 @@ Para criar rapidamente o ambiente disponibilizamos magens Docker dos recursos da
 <img src="https://raw.githubusercontent.com/wesleycosta/orangotango/master/docs/class%20diagram/diagram_updated.png" />
 
 ## Tecnologias utlizadas
-* .NET Core 5.0;
+* .NET 5.0;
 * ASP.NET WebApi;
 * AutoMapper; 
 * FluentValidator;

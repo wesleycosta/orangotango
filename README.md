@@ -40,10 +40,12 @@ Para criar rapidamente o ambiente disponibilizamos magens Docker dos recursos da
 * JWT;
 * MediatR;
 * MongoDB Driver (MongoDB.Bson e MongoDB.Driver);
+* Moq;
 * NetDevPackBr;
 * NUnit;
 * SignalR;
 * Swagger;
+* Xunit;
 * Angular 11;
 * Angular Material;
 * Gridster2.

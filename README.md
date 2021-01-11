@@ -4,7 +4,7 @@ Sistema para gerenciamento de reservas de hotéis e pousadas.
 
 ## Ambiente de DEV
 #### Rodando o Back-End
-Para criar rapidamente o ambiente disponibilizamos magens Docker dos recursos da aplicação:
+Disponibilizamos imagens Docker para criar os recursos da aplicação:
 
 - [MongoDB]
 - [Redis]

@@ -30,7 +30,7 @@ Disponibilizamos imagens Docker para criar os recursos da aplicação:
 
 ## Modelagem de dados
 
-<img src="https://raw.githubusercontent.com/wesleycosta/orangotango/master/docs/class%20diagram/diagram_updated.png" />
+<img src="https://raw.githubusercontent.com/wesleycosta/orangotango/master/docs/class%20diagram/diagram.png" />
 
 ## Tecnologias utlizadas
 * .NET 5.0;

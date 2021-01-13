@@ -112,7 +112,5 @@ namespace Orangotango.Data.Context
             Session?.Dispose();
             GC.SuppressFinalize(this);
         }
-
-
     }
 }

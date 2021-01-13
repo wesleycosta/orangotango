@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Orangotango.WebApiShared.Authentication.Interfaces;
+using Orangotango.Business.Intefaces.Infrastructure;
 
 namespace Orangotango.WebApiShared.Authentication.Configurations
 {

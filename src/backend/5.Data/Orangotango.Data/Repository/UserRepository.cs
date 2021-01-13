@@ -15,8 +15,23 @@ namespace Orangotango.Data.Repository
 
         public async Task<User> GetUserByEmail(Email email)
         {
-            var data = await _dbSet.FindAsync(Builders<User>.Filter.Eq("email.address", email.Address));
+            var data = await DbSet.FindAsync(Filter.Eq("email.address", email.Address));
             return await data.FirstOrDefaultAsync();
+        }
+
+        public async Task<User> GetByEmailAndPassword(Email email, string password)
+        {
+            var data = await DbSet.FindAsync(Filter.And(Filter.Eq("email.address", email.Address),
+                                                        Filter.Eq("password.hash", password)));
+
+            return await data.FirstOrDefaultAsync();
+        }
+
+        public async Task<bool> ExistsWithSameEmail(Email email)
+        {
+            var data = await DbSet.FindAsync(Filter.Eq("email.address", email.Address));
+            var user = await data.FirstOrDefaultAsync();
+            return user != null;
         }
     }
 }

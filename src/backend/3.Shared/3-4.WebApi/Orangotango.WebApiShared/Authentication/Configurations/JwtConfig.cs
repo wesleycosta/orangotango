@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Orangotango.Core.Settings;
-using Orangotango.WebApiShared.Authentication.Interfaces;
 
 namespace Orangotango.WebApiShared.Authentication.Configurations
 {

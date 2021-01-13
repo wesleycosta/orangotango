@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Orangotango.Business.Application.Commands.Users;
+using Orangotango.Business.Application.Inputs;
+using Orangotango.Business.Application.Inputs.Users;
 using Orangotango.Business.Hubs;
 using Orangotango.Business.Intefaces.Queries;
 using Orangotango.Business.Intefaces.Repositories;
@@ -39,15 +40,21 @@ namespace Orangotango.Api.Controllers
             return CustomResponse(await _userRepository.GetAll());
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Insert()
+        [HttpPost("make-login")]
+        public async Task<IActionResult> MakeLogin(MakeLoginUserInputModel input)
         {
-            var command = new RegisterUserCommand
+            var command = new MakeLoginUserCommand
             {
-                Name = "Wesley Costa",
-                EmailAddress = "wesley_costa@outlook.com"
+                Input = input
             };
 
+            return CustomResponse(await _mediator.SendCommand(command));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Insert(RegisterUserInputModel input)
+        {
+            var command = new RegisterUserCommand(input);
             return CustomResponse(await _mediator.SendCommand(command));
         }
 

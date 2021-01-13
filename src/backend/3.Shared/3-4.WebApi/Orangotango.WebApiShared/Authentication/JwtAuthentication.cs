@@ -1,8 +1,8 @@
 ﻿using Microsoft.IdentityModel.Tokens;
+using Orangotango.Business.Intefaces.Infrastructure;
+using Orangotango.Business.ViewModels.Users;
 using Orangotango.Core.Settings;
 using Orangotango.WebApiShared.Authentication.Configurations;
-using Orangotango.WebApiShared.Authentication.Interfaces;
-using Orangotango.WebApiShared.Authentication.ViewModels;
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;

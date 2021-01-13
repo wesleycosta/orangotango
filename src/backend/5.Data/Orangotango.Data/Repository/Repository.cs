@@ -11,14 +11,15 @@ namespace Orangotango.Data.Repository
 {
     public abstract class Repository<TEntity> : IRepositoryBase<TEntity> where TEntity : Entity, new()
     {
-        protected readonly IMongoContext _context;
-        protected IMongoCollection<TEntity> _dbSet;
-        public IUnitOfWork UnitOfWork => _context;
+        protected readonly IMongoContext Context;
+        protected IMongoCollection<TEntity> DbSet;
+        public IUnitOfWork UnitOfWork => Context;
+        protected FilterDefinitionBuilder<TEntity> Filter => Builders<TEntity>.Filter;
 
         protected Repository(IMongoContext context)
         {
-            _context = context;
-            _dbSet = _context.GetCollection<TEntity>(typeof(TEntity).Name);
+            Context = context;
+            DbSet = Context.GetCollection<TEntity>(typeof(TEntity).Name);
         }
 
         #region INSERTS AND UPDATEDS
@@ -26,18 +27,18 @@ namespace Orangotango.Data.Repository
         public virtual void Add(TEntity entity)
         {
             entity.Created = DateTime.UtcNow;
-            _context.AddCommand(() => _dbSet.InsertOneAsync(entity), entity);
+            Context.AddCommand(() => DbSet.InsertOneAsync(entity), entity);
         }
 
         public virtual void AddRange(List<TEntity> entities)
         {
-            _context.AddCommand(() => _dbSet.InsertManyAsync(entities), entities as List<Entity>);
+            Context.AddCommand(() => DbSet.InsertManyAsync(entities), entities as List<Entity>);
         }
 
         public virtual void Update(TEntity entity)
         {
             entity.LastUpdated = DateTime.UtcNow;
-            _context.AddCommand(() => _dbSet.ReplaceOneAsync(Builders<TEntity>.Filter.Eq("Id", entity.Id), entity), entity);
+            Context.AddCommand(() => DbSet.ReplaceOneAsync(Builders<TEntity>.Filter.Eq("Id", entity.Id), entity), entity);
         }
 
         public virtual void UpdateRange(List<TEntity> entities)
@@ -47,17 +48,17 @@ namespace Orangotango.Data.Repository
 
         public virtual void Remove(Guid id)
         {
-            _context.AddCommand(() => _dbSet.DeleteOneAsync(Builders<TEntity>.Filter.Eq("Id", id)));
+            Context.AddCommand(() => DbSet.DeleteOneAsync(Builders<TEntity>.Filter.Eq("Id", id)));
         }
 
         public virtual void RemoveRange(List<Guid> ids)
         {
-            _context.AddCommand(() => _dbSet.DeleteManyAsync(Builders<TEntity>.Filter.Eq("Id", ids)));
+            Context.AddCommand(() => DbSet.DeleteManyAsync(Builders<TEntity>.Filter.Eq("Id", ids)));
         }
 
         public async Task<bool> Commit()
         {
-            return await _context.Commit();
+            return await Context.Commit();
         }
 
         #endregion
@@ -66,13 +67,13 @@ namespace Orangotango.Data.Repository
 
         public virtual async Task<TEntity> GetById(Guid id)
         {
-            var data = await _dbSet.FindAsync(Builders<TEntity>.Filter.Eq("Id", id));
+            var data = await DbSet.FindAsync(Filter.Eq("Id", id));
             return await data.FirstOrDefaultAsync();
         }
 
         public virtual async Task<List<TEntity>> GetAll()
         {
-            var all = await _dbSet.FindAsync(Builders<TEntity>.Filter.Empty);
+            var all = await DbSet.FindAsync(Filter.Empty);
             return await all.ToListAsync();
         }
 
@@ -80,7 +81,7 @@ namespace Orangotango.Data.Repository
 
         public void Dispose()
         {
-            _context?.Dispose();
+            Context?.Dispose();
         }
     }
 }

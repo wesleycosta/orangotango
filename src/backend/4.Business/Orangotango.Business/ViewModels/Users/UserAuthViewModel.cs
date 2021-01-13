@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Orangotango.WebApiShared.Authentication.ViewModels
+namespace Orangotango.Business.ViewModels.Users
 {
     public class UserAuthViewModel
     {

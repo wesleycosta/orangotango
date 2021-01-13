@@ -9,12 +9,11 @@ using System.Threading.Tasks;
 
 namespace Orangotango.Business.Application.Commands.Users
 {
-    public class UserCommandHandler : CommandHandler,
-        IRequestHandler<RegisterUserCommand, ValidationResult>
+    public partial class RegisterUserCommandHandler : CommandHandler, IRequestHandler<RegisterUserCommand, ValidationResult>
     {
         private readonly IUserRepository _userRepository;
 
-        public UserCommandHandler(IUserRepository userRepository)
+        public RegisterUserCommandHandler(IUserRepository userRepository)
         {
             _userRepository = userRepository;
         }
@@ -26,24 +25,18 @@ namespace Orangotango.Business.Application.Commands.Users
 
             var user = new User
             {
-                Name = message.Name,
-                Email = new Email(message.EmailAddress)
+                Name = message.Input.Name,
+                Email = new Email(message.Input.EmailAddress)
             };
 
-            if (await ExistsWithSameEmail(user.Email))
+            if (await _userRepository.ExistsWithSameEmail(user.Email))
             {
-                AddError("Este e-mail já está em uso.");
+                NotifyError("Este e-mail já está em uso");
                 return ValidationResult;
             }
 
             _userRepository.Add(user);
             return await SaveData(_userRepository.UnitOfWork);
-        }
-
-        private async Task<bool> ExistsWithSameEmail(Email email)
-        {
-            var user = await _userRepository.GetUserByEmail(email);
-            return user != null;
         }
     }
 }

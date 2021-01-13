@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Orangotango.Business.Intefaces.Infrastructure;
+using Orangotango.Business.ViewModels.Users;
 using Orangotango.Core.Notifications;
-using Orangotango.WebApiShared.Authentication.Interfaces;
-using Orangotango.WebApiShared.Authentication.ViewModels;
 using Orangotango.WebApiShared.Controllers;
 
 namespace Orangotango.Api.Controllers

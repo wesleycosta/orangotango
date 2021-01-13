@@ -1,6 +1,9 @@
-<img  height="256" src="https://github.com/wesleycosta/orangotango/blob/master/docs/design/oragotango_with_title.PNG" />
+<p align="center">
+  <img  height="256" src="https://github.com/wesleycosta/orangotango/blob/master/docs/design/oragotango_with_title.PNG" />
+</p>
+<p  align="center">Sistema para gerenciamento de reservas de hotéis e pousadas.</p>
 
-Sistema para gerenciamento de reservas de hotéis e pousadas.
+
 
 ## Ambiente de DEV
 #### Rodando o Back-End
@@ -30,7 +33,7 @@ Disponibilizamos imagens Docker para criar os recursos da aplicação:
 
 ## Modelagem de dados
 
-<img src="https://raw.githubusercontent.com/wesleycosta/orangotango/master/docs/class%20diagram/diagram_updated.png" />
+<img src="https://raw.githubusercontent.com/wesleycosta/orangotango/master/docs/class%20diagram/diagram.png" />
 
 ## Tecnologias utlizadas
 * .NET 5.0;

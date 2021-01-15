@@ -67,6 +67,7 @@ namespace Orangotango.Tests
                 new GenericMock<Cpf, Cpf>  { Object = new Cpf("016790664-04"), Expected = new Cpf("016790664-04") },
             };
 
+            
             foreach (var cpf in scenarios)
                 Assert.True(Cpf.Equals(cpf.Object, cpf.Expected));
         }

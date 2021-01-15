@@ -3,9 +3,12 @@ name: .NET build + tests
 on:
   push:
     branches: [ master ]
+    paths:
+      - ./src/backend
   pull_request:
     branches: [ master ]
-
+    paths:
+      - ./src/backend
 jobs:
   build:
   

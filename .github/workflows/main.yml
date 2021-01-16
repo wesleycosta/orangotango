@@ -22,7 +22,6 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: '12.x'
-    - name: Build
     - run: npm install
     - run: npm install -g @angular/cli > /dev/null
     - run: ng build --prod

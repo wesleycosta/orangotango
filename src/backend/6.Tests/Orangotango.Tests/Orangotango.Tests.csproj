@@ -23,7 +23,6 @@
   <ItemGroup>
     <Folder Include="Application\Commands\" />
     <Folder Include="Application\Events\" />
-    <Folder Include="Domain\AggregateRoots\" />
   </ItemGroup>
 
   <ItemGroup>

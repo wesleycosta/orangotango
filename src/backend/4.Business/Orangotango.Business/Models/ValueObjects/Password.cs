@@ -1,8 +1,8 @@
 ﻿using Orangotango.Core.DomainObjects;
 using System;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Orangotango.Business.Models.ValueObjects
 {
@@ -41,25 +41,10 @@ namespace Orangotango.Business.Models.ValueObjects
 
         public static bool IsValid(string value)
         {
-            if (string.IsNullOrEmpty(value))
+            if (string.IsNullOrEmpty(value) || value.Length < MinLength)
                 return false;
 
-            return value.Length >= MinLength && HasLetter(value) && HasDigit(value) && HasSymbol(value);
-        }
-
-        private static bool HasLetter(string value)
-        {
-            return value.Any(c => char.IsLetter(c));
-        }
-
-        private static bool HasDigit(string value)
-        {
-            return value.Any(c => char.IsDigit(c));
-        }
-
-        private static bool HasSymbol(string value)
-        {
-            return value.Any(c => char.IsSymbol(c) || char.IsPunctuation(c));
+            return Regex.IsMatch(value, @"(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$");
         }
 
         public override bool Equals(object obj)

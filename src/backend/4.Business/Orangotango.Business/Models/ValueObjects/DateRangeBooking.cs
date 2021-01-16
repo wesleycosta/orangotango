@@ -29,7 +29,7 @@ namespace Orangotango.Business.Models.ValueObjects
 
         private static bool IsValidDate(DateTime date)
         {
-            return date > MinValue && date <= DateTime.UtcNow.AddYears(-18);
+            return date > MinValue;
         }
 
         public override bool Equals(object obj)

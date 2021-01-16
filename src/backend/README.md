@@ -7,8 +7,8 @@
 - 3 - Shared
 	- Camada compartilhada entre projetos;
 - 4 - Business
-	- Camada de negócios, possue os models, commands e queries;
+	- Camada com as regras de negócios;
 - 5 - Data
 	- Camada de acesso a dados;
 - 6 - Tests
-	- Camada de testes de unidades;
+	- Camada de testes de unidades.

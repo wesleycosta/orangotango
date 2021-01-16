@@ -3,7 +3,7 @@
 - 1 - APIs
 	- Web API que atende requisições feitas pelo Web App;
 - 2 - Workers
-	- Worker Services que consomem uma fila do RabbitMQ e processa dados em backgroud;
+	- Worker Services que processa dados em backgroud via AMQP com RabbitMQ;
 - 3 - Shared
 	- Camada compartilhada entre projetos;
 - 4 - Business

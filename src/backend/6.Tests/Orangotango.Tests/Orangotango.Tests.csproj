@@ -21,7 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Application\Commands\" />
     <Folder Include="Application\Events\" />
   </ItemGroup>
 

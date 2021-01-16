@@ -7,6 +7,6 @@ namespace Orangotango.Business.Models
     {
         public string Name { get; init; }
         public Email Email { get; init; }
-        public Password Password { get; private set; }
+        public Password Password { get; init; }
     }
 }

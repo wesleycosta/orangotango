@@ -17,7 +17,7 @@ namespace Orangotango.Business.Application.Commands.Users
         private readonly IJwtAuthentication _jwtAuthentication;
 
         public SignInUserCommandHandler(IUserRepository userRepository,
-                                           IJwtAuthentication jwtAuthentication)
+                                        IJwtAuthentication jwtAuthentication)
         {
             _userRepository = userRepository;
             _jwtAuthentication = jwtAuthentication;

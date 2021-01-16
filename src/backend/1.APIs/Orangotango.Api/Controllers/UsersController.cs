@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
+using Orangotango.Api.Infrastructure.Controllers;
 using Orangotango.Business.Application.Commands.Users;
-using Orangotango.Business.Application.Inputs;
 using Orangotango.Business.Application.Inputs.Users;
 using Orangotango.Business.Hubs;
 using Orangotango.Business.Intefaces.Queries;
@@ -10,7 +10,6 @@ using Orangotango.Core.Mediator;
 using Orangotango.Core.Notifications;
 using System;
 using System.Threading.Tasks;
-using MainController = Orangotango.Api.Infrastructure.Controllers.MainController;
 
 namespace Orangotango.Api.Controllers
 {
@@ -38,17 +37,6 @@ namespace Orangotango.Api.Controllers
         public async Task<IActionResult> Get()
         {
             return CustomResponse(await _userRepository.GetAll());
-        }
-
-        [HttpPost("make-login")]
-        public async Task<IActionResult> MakeLogin(MakeLoginUserInputModel input)
-        {
-            var command = new MakeLoginUserCommand
-            {
-                Input = input
-            };
-
-            return CustomResponse(await _mediator.SendCommand(command));
         }
 
         [HttpPost]

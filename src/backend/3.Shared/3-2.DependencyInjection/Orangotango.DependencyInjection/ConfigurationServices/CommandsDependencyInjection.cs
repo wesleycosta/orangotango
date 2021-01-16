@@ -1,7 +1,7 @@
-﻿using FluentValidation.Results;
-using MediatR;
+﻿using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Orangotango.Business.Application.Commands.Users;
+using Orangotango.Core.Messages;
 
 namespace Orangotango.DependencyInjection.ConfigurationServices
 {
@@ -9,8 +9,8 @@ namespace Orangotango.DependencyInjection.ConfigurationServices
     {
         internal static IServiceCollection AddCommands(this IServiceCollection services)
         {
-            services.AddScoped<IRequestHandler<RegisterUserCommand, ValidationResult>, RegisterUserCommandHandler>();
-            services.AddScoped<IRequestHandler<MakeLoginUserCommand, ValidationResult>, MakeLoginUserCommandHandler>();
+            services.AddScoped<IRequestHandler<RegisterUserCommand, CommandHandlerResult>, RegisterUserCommandHandler>();
+            services.AddScoped<IRequestHandler<SignInUserCommand, CommandHandlerResult>, SignInUserCommandHandler>();
 
             return services;
         }

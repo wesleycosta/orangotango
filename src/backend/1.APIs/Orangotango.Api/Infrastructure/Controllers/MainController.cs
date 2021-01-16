@@ -1,6 +1,7 @@
 ﻿using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Orangotango.Core.Messages;
 using Orangotango.Core.Notifications;
 using Orangotango.Core.Notifications.Model;
 using System.Linq;
@@ -25,6 +26,14 @@ namespace Orangotango.Api.Infrastructure.Controllers
 
         protected bool IsValid() =>
             !Notifier.HaveNotification();
+
+        protected ActionResult CustomResponse(CommandHandlerResult result)
+        {
+            if (result.IsInvalid)
+                return CustomResponse(result.ValidationResult);
+
+            return CustomResponse(result.Data);
+        }
 
         protected ActionResult CustomResponse(ValidationResult validationResult)
         {

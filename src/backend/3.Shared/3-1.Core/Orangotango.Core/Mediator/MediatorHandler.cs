@@ -1,5 +1,4 @@
-﻿using FluentValidation.Results;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using MediatR;
 using Orangotango.Core.Messages;
 
@@ -19,7 +18,7 @@ namespace Orangotango.Core.Mediator
             await _mediator.Publish(eventMessage);
         }
 
-        public async Task<ValidationResult> SendCommand<T>(T comando) where T : Command
+        public async Task<CommandHandlerResult> SendCommand<T>(T comando) where T : Command
         {
             return await _mediator.Send(comando);
         }

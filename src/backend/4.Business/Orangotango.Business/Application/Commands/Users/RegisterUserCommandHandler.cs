@@ -1,5 +1,4 @@
-﻿using FluentValidation.Results;
-using MediatR;
+﻿using MediatR;
 using Orangotango.Business.Intefaces.Repositories;
 using Orangotango.Business.Models;
 using Orangotango.Business.Models.ValueObjects;
@@ -9,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Orangotango.Business.Application.Commands.Users
 {
-    public partial class RegisterUserCommandHandler : CommandHandler, IRequestHandler<RegisterUserCommand, ValidationResult>
+    public partial class RegisterUserCommandHandler : CommandHandler, IRequestHandler<RegisterUserCommand, CommandHandlerResult>
     {
         private readonly IUserRepository _userRepository;
 
@@ -18,10 +17,10 @@ namespace Orangotango.Business.Application.Commands.Users
             _userRepository = userRepository;
         }
 
-        public async Task<ValidationResult> Handle(RegisterUserCommand message, CancellationToken cancellationToken)
+        public async Task<CommandHandlerResult> Handle(RegisterUserCommand message, CancellationToken cancellationToken)
         {
             if (!message.IsValid())
-                return message.ValidationResult;
+                return Response(message);
 
             var user = new User
             {
@@ -32,11 +31,11 @@ namespace Orangotango.Business.Application.Commands.Users
             if (await _userRepository.ExistsWithSameEmail(user.Email))
             {
                 NotifyError("Este e-mail já está em uso");
-                return ValidationResult;
+                return Response();
             }
 
             _userRepository.Add(user);
-            return await SaveData(_userRepository.UnitOfWork);
+            return Response(await SaveData(_userRepository.UnitOfWork));
         }
     }
 }

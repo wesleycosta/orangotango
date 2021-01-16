@@ -1,5 +1,4 @@
-﻿using FluentValidation.Results;
-using MediatR;
+﻿using MediatR;
 using Orangotango.Business.Application.Inputs;
 using Orangotango.Business.Intefaces.Infrastructure;
 using Orangotango.Business.Intefaces.Repositories;
@@ -12,28 +11,28 @@ using System.Threading.Tasks;
 
 namespace Orangotango.Business.Application.Commands.Users
 {
-    public class MakeLoginUserCommandHandler : CommandHandler, IRequestHandler<MakeLoginUserCommand, ValidationResult>
+    public class SignInUserCommandHandler : CommandHandler, IRequestHandler<SignInUserCommand, CommandHandlerResult>
     {
         private readonly IUserRepository _userRepository;
         private readonly IJwtAuthentication _jwtAuthentication;
 
-        public MakeLoginUserCommandHandler(IUserRepository userRepository,
+        public SignInUserCommandHandler(IUserRepository userRepository,
                                            IJwtAuthentication jwtAuthentication)
         {
             _userRepository = userRepository;
             _jwtAuthentication = jwtAuthentication;
         }
 
-        public async Task<ValidationResult> Handle(MakeLoginUserCommand message, CancellationToken cancellationToken)
+        public async Task<CommandHandlerResult> Handle(SignInUserCommand message, CancellationToken cancellationToken)
         {
             if (!message.IsValid())
-                return message.ValidationResult;
+                return Response(message);
 
             var user = await GetUserByCredential(message.Input);
             if (user == null)
             {
                 NotifyError("E-mail ou senha inválido");
-                return ValidationResult;
+                return Response();
             }
 
             var token = _jwtAuthentication.GenerateToken(new UserAuthViewModel
@@ -42,11 +41,10 @@ namespace Orangotango.Business.Application.Commands.Users
                 Email = user.Email.Address
             });
 
-            NotifyError(token);
-            return ValidationResult;
+            return Response(token);
         }
 
-        private async Task<User> GetUserByCredential(MakeLoginUserInputModel input)
+        private async Task<User> GetUserByCredential(SignInUserInputModel input)
         {
             var email = new Email(input.EmailAdrress);
             var password = new Password(input.Password);

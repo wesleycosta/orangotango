@@ -7,16 +7,16 @@ namespace Orangotango.Business.Models.ValueObjects
     {
         public static readonly DateTime MinValue = new DateTime(1900, 1, 1);
 
-        public DateTime CheckInDate { get; set; }
-        public DateTime CheckOutDate { get; set; }
+        public DateTime CheckInDate { get; private set; }
+        public DateTime CheckOutDate { get; private set; }
 
         public DateRangeBooking(DateTime checkInDate, DateTime checkOutDate)
         {
             if (!IsValidDate(checkInDate))
-                throw new DomainException("CheckInDate invalid");
+                throw new DomainException("CheckInDate is invalid");
 
             if (!IsValidDate(checkOutDate))
-                throw new DomainException("CheckOutDate invalid");
+                throw new DomainException("CheckOutDate is invalid");
 
             CheckInDate = checkInDate;
             CheckOutDate = checkOutDate;

@@ -9,13 +9,13 @@ namespace Orangotango.Business.Models.ValueObjects
     public class Password
     {
         public static readonly byte MinLength = 6;
-        public string Hash { get; set; }
-        public DateTime Created { get; set; }
+        public string Hash { get; private set; }
+        public DateTime Created { get; private set; }
 
         public Password(string value)
         {
             if (!IsValid(value))
-                throw new DomainException("Password invalid");
+                throw new DomainException("Password is invalid");
 
             Hash = value;
             Created = DateTime.UtcNow;

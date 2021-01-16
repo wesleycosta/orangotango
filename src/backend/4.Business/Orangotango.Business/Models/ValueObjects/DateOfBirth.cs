@@ -7,12 +7,12 @@ namespace Orangotango.Business.Models.ValueObjects
     {
         public static readonly DateTime MinValue = new DateTime(1900, 1, 1);
 
-        public DateTime Birthday { get; set; }
+        public DateTime Birthday { get; private set; }
 
         public DateOfBirth(DateTime birthday)
         {
             if (!IsValid(birthday))
-                throw new DomainException("Birthday invalid");
+                throw new DomainException("Birthday is invalid");
 
             Birthday = birthday;
         }

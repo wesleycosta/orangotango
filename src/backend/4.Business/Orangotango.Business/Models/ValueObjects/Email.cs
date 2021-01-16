@@ -12,7 +12,7 @@ namespace Orangotango.Business.Models.ValueObjects
         public Email(string emailAddress)
         {
             if (!IsValid(emailAddress))
-                throw new DomainException("E-mail invalid");
+                throw new DomainException("E-mail is invalid");
 
             Address = emailAddress;
         }

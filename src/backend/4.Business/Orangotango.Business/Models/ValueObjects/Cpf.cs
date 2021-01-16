@@ -8,12 +8,12 @@ namespace Orangotango.Business.Models.ValueObjects
     public class Cpf
     {
         public static readonly byte Length = 11;
-        public string Number { get; set; }
+        public string Number { get; private set; }
 
         public Cpf(string number)
         {
             if (!IsValid(number))
-                throw new DomainException("Cpf invalid");
+                throw new DomainException("CPF is invalid");
 
             Number = number.OnlyNumbers(number);
         }

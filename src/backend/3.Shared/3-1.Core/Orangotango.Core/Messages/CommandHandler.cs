@@ -26,5 +26,39 @@ namespace Orangotango.Core.Messages
             return ValidationResult;
         }
 
+        public CommandHandlerResult Response()
+        {
+            return new CommandHandlerResult
+            {
+                ValidationResult = ValidationResult
+            };
+        }
+
+        public CommandHandlerResult Response(Command command)
+        {
+            ValidationResult = command.ValidationResult;
+            return new CommandHandlerResult
+            {
+                ValidationResult = ValidationResult
+            };
+        }
+
+        public CommandHandlerResult Response(ValidationResult validationResult)
+        {
+            ValidationResult = validationResult;
+            return new CommandHandlerResult
+            {
+                ValidationResult = ValidationResult
+            };
+        }
+
+        public CommandHandlerResult Response(object data)
+        {
+            return new CommandHandlerResult
+            {
+                ValidationResult = ValidationResult,
+                Data = data
+            };
+        }
     }
 }

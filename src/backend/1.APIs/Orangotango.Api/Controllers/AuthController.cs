@@ -1,26 +1,29 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Orangotango.Business.Intefaces.Infrastructure;
-using Orangotango.Business.ViewModels.Users;
+using Orangotango.Api.Infrastructure.Controllers;
+using Orangotango.Business.Application.Commands.Users;
+using Orangotango.Business.Application.Inputs;
+using Orangotango.Core.Mediator;
 using Orangotango.Core.Notifications;
-using MainController = Orangotango.Api.Infrastructure.Controllers.MainController;
+using System.Threading.Tasks;
 
 namespace Orangotango.Api.Controllers
 {
     [Route("api/auth")]
     public class AuthController : MainController
     {
-        private readonly IJwtAuthentication _jwtAuthentication;
+        private readonly IMediatorHandler _mediator;
 
-        public AuthController(IJwtAuthentication jwtAuthentication,
-                              INotifier notifier) : base(notifier)
+        public AuthController(INotifier notifier,
+                              IMediatorHandler mediatorHandler) : base(notifier)
         {
-            _jwtAuthentication = jwtAuthentication;
+            _mediator = mediatorHandler;
         }
 
-        [HttpGet]
-        public IActionResult Get(UserAuthViewModel user)
+        [HttpPost]
+        public async Task<IActionResult> SignIn(SignInUserInputModel input)
         {
-            return Ok(_jwtAuthentication.GenerateToken(user));
+            var command = new SignInUserCommand { Input = input };
+            return CustomResponse(await _mediator.SendCommand(command));
         }
     }
 }

@@ -5,9 +5,9 @@ using Orangotango.Core.Messages;
 
 namespace Orangotango.Business.Application.Commands.Users
 {
-    public class MakeLoginUserCommand : Command
+    public class SignInUserCommand : Command
     {
-        public MakeLoginUserInputModel Input { get; init; }
+        public SignInUserInputModel Input { get; init; }
 
         public override bool IsValid()
         {
@@ -15,7 +15,7 @@ namespace Orangotango.Business.Application.Commands.Users
             return ValidationResult.IsValid;
         }
 
-        public class LoginUserValidation : AbstractValidator<MakeLoginUserCommand>
+        public class LoginUserValidation : AbstractValidator<SignInUserCommand>
         {
             public LoginUserValidation()
             {

@@ -17,7 +17,6 @@ namespace Orangotango.EmailWorker
                 {
                     services.AddHostedService<Worker>();
                     services.ConfigureInfrastructureAndDependencyInjection();
-                    services.AddSignalR();
                 });
     }
 }

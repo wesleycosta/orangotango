@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Orangotango.Core.Notifications;
 
-namespace Orangotango.WebApiShared.Controllers
+namespace Orangotango.Api.Infrastructure.Controllers
 {
     [Authorize("Bearer")]
     public class MainControllerWithBearer : MainController

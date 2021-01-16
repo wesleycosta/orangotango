@@ -3,9 +3,11 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Orangotango.Api.Infrastructure.Swagger;
 using Orangotango.Business.Hubs;
-using Orangotango.Core.Swagger;
 using Orangotango.DependencyInjection.Infrastructure;
+using Orangotango.Api.Infrastructure.Authentication;
+using Orangotango.DependencyInjection;
 
 namespace Orangotango.Api
 {
@@ -20,7 +22,9 @@ namespace Orangotango.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.ConfigureInfrastructureAndDependencyInjection();
+            services.ConfigureInfrastructureAndDependencyInjection()
+                    .AddJwtInfrastructure(EnvironmentConfig.Builder());
+
             services.AddControllers();
             services.AddSwaggerConfigApi();
 

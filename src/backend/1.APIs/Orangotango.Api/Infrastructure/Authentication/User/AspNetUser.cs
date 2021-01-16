@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
 
-namespace Orangotango.WebApiShared.User
+namespace Orangotango.Api.Infrastructure.Authentication.User
 {
     internal class AspNetUser : IAspNetUser
     {

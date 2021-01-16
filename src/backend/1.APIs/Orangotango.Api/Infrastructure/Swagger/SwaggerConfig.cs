@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 using System.Collections.Generic;
 
-namespace Orangotango.Core.Swagger
+namespace Orangotango.Api.Infrastructure.Swagger
 {
     public static class SwaggerConfig
     {
@@ -17,12 +17,12 @@ namespace Orangotango.Core.Swagger
 
         public static IServiceCollection AddSwaggerConfigApi(this IServiceCollection services)
         {
-            return AddSwaggerConfig(services, API_NAME);
+            return services.AddSwaggerConfig(API_NAME);
         }
 
         public static IApplicationBuilder UseSwaggerConfigApi(this IApplicationBuilder app)
         {
-            return UseSwaggerConfig(app, API_NAME);
+            return app.UseSwaggerConfig(API_NAME);
         }
 
         #endregion

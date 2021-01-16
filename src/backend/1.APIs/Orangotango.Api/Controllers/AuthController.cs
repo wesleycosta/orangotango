@@ -2,7 +2,7 @@
 using Orangotango.Business.Intefaces.Infrastructure;
 using Orangotango.Business.ViewModels.Users;
 using Orangotango.Core.Notifications;
-using Orangotango.WebApiShared.Controllers;
+using MainController = Orangotango.Api.Infrastructure.Controllers.MainController;
 
 namespace Orangotango.Api.Controllers
 {
@@ -20,7 +20,7 @@ namespace Orangotango.Api.Controllers
         [HttpGet]
         public IActionResult Get(UserAuthViewModel user)
         {
-            return Ok(_jwtAuthentication.GenareteToken(user));
+            return Ok(_jwtAuthentication.GenerateToken(user));
         }
     }
 }

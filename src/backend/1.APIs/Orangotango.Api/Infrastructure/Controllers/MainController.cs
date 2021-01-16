@@ -6,7 +6,7 @@ using Orangotango.Core.Notifications.Model;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Orangotango.WebApiShared.Controllers
+namespace Orangotango.Api.Infrastructure.Controllers
 {
     public class MainController : Controller
     {

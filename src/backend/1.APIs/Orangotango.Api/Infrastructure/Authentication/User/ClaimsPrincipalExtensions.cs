@@ -1,18 +1,16 @@
-﻿using Orangotango.WebApiShared.Authentication.Configurations;
-using Orangotango.WebApiShared.Authentication.Extensions;
+﻿using Orangotango.Api.Infrastructure.Authentication.Extensions;
+using Orangotango.Api.Infrastructure.Authentication.Configurations;
 using System;
 using System.Security.Claims;
 
-namespace Orangotango.WebApiShared.User
+namespace Orangotango.Api.Infrastructure.Authentication.User
 {
     internal static class ClaimsPrincipalExtensions
     {
         public static string GetUserId(this ClaimsPrincipal principal)
         {
             if (principal == null)
-            {
-                throw new ArgumentException(nameof(principal));
-            }
+                throw new ArgumentException(null, nameof(principal));
 
             var claim = principal.FindFirst(ClaimJwtType.UserId);
             return claim?.Value;
@@ -21,9 +19,7 @@ namespace Orangotango.WebApiShared.User
         public static string GetUserEmail(this ClaimsPrincipal principal)
         {
             if (principal == null)
-            {
-                throw new ArgumentException(nameof(principal));
-            }
+                throw new ArgumentException(null, nameof(principal));
 
             var claim = principal.FindFirst(ClaimJwtType.UserEmail);
             return claim?.Value;
@@ -32,9 +28,7 @@ namespace Orangotango.WebApiShared.User
         public static string GetUserToken(this ClaimsPrincipal principal)
         {
             if (principal == null)
-            {
-                throw new ArgumentException(nameof(principal));
-            }
+                throw new ArgumentException(null, nameof(principal));
 
             var claim = principal.FindFirst(ClaimJwtType.UserToken);
             return claim?.Value;
@@ -43,9 +37,7 @@ namespace Orangotango.WebApiShared.User
         public static string GetUserRefreshToken(this ClaimsPrincipal principal)
         {
             if (principal == null)
-            {
-                throw new ArgumentException(nameof(principal));
-            }
+                throw new ArgumentException(null, nameof(principal));
 
             var claim = principal.FindFirst(ClaimJwtType.UserRefreshToken);
             return claim?.Value;

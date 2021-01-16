@@ -4,6 +4,6 @@ namespace Orangotango.Business.Intefaces.Infrastructure
 {
     public interface IJwtAuthentication
     {
-        string GenareteToken(UserAuthViewModel user);
+        string GenerateToken(UserAuthViewModel user);
     }
 }

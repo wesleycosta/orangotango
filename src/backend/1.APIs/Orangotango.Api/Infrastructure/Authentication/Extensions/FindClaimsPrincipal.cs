@@ -1,7 +1,7 @@
-﻿using Orangotango.WebApiShared.Authentication.Configurations;
+﻿using Orangotango.Api.Infrastructure.Authentication.Configurations;
 using System.Security.Claims;
 
-namespace Orangotango.WebApiShared.Authentication.Extensions
+namespace Orangotango.Api.Infrastructure.Authentication.Extensions
 {
     public static class FindClaimsPrincipal
     {

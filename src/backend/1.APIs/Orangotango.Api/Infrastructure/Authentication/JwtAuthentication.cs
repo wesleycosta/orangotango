@@ -1,13 +1,13 @@
 ﻿using Microsoft.IdentityModel.Tokens;
+using Orangotango.Api.Infrastructure.Authentication.Configurations;
 using Orangotango.Business.Intefaces.Infrastructure;
 using Orangotango.Business.ViewModels.Users;
 using Orangotango.Core.Settings;
-using Orangotango.WebApiShared.Authentication.Configurations;
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 
-namespace Orangotango.WebApiShared.Authentication
+namespace Orangotango.Api.Infrastructure.Authentication
 {
     internal class JwtAuthentication : IJwtAuthentication
     {
@@ -20,7 +20,7 @@ namespace Orangotango.WebApiShared.Authentication
 
         #region METHODS
 
-        public string GenareteToken(UserAuthViewModel user)
+        public string GenerateToken(UserAuthViewModel user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var token = tokenHandler.CreateToken(new SecurityTokenDescriptor

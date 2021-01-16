@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Orangotango.Business.Intefaces.Infrastructure;
 
-namespace Orangotango.WebApiShared.Authentication.Configurations
+namespace Orangotango.Api.Infrastructure.Authentication.Configurations
 {
     public static class AuthenticationConfig
     {

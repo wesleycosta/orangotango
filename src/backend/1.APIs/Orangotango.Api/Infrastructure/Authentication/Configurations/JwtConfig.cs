@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Orangotango.Core.Settings;
 
-namespace Orangotango.WebApiShared.Authentication.Configurations
+namespace Orangotango.Api.Infrastructure.Authentication.Configurations
 {
     public static class JwtConfig
     {

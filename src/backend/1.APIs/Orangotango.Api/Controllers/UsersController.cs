@@ -8,9 +8,9 @@ using Orangotango.Business.Intefaces.Queries;
 using Orangotango.Business.Intefaces.Repositories;
 using Orangotango.Core.Mediator;
 using Orangotango.Core.Notifications;
-using Orangotango.WebApiShared.Controllers;
 using System;
 using System.Threading.Tasks;
+using MainController = Orangotango.Api.Infrastructure.Controllers.MainController;
 
 namespace Orangotango.Api.Controllers
 {

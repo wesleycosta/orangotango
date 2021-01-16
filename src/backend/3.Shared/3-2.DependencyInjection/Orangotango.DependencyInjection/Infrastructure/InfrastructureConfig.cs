@@ -4,7 +4,6 @@ using Orangotango.Core.Mediator;
 using Orangotango.Core.Notifications.Configurations;
 using Orangotango.Core.Settings;
 using Orangotango.Data.Context;
-using Orangotango.WebApiShared.Authentication.Configurations;
 
 namespace Orangotango.DependencyInjection.Infrastructure
 {
@@ -13,10 +12,8 @@ namespace Orangotango.DependencyInjection.Infrastructure
         internal static IServiceCollection AddInfrastructureConfig(this IServiceCollection services)
         {
             services.AddMongoContext();
-            var appSettings = services.AddAppSettings();
-            services.AddJwtnfrastructure(appSettings);
-
             services.AddNotification();
+            services.AddAppSettings();
             services.AddMediator();
             services.AddAutoMapperConfig();
 
@@ -29,22 +26,6 @@ namespace Orangotango.DependencyInjection.Infrastructure
             services.AddSingleton(appSettings);
 
             return appSettings;
-        }
-
-        private static IServiceCollection AddJwtnfrastructure(this IServiceCollection services, AppSettings appSettings)
-        {
-            services.AddJwtAuthConfig(appSettings);
-            services.AddAspNetUser();
-
-            return services;
-        }
-
-        private static IServiceCollection AddJwtAuthConfig(this IServiceCollection services, AppSettings appSettings)
-        {
-            services.AddJwtConfig(appSettings);
-            services.AddAuthenticationService();
-
-            return services;
         }
 
         private static IServiceCollection AddAutoMapperConfig(this IServiceCollection services)

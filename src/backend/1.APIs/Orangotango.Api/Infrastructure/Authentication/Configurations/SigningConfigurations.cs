@@ -1,7 +1,7 @@
 ﻿using Microsoft.IdentityModel.Tokens;
 using System.Security.Cryptography;
 
-namespace Orangotango.WebApiShared.Authentication.Configurations
+namespace Orangotango.Api.Infrastructure.Authentication.Configurations
 {
     internal class SigningConfigurations
     {

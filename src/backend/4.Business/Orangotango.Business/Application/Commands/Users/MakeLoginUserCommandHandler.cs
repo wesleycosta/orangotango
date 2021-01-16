@@ -36,12 +36,13 @@ namespace Orangotango.Business.Application.Commands.Users
                 return ValidationResult;
             }
 
-            var token = _jwtAuthentication.GenareteToken(new UserAuthViewModel
+            var token = _jwtAuthentication.GenerateToken(new UserAuthViewModel
             {
                 Id = user.Id,
                 Email = user.Email.Address
             });
 
+            NotifyError(token);
             return ValidationResult;
         }
 

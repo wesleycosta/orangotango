@@ -41,8 +41,8 @@ namespace Orangotango.Tests.Application.Commands.Users
             };
 
             var userRepository = GetUserRepositoryMock();
-            var addProductCommandHandler = new SignInUserCommandHandler(userRepository.Object, new AutenticationFake());
-            var commandHandlerResult = await addProductCommandHandler.Handle(signInCommand, new CancellationToken());
+            var signInUserCommandHandler = new SignInUserCommandHandler(userRepository.Object, new AutenticationFake());
+            var commandHandlerResult = await signInUserCommandHandler.Handle(signInCommand, new CancellationToken());
 
             Assert.NotNull(commandHandlerResult);
             Assert.NotNull(commandHandlerResult.Data);

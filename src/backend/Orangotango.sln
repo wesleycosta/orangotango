@@ -35,6 +35,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orangotango.EmailWorker", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orangotango.Tests", "6.Tests\Orangotango.Tests\Orangotango.Tests.csproj", "{7F4DD6C0-395B-4D1F-A4A7-A4C595D3CC4E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.3 - MessageBus", "3.3 - MessageBus", "{68237D92-BC5B-4591-B83B-597969113598}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orangotango.MessageBus", "3.Shared\3-3.MessageBus\Orangotango.MessageBus\Orangotango.MessageBus.csproj", "{07D6D078-2A3F-4D13-B11E-5C03A4D20D72}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +73,10 @@ Global
 		{7F4DD6C0-395B-4D1F-A4A7-A4C595D3CC4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F4DD6C0-395B-4D1F-A4A7-A4C595D3CC4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F4DD6C0-395B-4D1F-A4A7-A4C595D3CC4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07D6D078-2A3F-4D13-B11E-5C03A4D20D72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07D6D078-2A3F-4D13-B11E-5C03A4D20D72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07D6D078-2A3F-4D13-B11E-5C03A4D20D72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07D6D078-2A3F-4D13-B11E-5C03A4D20D72}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -84,6 +92,8 @@ Global
 		{A8111650-3174-433B-95AF-3F568D092003} = {3517BCE7-3B68-49FE-9F1C-A4CF3E52F7FA}
 		{EFCEDA10-E6C8-4D75-BC51-CEF2791C726B} = {A8111650-3174-433B-95AF-3F568D092003}
 		{7F4DD6C0-395B-4D1F-A4A7-A4C595D3CC4E} = {CB607E11-3021-49B6-8B38-D619FE3EAABC}
+		{68237D92-BC5B-4591-B83B-597969113598} = {342B8D47-C116-4A25-A418-93601602EF8A}
+		{07D6D078-2A3F-4D13-B11E-5C03A4D20D72} = {68237D92-BC5B-4591-B83B-597969113598}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {30E1D7D7-A31B-4E47-AEA5-C0F5A4B6D1EF}

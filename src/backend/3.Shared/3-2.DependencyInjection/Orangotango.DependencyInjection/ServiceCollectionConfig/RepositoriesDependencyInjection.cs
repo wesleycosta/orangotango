@@ -2,7 +2,7 @@
 using Orangotango.Business.Intefaces.Repositories;
 using Orangotango.Data.Repository;
 
-namespace Orangotango.DependencyInjection.ConfigurationServices
+namespace Orangotango.DependencyInjection.ServiceCollectionConfig
 {
     internal static class RepositoriesDependencyInjection
     {

@@ -1,4 +1,5 @@
-﻿using Orangotango.Business.Models.ValueObjects;
+﻿using Orangotango.Business.Models.Types;
+using Orangotango.Business.Models.ValueObjects;
 using Orangotango.Core.DomainObjects;
 using System;
 

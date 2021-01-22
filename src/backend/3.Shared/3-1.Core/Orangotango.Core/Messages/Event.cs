@@ -1,6 +1,5 @@
 ﻿using System;
 using MediatR;
-using NSE.Core.Messages;
 
 namespace Orangotango.Core.Messages
 {

@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Orangotango.DependencyInjection.ConfigurationServices;
+using Orangotango.DependencyInjection.ServiceCollectionConfig;
 
 namespace Orangotango.DependencyInjection.Infrastructure
 {
@@ -10,6 +10,7 @@ namespace Orangotango.DependencyInjection.Infrastructure
             services.AddInfrastructureConfig();
             services.AddRepositories();
             services.AddCommands();
+            services.AddEvents();
             services.AddQueries();
 
             return services;

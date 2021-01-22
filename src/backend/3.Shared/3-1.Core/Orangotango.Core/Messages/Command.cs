@@ -1,7 +1,6 @@
 ﻿using System;
 using FluentValidation.Results;
 using MediatR;
-using NSE.Core.Messages;
 
 namespace Orangotango.Core.Messages
 {

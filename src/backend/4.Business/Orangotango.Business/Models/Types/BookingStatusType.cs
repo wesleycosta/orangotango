@@ -1,4 +1,4 @@
-﻿namespace Orangotango.Business.Models.ValueObjects
+﻿namespace Orangotango.Business.Models.Types
 {
     public enum BookingStatusType
     {

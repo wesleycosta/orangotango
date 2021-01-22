@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Orangotango.Business.Application.Commands.Users;
 using Orangotango.Core.Messages;
 
-namespace Orangotango.DependencyInjection.ConfigurationServices
+namespace Orangotango.DependencyInjection.ServiceCollectionConfig
 {
     internal static class CommandsDependencyInjection
     {

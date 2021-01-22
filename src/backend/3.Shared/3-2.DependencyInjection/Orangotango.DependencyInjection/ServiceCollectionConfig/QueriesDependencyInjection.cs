@@ -2,7 +2,7 @@
 using Orangotango.Business.Application.Queries;
 using Orangotango.Business.Intefaces.Queries;
 
-namespace Orangotango.DependencyInjection.ConfigurationServices
+namespace Orangotango.DependencyInjection.ServiceCollectionConfig
 {
     internal static class QueriesDependencyInjection
     {

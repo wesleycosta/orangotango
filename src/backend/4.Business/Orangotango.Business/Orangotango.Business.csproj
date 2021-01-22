@@ -15,8 +15,4 @@
     <PackageReference Include="NetDevPackBr" Version="1.0.4" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Application\Events\" />
-  </ItemGroup>
-
 </Project>

@@ -1,14 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.SignalR;
 using Orangotango.Api.Infrastructure.Controllers;
 using Orangotango.Business.Application.Commands.Users;
 using Orangotango.Business.Application.Inputs.Users;
-using Orangotango.Business.Hubs;
 using Orangotango.Business.Intefaces.Queries;
-using Orangotango.Business.Intefaces.Repositories;
 using Orangotango.Core.Mediator;
 using Orangotango.Core.Notifications;
-using System;
 using System.Threading.Tasks;
 
 namespace Orangotango.Api.Controllers
@@ -17,26 +13,20 @@ namespace Orangotango.Api.Controllers
     public class UsersController : MainController
     {
         private readonly IUserQueries _userQueries;
-        private readonly IHubContext<NotificationHub> _hub;
-        private readonly IUserRepository _userRepository;
         private readonly IMediatorHandler _mediator;
 
         public UsersController(INotifier notifier,
                                IUserQueries userQueries,
-                               IHubContext<NotificationHub> hub,
-                               IUserRepository userRepository,
                                IMediatorHandler mediatorHandler) : base(notifier)
         {
             _userQueries = userQueries;
-            _hub = hub;
-            _userRepository = userRepository;
             _mediator = mediatorHandler;
         }
 
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            return CustomResponse(await _userRepository.GetAll());
+            return CustomResponse(await _userQueries.GetAll());
         }
 
         [HttpPost]
@@ -50,14 +40,6 @@ namespace Orangotango.Api.Controllers
         public async Task<IActionResult> GetByEmail(string email)
         {
             return CustomResponse(await _userQueries.GetUserByEmail(email));
-        }
-
-        [HttpPost("send-message")]
-        public async Task<IActionResult> SendMessages()
-        {
-            var message = $"Messagem {new Random().Next(0, int.MaxValue - 1)}";
-            await _hub.Clients.All.SendAsync("NotificationAll", message);
-            return CustomResponse(message);
         }
     }
 }

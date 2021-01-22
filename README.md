@@ -13,6 +13,7 @@ Arquitetura construida com preocupações de separação de responsabilidades, s
 * CQRS;
 * Event Sourcing;
 * Unit of Work;
+* Message Bus;
 * Repository.
 
 ## Diagrama de classes
@@ -31,6 +32,7 @@ Arquitetura construida com preocupações de separação de responsabilidades, s
 * Moq;
 * NetDevPackBr;
 * NUnit;
+* Polly;
 * SignalR;
 * Swagger;
 * Xunit;

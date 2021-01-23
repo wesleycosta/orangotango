@@ -8,6 +8,7 @@ using Orangotango.Business.Hubs;
 using Orangotango.DependencyInjection.Infrastructure;
 using Orangotango.Api.Infrastructure.Authentication;
 using Orangotango.DependencyInjection;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Orangotango.Api
 {
@@ -25,16 +26,18 @@ namespace Orangotango.Api
             services.ConfigureInfrastructureAndDependencyInjection()
                     .AddJwtInfrastructure(EnvironmentConfig.Builder());
 
-            services.AddControllers();
+            services.AddControllers().AddMetrics();
+            services.AddMetricsTrackingMiddleware();
+
             services.AddSwaggerConfigApi();
 
             services.AddCors(options =>
             {
                 options.AddPolicy("Allow",
-                     b => b.WithOrigins("http://localhost:4200")
-                           .AllowAnyMethod()
-                           .AllowAnyHeader()
-                           .AllowCredentials());
+                     policy => policy.WithOrigins("http://localhost:4200")
+                                     .AllowAnyMethod()
+                                     .AllowAnyHeader()
+                                     .AllowCredentials());
             });
 
             services.AddSignalR();
@@ -45,6 +48,9 @@ namespace Orangotango.Api
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
 
+            app.UseMetricsAllEndpoints();
+            app.UseMetricsAllMiddleware();
+            
             app.UseSwaggerConfigApi();
             app.UseHttpsRedirection();
             app.UseCors("Allow");

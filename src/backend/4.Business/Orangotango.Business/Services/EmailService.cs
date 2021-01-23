@@ -22,7 +22,7 @@ namespace Orangotango.Business.Services
             try
             {
                 var message = GetMailMessage(to, subject, body);
-                good practices                var client = GetSmtpClient();
+                var client = GetSmtpClient();
                 client.Send(message);
                 return true;
             }

@@ -48,7 +48,7 @@ namespace Orangotango.MessageBus.RabbitMQ
             return Policy.Handle<ConnectFailureException>()
                          .Or<AuthenticationFailureException>()
                          .Or<PossibleAuthenticationFailureException>()
-                         .WaitAndRetry(3, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)));
+                         .WaitAndRetry(retryCount: 3, sleepDurationProvider: retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)));
         }
 
         public void Publish<T>(T integrationEvent) where T : IntegrationEvent
@@ -59,14 +59,17 @@ namespace Orangotango.MessageBus.RabbitMQ
 
         private void PublishInQueue<T>(T integrationEvent) where T : IntegrationEvent
         {
-            var ConnectionFactory = GetConnectionFactory();
-            using var connection = ConnectionFactory.CreateConnection();
+            var connectionFactory = GetConnectionFactory();
+            using var connection = connectionFactory.CreateConnection();
             using var channel = connection.CreateModel();
 
             channel.QueueDeclare(_queueSettings);
             var properties = channel.CreateBasicProperties();
 
-            channel.BasicPublish(string.Empty, _queueSettings.Name, properties, SerializePayload(integrationEvent));
+            channel.BasicPublish(exchange: string.Empty,
+                                 routingKey: _queueSettings.Name,
+                                 basicProperties: properties,
+                                 body: SerializePayload(integrationEvent));
         }
 
         private static byte[] SerializePayload<T>(T integrationEvent) where T : IntegrationEvent

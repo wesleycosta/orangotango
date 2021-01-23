@@ -30,7 +30,7 @@ namespace Orangotango.Business.Models.ValueObjects
         public static string CreateHash(string password)
         {
             using var sha256Hash = SHA256.Create();
-            byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(password));
+            var bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(password));
             var builder = new StringBuilder();
 
             foreach (var number in bytes)

@@ -22,7 +22,7 @@ namespace Orangotango.Business.Services
             try
             {
                 var message = GetMailMessage(to, subject, body);
-                var client = CreateSmtpClient();
+                good practices                var client = GetSmtpClient();
                 client.Send(message);
                 return true;
             }
@@ -47,7 +47,7 @@ namespace Orangotango.Business.Services
             };
         }
 
-        private static SmtpClient CreateSmtpClient()
+        private static SmtpClient GetSmtpClient()
         {
             var settings = EmailSettings.GetSettings();
 

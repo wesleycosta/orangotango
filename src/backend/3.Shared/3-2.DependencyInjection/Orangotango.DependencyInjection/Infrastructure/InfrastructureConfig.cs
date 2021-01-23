@@ -4,6 +4,7 @@ using Orangotango.Core.Mediator;
 using Orangotango.Core.Notifications.Configurations;
 using Orangotango.Core.Settings;
 using Orangotango.Data.Context;
+using Orangotango.MessageBus;
 
 namespace Orangotango.DependencyInjection.Infrastructure
 {
@@ -16,6 +17,7 @@ namespace Orangotango.DependencyInjection.Infrastructure
             services.AddAppSettings();
             services.AddMediator();
             services.AddAutoMapperConfig();
+            services.AddMessageBus();
 
             return services;
         }

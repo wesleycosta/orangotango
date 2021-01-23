@@ -1,4 +1,4 @@
-﻿namespace Orangotango.MessageBus
+﻿namespace Orangotango.MessageBus.Settings
 {
     public class QueueSettings
     {

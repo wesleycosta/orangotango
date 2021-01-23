@@ -8,6 +8,7 @@ namespace Orangotango.DependencyInjection.Infrastructure
         public static IServiceCollection ConfigureInfrastructureAndDependencyInjection(this IServiceCollection services)
         {
             services.AddInfrastructureConfig();
+            services.AddServices();
             services.AddRepositories();
             services.AddCommands();
             services.AddEvents();

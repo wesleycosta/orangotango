@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\3.Shared\3-1.Core\Orangotango.Core\Orangotango.Core.csproj" />
+    <ProjectReference Include="..\..\3.Shared\3-3.MessageBus\Orangotango.MessageBus\Orangotango.MessageBus.csproj" />
   </ItemGroup>
 
   <ItemGroup>

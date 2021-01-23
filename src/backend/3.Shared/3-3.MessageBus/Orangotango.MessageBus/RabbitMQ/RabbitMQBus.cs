@@ -1,4 +1,6 @@
 ﻿using Orangotango.Core.Messages.Integration;
+using Orangotango.Core.Services;
+using Orangotango.MessageBus.Settings;
 using Polly;
 using Polly.Retry;
 using RabbitMQ.Client;
@@ -9,13 +11,19 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace Orangotango.MessageBus
+namespace Orangotango.MessageBus.RabbitMQ
 {
-    public class RabbitMQBus : IRabbitMQBus
+    public class RabbitMQBus : IMessageBus
     {
+        private readonly ILoggerService _loggerService;
         private BusSettings _busSettings;
         private QueueSettings _queueSettings;
         private IModel _channelSubscribe;
+
+        public RabbitMQBus(ILoggerService loggerService)
+        {
+            _loggerService = loggerService;
+        }
 
         public void Initialize(BusSettings busSettings, QueueSettings queueSettings)
         {
@@ -56,11 +64,15 @@ namespace Orangotango.MessageBus
             using var channel = connection.CreateModel();
 
             channel.QueueDeclare(_queueSettings);
-            var message = JsonSerializer.Serialize(integrationEvent);
-            var body = Encoding.UTF8.GetBytes(message);
             var properties = channel.CreateBasicProperties();
 
-            channel.BasicPublish(string.Empty, _queueSettings.Name, properties, body);
+            channel.BasicPublish(string.Empty, _queueSettings.Name, properties, SerializePayload(integrationEvent));
+        }
+
+        private static byte[] SerializePayload<T>(T integrationEvent) where T : IntegrationEvent
+        {
+            var message = JsonSerializer.Serialize(integrationEvent);
+            return Encoding.UTF8.GetBytes(message);
         }
 
         public void Subscribe(Func<string, Task> onMessage)
@@ -72,20 +84,34 @@ namespace Orangotango.MessageBus
         private void SubscribeInQueue(Func<string, Task> onMessage)
         {
             var connectionFactory = GetConnectionFactory();
-            using var connection = connectionFactory.CreateConnection();
+            var connection = connectionFactory.CreateConnection();
             _channelSubscribe = connection.CreateModel();
 
-            var consumer = new EventingBasicConsumer(_channelSubscribe);
-            consumer.Received += (o, a) =>
-            {
-                var json = Encoding.UTF8.GetString(a.Body.ToArray());
-                onMessage.Invoke(json).Wait();
-                _channelSubscribe.BasicAck(a.DeliveryTag);
-            };
+            var consumer = CreateConsumer(onMessage);
 
             _channelSubscribe.BasicQos(0, 1, false);
             _channelSubscribe.QueueDeclare(_queueSettings);
             _channelSubscribe.BasicConsume(queue: _queueSettings.Name, autoAck: false, consumer: consumer);
+        }
+
+        private EventingBasicConsumer CreateConsumer(Func<string, Task> onMessage)
+        {
+            var consumer = new EventingBasicConsumer(_channelSubscribe);
+            consumer.Received += (sender, args) =>
+            {
+                try
+                {
+                    onMessage.Invoke(args.GetPayload()).Wait();
+                }
+                catch (Exception exception)
+                {
+                    _loggerService.Error(exception, args.GetPayload()).Wait();
+                }
+
+                _channelSubscribe.BasicAck(args.DeliveryTag);
+            };
+
+            return consumer;
         }
     }
 }

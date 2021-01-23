@@ -1,8 +1,6 @@
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Orangotango.Business.Intefaces.Repositories;
+using Orangotango.Business.Intefaces.Services;
 using System;
-using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -10,25 +8,19 @@ namespace Orangotango.EmailWorker
 {
     public class Worker : BackgroundService
     {
-        private readonly ILogger<Worker> _logger;
-        private readonly IUserRepository _userRepository;
+        private readonly IEmailIntegrationHandler _emailIntegrationHandler;
 
-        public Worker(ILogger<Worker> logger,
-                      IUserRepository userRepository)
+        public Worker(IEmailIntegrationHandler emailIntegrationHandler)
         {
-            _logger = logger;
-            _userRepository = userRepository;
+            _emailIntegrationHandler = emailIntegrationHandler;
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
+            _emailIntegrationHandler.Execute();
+
             while (!stoppingToken.IsCancellationRequested)
-            {
-                var users = await _userRepository.GetAll();
-                _logger.LogInformation(JsonSerializer.Serialize(users));
-                _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
-                await Task.Delay(5000, stoppingToken);
-            }
+                await Task.Delay(TimeSpan.FromMinutes(10), stoppingToken);
         }
     }
 }

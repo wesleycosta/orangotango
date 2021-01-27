@@ -47,7 +47,8 @@ Disponibilizamos imagens docker para criar os recursos da aplicação:
 - [MongoDB]
 - [RabbitMQ]
 - [Redis]
-- [Grafana e InfluxDB]
+- [Kibana]
+- [ElasticSearch]
 
 > **Requisito:** É necessário ter o docker instalado em seu sistema operacional
 

@@ -15,7 +15,8 @@ namespace Orangotango.DependencyInjection
                 ConnectionString = Environment.GetEnvironmentVariable("ConnectionString"),
                 DataBase = database,
                 Environment = env,
-                JwtSettings = GetJwtSettings()
+                JwtSettings = GetJwtSettings(),
+                LoggerSettings = GetLoggerSettings()
             };
         }
 
@@ -27,6 +28,15 @@ namespace Orangotango.DependencyInjection
                 Hours = int.Parse(Environment.GetEnvironmentVariable("Jwt.Hours")),
                 Issuer = Environment.GetEnvironmentVariable("Jwt.Issuer"),
                 Secret = Environment.GetEnvironmentVariable("Jwt.Secret")
+            };
+        }
+
+        // TODO
+        private static LoggerSettings GetLoggerSettings()
+        {
+            return new LoggerSettings
+            {
+                ElasticSearchStringConnection = "http://localhost:9200/"
             };
         }
     }

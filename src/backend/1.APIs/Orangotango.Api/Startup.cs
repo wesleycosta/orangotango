@@ -8,7 +8,8 @@ using Orangotango.Business.Hubs;
 using Orangotango.DependencyInjection.Infrastructure;
 using Orangotango.Api.Infrastructure.Authentication;
 using Orangotango.DependencyInjection;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using Serilog;
 
 namespace Orangotango.Api
 {
@@ -17,6 +18,7 @@ namespace Orangotango.Api
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            configuration.AddLogger(EnvironmentConfig.Builder());
         }
 
         public IConfiguration Configuration { get; }
@@ -26,8 +28,7 @@ namespace Orangotango.Api
             services.ConfigureInfrastructureAndDependencyInjection()
                     .AddJwtInfrastructure(EnvironmentConfig.Builder());
 
-            services.AddControllers().AddMetrics();
-            services.AddMetricsTrackingMiddleware();
+            services.AddControllers();
 
             services.AddSwaggerConfigApi();
 
@@ -43,14 +44,12 @@ namespace Orangotango.Api
             services.AddSignalR();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
             if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
 
-            app.UseMetricsAllEndpoints();
-            app.UseMetricsAllMiddleware();
-            
+            loggerFactory.AddSerilog();
             app.UseSwaggerConfigApi();
             app.UseHttpsRedirection();
             app.UseCors("Allow");

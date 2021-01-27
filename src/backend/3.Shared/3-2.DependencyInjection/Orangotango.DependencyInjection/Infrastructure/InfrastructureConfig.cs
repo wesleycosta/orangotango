@@ -12,9 +12,10 @@ namespace Orangotango.DependencyInjection.Infrastructure
     {
         internal static IServiceCollection AddInfrastructureConfig(this IServiceCollection services)
         {
+            var appSettings = services.AddAppSettings();
+
             services.AddMongoContext();
             services.AddNotification();
-            services.AddAppSettings();
             services.AddMediator();
             services.AddAutoMapperConfig();
             services.AddMessageBus();

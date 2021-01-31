@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
+using Orangotango.Business.Configurations.AutoMapper;
 using Orangotango.Core.Mediator;
 using Orangotango.Core.Notifications.Configurations;
-using Orangotango.Core.Settings;
 using Orangotango.Data.Context;
 using Orangotango.MessageBus;
 
@@ -12,28 +12,28 @@ namespace Orangotango.DependencyInjection.Infrastructure
     {
         internal static IServiceCollection AddInfrastructureConfig(this IServiceCollection services)
         {
-            var appSettings = services.AddAppSettings();
-
+            services.AddAppSettings();
             services.AddMongoContext();
+
+            services.AddAutoMapper();
             services.AddNotification();
             services.AddMediator();
-            services.AddAutoMapperConfig();
             services.AddMessageBus();
 
             return services;
         }
 
-        private static AppSettings AddAppSettings(this IServiceCollection services)
+        private static IServiceCollection AddAutoMapper(this IServiceCollection services)
+        {
+            services.AddAutoMapper(typeof(AutoMapperProfile));
+            return services;
+        }
+
+        private static IServiceCollection AddAppSettings(this IServiceCollection services)
         {
             var appSettings = EnvironmentConfig.Builder();
             services.AddSingleton(appSettings);
 
-            return appSettings;
-        }
-
-        private static IServiceCollection AddAutoMapperConfig(this IServiceCollection services)
-        {
-            services.AddAutoMapper(typeof(InfrastructureConfig));
             return services;
         }
     }

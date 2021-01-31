@@ -9,7 +9,7 @@ namespace Orangotango.Api.Infrastructure.Swagger
     {
         #region PROPERTIES
 
-        private static readonly string API_NAME = "Orangotango API";
+        private static readonly string ApiName = "Orangotango API";
 
         #endregion
 
@@ -17,12 +17,12 @@ namespace Orangotango.Api.Infrastructure.Swagger
 
         public static IServiceCollection AddSwaggerConfigApi(this IServiceCollection services)
         {
-            return services.AddSwaggerConfig(API_NAME);
+            return services.AddSwaggerConfig(ApiName);
         }
 
         public static IApplicationBuilder UseSwaggerConfigApi(this IApplicationBuilder app)
         {
-            return app.UseSwaggerConfig(API_NAME);
+            return app.UseSwaggerConfig(ApiName);
         }
 
         #endregion

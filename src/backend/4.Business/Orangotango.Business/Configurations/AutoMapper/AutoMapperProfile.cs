@@ -8,12 +8,13 @@ namespace Orangotango.Business.Configurations.AutoMapper
     {
         public AutoMapperProfile()
         {
-            AccountMapper();
+            UserMapper();
         }
 
-        private void AccountMapper()
+        private void UserMapper()
         {
-            CreateMap<User, UserViewModel>().ReverseMap();
+            CreateMap<User, UserViewModel>()
+                .ForMember(viewModel => viewModel.Email, map => map.MapFrom(user => user.Email.Address));
         }
     }
 }

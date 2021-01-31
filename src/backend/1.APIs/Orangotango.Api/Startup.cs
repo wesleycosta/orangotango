@@ -1,8 +1,6 @@
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Orangotango.Api.Infrastructure.Swagger;
 using Orangotango.Business.Hubs;
 using Orangotango.DependencyInjection.Infrastructure;
@@ -10,6 +8,7 @@ using Orangotango.Api.Infrastructure.Authentication;
 using Orangotango.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Serilog;
+using Orangotango.Api.Infrastructure.Cors;
 
 namespace Orangotango.Api
 {
@@ -29,30 +28,18 @@ namespace Orangotango.Api
                     .AddJwtInfrastructure(EnvironmentConfig.Builder());
 
             services.AddControllers();
-
             services.AddSwaggerConfigApi();
-
-            services.AddCors(options =>
-            {
-                options.AddPolicy("Allow",
-                     policy => policy.WithOrigins("http://localhost:4200")
-                                     .AllowAnyMethod()
-                                     .AllowAnyHeader()
-                                     .AllowCredentials());
-            });
-
+            services.AddOrangotangoPolicy(EnvironmentConfig.Builder());
             services.AddSignalR();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
         {
-            if (env.IsDevelopment())
-                app.UseDeveloperExceptionPage();
-
             loggerFactory.AddSerilog();
+
             app.UseSwaggerConfigApi();
             app.UseHttpsRedirection();
-            app.UseCors("Allow");
+            app.UseOrangotangoPolicy();
             app.UseRouting();
             app.UseAuthorization();
 

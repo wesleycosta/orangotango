@@ -1,17 +1,19 @@
-﻿{
+{
   "profiles": {
     "Orangotango.EmailWorker": {
       "commandName": "Project",
-      "dotnetRunMessages": "true",
       "environmentVariables": {
-        "Jwt.Issuer": "Orangotango",
-        "Jwt.Audience2": "https://localhost",
-        "Jwt.Hours": "12",
-        "Environment": "Dev",
-        "ConnectionString": "mongodb://root:password123@localhost:27017",
-        "Jwt.Secret": "DEA9EF7E811D6DE6CDF909003D12D00E968FFE4596FB0B784C6996FB201F65AD",
-        "DataBase": "orangotango"
-      }
+        "JWT_AUDIENCE": "https://localhost",
+        "JWT_ISSUER": "Orangotango",
+        "JWT_HOURS": "12",
+        "JWT_SECRET": "DEA9EF7E811D6DE6CDF909003D12D00E968FFE4596FB0B784C6996FB201F65AD",
+        "DATABASE": "orangotango",
+        "CONNECTION_STRING": "mongodb://root:password123@localhost:27017",
+        "ENVIRONMENT": "Dev",
+        "CORS_ORIGINS": "http://localhost:4200",
+        "LOGGER_STRING_CONNECTION": "http://localhost:9200/"
+      },
+      "dotnetRunMessages": "true"
     }
   }
 }

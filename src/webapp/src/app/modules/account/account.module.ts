@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginEmailComponent } from './login/login-email/login-email.component';
 import { LoginPasswordComponent } from './login/login-password/login-password.component';
 import { MaterialModule } from '../../shared/layout/material/material.module';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [LoginComponent, LoginEmailComponent, LoginPasswordComponent],
@@ -18,5 +19,6 @@ import { MaterialModule } from '../../shared/layout/material/material.module';
     ReactiveFormsModule,
     MaterialModule,
   ],
+  providers: [AuthService],
 })
 export class AccountModule {}

@@ -41,7 +41,13 @@ namespace Orangotango.Business.Application.Commands.Users
                 Email = user.Email.Address
             });
 
-            return Response(token);
+            return Response(new UserAuthResponseViewModel
+            {
+                Id = user.Id,
+                Name = user.Name,
+                Email = user.Email.Address,
+                Token = token
+            });
         }
 
         private async Task<User> GetUserByCredential(SignInUserInputModel input)

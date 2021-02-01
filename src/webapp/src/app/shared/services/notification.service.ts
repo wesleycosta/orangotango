@@ -5,7 +5,7 @@ import { environment } from 'src/environments/environment';
 @Injectable()
 export class NotificationService {
   private _hubConnection: HubConnection = new HubConnectionBuilder()
-    .withUrl(`${environment.api_websocket}notification-hub`)
+    .withUrl(`${environment.apiWebsocket}notification-hub`)
     .build();
 
   private dictStocks = {

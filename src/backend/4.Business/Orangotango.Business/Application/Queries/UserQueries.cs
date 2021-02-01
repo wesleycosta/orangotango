@@ -31,5 +31,10 @@ namespace Orangotango.Business.Application.Queries
             var users = await _userRepository.GetAll();
             return _mapper.Map<List<UserViewModel>>(users);
         }
+
+        public Task<bool> HasEmail(string email)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

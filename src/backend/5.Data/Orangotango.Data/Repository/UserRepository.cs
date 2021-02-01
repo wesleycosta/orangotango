@@ -13,6 +13,12 @@ namespace Orangotango.Data.Repository
         {
         }
 
+        public async Task<bool> HasEmail(Email email)
+        {
+            var data = await DbSet.FindAsync(Filter.Eq("email.address", email.Address));
+            return await data.AnyAsync();
+        }
+
         public async Task<User> GetUserByEmail(Email email)
         {
             var data = await DbSet.FindAsync(Filter.Eq("email.address", email.Address));

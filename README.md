@@ -25,6 +25,7 @@ Arquitetura construida com preocupações de separação de responsabilidades, s
 * .NET 5.0;
 * ASP.NET WebApi;
 * AutoMapper; 
+* ELK Stack;
 * FluentValidator;
 * JWT;
 * MediatR;

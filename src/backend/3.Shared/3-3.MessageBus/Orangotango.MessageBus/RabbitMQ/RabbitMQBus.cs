@@ -48,6 +48,7 @@ namespace Orangotango.MessageBus.RabbitMQ
             return Policy.Handle<ConnectFailureException>()
                          .Or<AuthenticationFailureException>()
                          .Or<PossibleAuthenticationFailureException>()
+                         .Or<BrokerUnreachableException>()
                          .WaitAndRetry(retryCount: 3, sleepDurationProvider: retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)));
         }
 

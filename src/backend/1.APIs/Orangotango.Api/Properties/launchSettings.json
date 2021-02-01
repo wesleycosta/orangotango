@@ -22,17 +22,6 @@
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "swagger",
-      "environmentVariables": {
-        "JWT_AUDIENCE": "https://localhost",
-        "JWT_ISSUER": "Orangotango",
-        "JWT_HOURS": "12",
-        "JWT_SECRET": "DEA9EF7E811D6DE6CDF909003D12D00E968FFE4596FB0B784C6996FB201F65AD",
-        "DATABASE": "orangotango",
-        "CONNECTION_STRING": "mongodb://root:password123@localhost:27017",
-        "ENVIRONMENT": "Dev",
-        "CORS_ORIGINS": "http://localhost:4200",
-        "LOGGER_STRING_CONNECTION": "http://localhost:9200/"
-      },
       "applicationUrl": "https://localhost:5000"
     }
   }

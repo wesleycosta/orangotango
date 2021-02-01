@@ -8,6 +8,7 @@
         public string Origins { get; set; }
         public JwtSettings JwtSettings { get; set; }
         public LoggerSettings LoggerSettings { get; set; }
+        public RabbitMQSettings RabbitMQSettings { get; set; }
 
         public string[] GetOrigns()
         {

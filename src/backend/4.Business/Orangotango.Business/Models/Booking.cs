@@ -9,6 +9,8 @@ namespace Orangotango.Business.Models
     {
         public DateRangeBooking DateRangeBooking { get; set; }
         public decimal Value { get; set; }
+        public byte Adults { get; set; }
+        public byte Children { get; set; }
         public BookingStatusType Status { get; set; }
 
         public Guid RoomId { get; set; }

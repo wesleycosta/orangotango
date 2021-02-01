@@ -1,4 +1,5 @@
 ﻿using Orangotango.Core.Settings;
+using Orangotango.DependencyInjection.Environments;
 using System;
 
 namespace Orangotango.DependencyInjection
@@ -7,17 +8,18 @@ namespace Orangotango.DependencyInjection
     {
         public static AppSettings Builder()
         {
-            var env = (EnvironmentType)Enum.Parse(typeof(EnvironmentType), Environment.GetEnvironmentVariable("ENVIRONMENT"));
-            var database = $"{Environment.GetEnvironmentVariable("DATABASE")}_{env}".ToLower();
+            var env = (EnvironmentType)Enum.Parse(typeof(EnvironmentType), EnvironmentReader.GetEnvironmentVariable("ENVIRONMENT"));
+            var database = $"{EnvironmentReader.GetEnvironmentVariable("DATABASE")}_{env}".ToLower();
 
             return new AppSettings
             {
-                ConnectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING"),
+                ConnectionString = EnvironmentReader.GetEnvironmentVariable("CONNECTION_STRING"),
                 DataBase = database,
                 Environment = env,
-                Origins = Environment.GetEnvironmentVariable("CORS_ORIGINS"),
+                Origins = EnvironmentReader.GetEnvironmentVariable("CORS_ORIGINS"),
                 JwtSettings = GetJwtSettings(),
-                LoggerSettings = GetLoggerSettings()
+                LoggerSettings = GetLoggerSettings(),
+                RabbitMQSettings = GetRabbitMQSettings()
             };
         }
 
@@ -25,10 +27,10 @@ namespace Orangotango.DependencyInjection
         {
             return new JwtSettings
             {
-                Audience = Environment.GetEnvironmentVariable("JWT_AUDIENCE"),
-                Hours = int.Parse(Environment.GetEnvironmentVariable("JWT_HOURS")),
-                Issuer = Environment.GetEnvironmentVariable("JWT_ISSUER"),
-                Secret = Environment.GetEnvironmentVariable("JWT_SECRET")
+                Audience = EnvironmentReader.GetEnvironmentVariable("JWT_AUDIENCE"),
+                Hours = int.Parse(EnvironmentReader.GetEnvironmentVariable("JWT_HOURS")),
+                Issuer = EnvironmentReader.GetEnvironmentVariable("JWT_ISSUER"),
+                Secret = EnvironmentReader.GetEnvironmentVariable("JWT_SECRET")
             };
         }
 
@@ -36,7 +38,19 @@ namespace Orangotango.DependencyInjection
         {
             return new LoggerSettings
             {
-                ElasticSearchStringConnection = Environment.GetEnvironmentVariable("LOGGER_STRING_CONNECTION")
+                ElasticSearchStringConnection = EnvironmentReader.GetEnvironmentVariable("LOGGER_STRING_CONNECTION")
+            };
+        }
+
+        private static RabbitMQSettings GetRabbitMQSettings()
+        {
+            return new RabbitMQSettings
+            {
+                HostName = EnvironmentReader.GetEnvironmentVariable("RABBITMQ_HOST_NAME"),
+                Port = int.Parse(EnvironmentReader.GetEnvironmentVariable("RABBITMQ_PORT")),
+                VirtualHost = EnvironmentReader.GetEnvironmentVariable("RABBITMQ_VIRTUAL_HOST"),
+                UserName = EnvironmentReader.GetEnvironmentVariable("RABBITMQ_USERNAME"),
+                Password = EnvironmentReader.GetEnvironmentVariable("RABBITMQ_PASSWORD")
             };
         }
     }

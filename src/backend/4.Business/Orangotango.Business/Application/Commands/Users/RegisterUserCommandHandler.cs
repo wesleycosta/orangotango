@@ -25,7 +25,7 @@ namespace Orangotango.Business.Application.Commands.Users
             if (!message.IsValid())
                 return Response(message);
 
-            if (!await IsValidateBusiness(message.Input))
+            if (!await BusinessIsValid(message.Input))
                 return Response();
 
             var user = AddUser(message.Input);
@@ -34,7 +34,7 @@ namespace Orangotango.Business.Application.Commands.Users
             return Response(await SaveData(_userRepository.UnitOfWork));
         }
 
-        private async Task<bool> IsValidateBusiness(RegisterUserInputModel inputModel)
+        private async Task<bool> BusinessIsValid(RegisterUserInputModel inputModel)
         {
             if (await _userRepository.ExistsWithSameEmail(new Email(inputModel.EmailAddress)))
             {

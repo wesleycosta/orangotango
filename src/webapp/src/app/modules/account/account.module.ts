@@ -9,10 +9,12 @@ import { LoginPasswordComponent } from './login/login-password/login-password.co
 import { MaterialModule } from '../../shared/layout/material/material.module';
 import { AuthService } from './services/auth.service';
 import { ComponentsModule } from 'src/app/shared/components/components.module';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [LoginComponent, LoginEmailComponent, LoginPasswordComponent],
   imports: [
+    CommonModule,
     RouterModule,
     AccountRoutingModule,
     FormsModule,
@@ -20,6 +22,6 @@ import { ComponentsModule } from 'src/app/shared/components/components.module';
     MaterialModule,
     ComponentsModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, UserService],
 })
 export class AccountModule {}

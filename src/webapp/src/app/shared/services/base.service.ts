@@ -1,4 +1,8 @@
-import { HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import {
+  HttpHeaders,
+  HttpErrorResponse,
+  HttpRequest,
+} from '@angular/common/http';
 import { NEVER, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { LocalStorageService } from './local-storage.service';
@@ -15,7 +19,11 @@ export abstract class BaseService {
     };
   }
 
-  protected GetAuthorizationBearer() {
+  protected getUrlEndpoint(endpoint: string): string {
+    return `${this.api}${endpoint}`;
+  }
+
+  protected getAuthorizationBearer() {
     return {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',

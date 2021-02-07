@@ -3,6 +3,7 @@ using Orangotango.Business.Intefaces.Queries;
 using Orangotango.Business.Intefaces.Repositories;
 using Orangotango.Business.Models.ValueObjects;
 using Orangotango.Business.ViewModels;
+using Orangotango.Core.Notifications;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -12,12 +13,15 @@ namespace Orangotango.Business.Application.Queries
     {
         private readonly IUserRepository _userRepository;
         private readonly IMapper _mapper;
+        private readonly INotifier _notifier;
 
         public UserQueries(IUserRepository userRepository,
-                           IMapper mapper)
+                           IMapper mapper,
+                           INotifier notifier)
         {
             _userRepository = userRepository;
             _mapper = mapper;
+            _notifier = notifier;
         }
 
         public async Task<UserViewModel> GetUserByEmail(string email)
@@ -32,9 +36,15 @@ namespace Orangotango.Business.Application.Queries
             return _mapper.Map<List<UserViewModel>>(users);
         }
 
-        public Task<bool> HasEmail(string email)
+        public async Task<bool> HasEmail(string email)
         {
-            throw new System.NotImplementedException();
+            if (!Email.IsValid(email))
+            {
+                _notifier.Notify("E-mail inválido");
+                return false;
+            }
+
+            return await _userRepository.HasEmail(new Email(email));
         }
     }
 }

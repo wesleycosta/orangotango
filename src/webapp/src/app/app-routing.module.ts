@@ -1,7 +1,7 @@
 import { LayoutModule } from '@angular/cdk/layout';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { NotificationService } from './shared/services/notification.service';
+import { NotificationWebSocketService } from './shared/services/notification-web-socket.service';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -13,13 +13,15 @@ const routes: Routes = [
   {
     path: 'dashboard',
     loadChildren: () =>
-      import('./modules/dashboard/dashboard.module').then((m) => m.DashboardModule),
+      import('./modules/dashboard/dashboard.module').then(
+        (m) => m.DashboardModule
+      ),
   },
 ];
 
 @NgModule({
   imports: [LayoutModule, RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: [ NotificationService ],
+  providers: [NotificationWebSocketService],
 })
 export class AppRoutingModule {}

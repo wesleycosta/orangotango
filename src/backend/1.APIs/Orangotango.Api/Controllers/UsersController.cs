@@ -59,7 +59,7 @@ namespace Orangotango.Api.Controllers
         [HttpGet("has-email")]
         public async Task<IActionResult> HasEmail(string email)
         {
-            return CustomResponse(await _userQueries.GetUserByEmail(email));
+            return CustomResponse(await _userQueries.HasEmail(email));
         }
     }
 }

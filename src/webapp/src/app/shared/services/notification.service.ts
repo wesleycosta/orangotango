@@ -1,57 +1,38 @@
 import { Injectable } from '@angular/core';
-import { HubConnection, HubConnectionBuilder } from '@aspnet/signalr';
-import { environment } from 'src/environments/environment';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable()
 export class NotificationService {
-  private _hubConnection: HubConnection = new HubConnectionBuilder()
-    .withUrl(`${environment.apiWebsocket}notification-hub`)
-    .build();
+  constructor(private readonly snackBar: MatSnackBar) {}
 
-  private dictStocks = {
-    ITSA4: {
-      startValue: 20.0,
-      currentValue: 20.0,
-      change: 0.0,
-    },
-    TAEE11: {
-      startValue: 20.0,
-      currentValue: 20.0,
-      change: 0.0,
-    },
-    PETR4: {
-      startValue: 20.0,
-      currentValue: 20.0,
-      change: 0.0,
-    },
-  };
-
-  public notifications: any[] = [];
-
-  connect(): void {
-    this.registerOnServerEvents();
-    this.startConnection();
+  success(message: string): void {
+    this.openSnackBar(message, 'success-snackbar');
   }
 
-  connectToNotification(symbol: string) {
-    this._hubConnection.invoke('ConnectToNotification', symbol);
+  error(message: string): void {
+    console.log(message);
+    this.openSnackBar(message, 'error-snackbar');
   }
 
-  private startConnection(): void {
-    this._hubConnection
-      .start()
-      .then(() => {
-        for (let key in this.dictStocks) {
-          this.connectToNotification(key);
-        }
-      })
-      .catch(() => {});
+  openSnackBar(message: string, type: string): void {
+    this.snackBar.open(message, 'OK', {
+      duration: 3000,
+      panelClass: [type],
+    });
   }
 
-  private registerOnServerEvents(): void {
-    this._hubConnection.on('NotificationAll', (data: any) => {
-      console.log(data);
-      this.notifications.push(data);
+  notifyBadRequest(data: any): void {
+    if (!data.error) {
+      return;
+    }
+
+    if (!data.error.errors) {
+      return;
+    }
+
+    const errors: any[] = data.error.errors;
+    errors.forEach((message) => {
+      this.error(message);
     });
   }
 }

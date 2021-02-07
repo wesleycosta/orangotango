@@ -1,1 +1,9 @@
-<h1>teste</h1>
+<button
+  mat-raised-button
+  [color]="color"
+  [type]="type"
+  [class.spinner]="loading"
+  (click)="onClick()"
+>
+  <ng-content *ngIf="!loading"></ng-content>
+</button>

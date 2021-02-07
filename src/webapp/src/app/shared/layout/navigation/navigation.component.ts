@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NotificationService } from '../../services/notification.service';
 
 @Component({
   selector: 'app-navigation',
@@ -9,8 +8,7 @@ import { NotificationService } from '../../services/notification.service';
 export class NavigationComponent {
   isExpanded = false;
 
-  constructor() {
-  }
+  constructor() {}
 
   public changeExpanded(event: any) {
     this.isExpanded = event;

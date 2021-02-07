@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NotificationService } from '../../services/notification.service';
+import { NotificationWebSocketService } from '../../services/notification-web-socket.service';
 
 @Component({
   selector: 'app-notifications',
@@ -7,7 +7,9 @@ import { NotificationService } from '../../services/notification.service';
   styleUrls: ['./notifications.component.scss'],
 })
 export class NotificationsComponent implements OnInit {
-  constructor(public readonly notificationService: NotificationService) {}
+  constructor(
+    public readonly notificationService: NotificationWebSocketService
+  ) {}
 
   ngOnInit(): void {
     this.notificationService.connect();

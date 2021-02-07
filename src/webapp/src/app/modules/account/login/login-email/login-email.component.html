@@ -2,19 +2,13 @@
   <div class="fields">
     <mat-form-field appearance="outline" class="row-separator">
       <mat-label>Informe seu e-mail</mat-label>
-      <input
-        matInput
-        autocomplete="off"
-        placeholder="Informe seu e-mail"
-      />
+      <input matInput autocomplete="off" placeholder="Informe seu e-mail" />
       <mat-icon matSuffix>email</mat-icon>
     </mat-form-field>
   </div>
 
   <div class="row-separator submit">
-    <button (click)="submit()" type="submit" mat-raised-button color="primary">
-      Entrar
-    </button>
+    <app-button (click)="submit()" [loading]="loading">Entrar</app-button>
   </div>
 
   <div class="row-separator subtitle">

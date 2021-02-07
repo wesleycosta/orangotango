@@ -5,6 +5,7 @@ using Orangotango.Business.Intefaces.Repositories;
 using Orangotango.Business.Models;
 using Orangotango.Business.Models.ValueObjects;
 using Orangotango.Tests.Fakes;
+using Orangotango.Tests.Infrastructure;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
@@ -25,6 +26,7 @@ namespace Orangotango.Tests.Application.Commands.Users
             var userRepository = new Mock<IUserRepository>();
             userRepository.Setup(respository => respository.GetByEmailAndPassword(It.IsAny<Email>(), It.IsAny<string>()))
                                                            .Returns(Task.FromResult(user));
+
             return userRepository;
         }
 
@@ -41,7 +43,7 @@ namespace Orangotango.Tests.Application.Commands.Users
             };
 
             var userRepository = GetUserRepositoryMock();
-            var signInUserCommandHandler = new SignInUserCommandHandler(userRepository.Object, new AutenticationFake());
+            var signInUserCommandHandler = new SignInUserCommandHandler(userRepository.Object, new AutenticationFake(), AutoMapperSingleton.Mapper);
             var commandHandlerResult = await signInUserCommandHandler.Handle(signInCommand, new CancellationToken());
 
             Assert.NotNull(commandHandlerResult);

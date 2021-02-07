@@ -1,12 +1,33 @@
 <div class="container">
   <app-navbar (expandedEvent)="changeExpanded($event)"></app-navbar>
 
-  <mat-sidenav-container class="sidenav-container" autosize>
+  <mat-sidenav-container class="sidenav-container" [class.expanded]="isExpanded" autosize>
     <mat-sidenav #sidenav class="sidenav" mode="side" opened="true">
       <mat-nav-list class="dashboard">
         <a mat-list-item>
-          <mat-icon mat-list-icon matTooltip="Projetos">extension</mat-icon>
-          <span matLine *ngIf="isExpanded">Projetos</span>
+          <mat-icon mat-list-icon matTooltip="Reservas">book_online</mat-icon>
+          <span matLine *ngIf="isExpanded">Reservas</span>
+        </a>
+
+        <mat-divider></mat-divider>
+
+        <a mat-list-item>
+          <mat-icon mat-list-icon matTooltip="Hóspedes">face</mat-icon>
+          <span matLine *ngIf="isExpanded">Hóspedes</span>
+        </a>
+
+        <mat-divider></mat-divider>
+
+        <a mat-list-item>
+          <mat-icon mat-list-icon matTooltip="Quartos">hotel</mat-icon>
+          <span matLine *ngIf="isExpanded">Quartos</span>
+        </a>
+
+        <mat-divider></mat-divider>
+
+        <a mat-list-item>
+          <mat-icon mat-list-icon matTooltip="Categoria dos Quartos">emoji_events</mat-icon>
+          <span matLine *ngIf="isExpanded">Categoria dos Quartos</span>
         </a>
 
         <mat-divider></mat-divider>

@@ -14,9 +14,13 @@
     >
   </button>
 
-  <mat-menu #menu="matMenu">
+  <mat-menu #menu="matMenu" xPosition="before">
     <nav mat-menu-item>
-      <mat-icon>star</mat-icon>
+      <mat-label class="center-mat-label name">{{ name }}</mat-label>
+    </nav>
+
+    <nav mat-menu-item>
+      <mat-icon>catching_pokemon</mat-icon>
       <mat-label>Minha Conta</mat-label>
     </nav>
 

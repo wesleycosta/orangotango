@@ -24,6 +24,10 @@ export class NavbarComponent {
     this.expandedEvent.emit(this.isExpanded);
   }
 
+  get name(): string {
+    return this.localStorageService.getName();
+  }
+
   logoff(): void {
     this.localStorageService.clear();
     this.router.navigate(['/account/login']);

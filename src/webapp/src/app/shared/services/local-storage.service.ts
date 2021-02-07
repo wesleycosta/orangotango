@@ -12,7 +12,7 @@ export class LocalStorageService {
 
   private getData(): string {
     const data = localStorage.getItem('orangotango.user');
-    return data ? '';
+    return data ?? '';
   }
 
   public getToken(): string | null {

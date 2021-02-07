@@ -8,16 +8,17 @@ import { LoginEmailComponent } from './login/login-email/login-email.component';
 import { LoginPasswordComponent } from './login/login-password/login-password.component';
 import { MaterialModule } from '../../shared/layout/material/material.module';
 import { AuthService } from './services/auth.service';
+import { ComponentsModule } from 'src/app/shared/components/components.module';
 
 @NgModule({
   declarations: [LoginComponent, LoginEmailComponent, LoginPasswordComponent],
   imports: [
-    CommonModule,
     RouterModule,
     AccountRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
+    ComponentsModule
   ],
   providers: [AuthService],
 })

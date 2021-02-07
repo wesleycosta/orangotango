@@ -1,11 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DrawerRailModule } from 'angular-material-rail-drawer';
 import { LayoutModule } from './shared/layout/layout.module';
+import { ComponentsModule } from './shared/components/components.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -14,9 +15,11 @@ import { LayoutModule } from './shared/layout/layout.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     DrawerRailModule,
-    LayoutModule
+    LayoutModule,
+    ComponentsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}

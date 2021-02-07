@@ -19,6 +19,7 @@ namespace Orangotango.Core.DomainObjects
         protected Entity()
         {
             Id = Guid.NewGuid();
+            Active = true;
         }
 
         #region EVENTS

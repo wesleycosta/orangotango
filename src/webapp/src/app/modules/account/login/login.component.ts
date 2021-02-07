@@ -3,17 +3,14 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
-  public isViewEmail = true;
+export class LoginComponent {
+  public emailIsVisible = true;
+  email!: string;
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-  public submitEmailEvent(event: boolean) {
-    this.isViewEmail = !event;
+  public emailEvent(email: string) {
+    this.email = email;
+    this.emailIsVisible = false;
   }
 }

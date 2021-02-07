@@ -9,6 +9,5 @@ namespace Orangotango.Business.Intefaces.Repositories
         Task<bool> HasEmail(Email email);
         Task<User> GetUserByEmail(Email email);
         Task<User> GetByEmailAndPassword(Email email, string password);
-        Task<bool> ExistsWithSameEmail(Email email);
     }
 }

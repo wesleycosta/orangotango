@@ -3,6 +3,7 @@ using Orangotango.Business.Intefaces.Infrastructure;
 using Orangotango.Business.Intefaces.Repositories;
 using Orangotango.Core.Data;
 using Orangotango.Core.DomainObjects;
+using Orangotango.Data.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -67,8 +68,7 @@ namespace Orangotango.Data.Repository
 
         public virtual async Task<TEntity> GetById(Guid id)
         {
-            var data = await DbSet.FindAsync(Filter.Eq("Id", id));
-            return await data.FirstOrDefaultAsync();
+            return await DbSet.FirstOrDefaultAsync(Filter.Where(entity => entity.Id == id));
         }
 
         public virtual async Task<List<TEntity>> GetAll()

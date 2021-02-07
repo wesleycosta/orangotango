@@ -36,7 +36,7 @@ namespace Orangotango.Business.Application.Commands.Users
 
         private async Task<bool> BusinessIsValid(RegisterUserInputModel inputModel)
         {
-            if (await _userRepository.ExistsWithSameEmail(new Email(inputModel.EmailAddress)))
+            if (await _userRepository.HasEmail(new Email(inputModel.EmailAddress)))
             {
                 NotifyError("Este e-mail já está em uso");
                 return false;

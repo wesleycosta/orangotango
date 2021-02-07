@@ -20,7 +20,7 @@ namespace Orangotango.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SignIn(SignInUserInputModel input)
+        public async Task<IActionResult> SignIn([FromBody] SignInUserInputModel input)
         {
             var command = new SignInUserCommand { Input = input };
             return CustomResponse(await _mediator.SendCommand(command));

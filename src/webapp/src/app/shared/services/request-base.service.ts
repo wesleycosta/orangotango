@@ -1,13 +1,9 @@
-import {
-  HttpHeaders,
-  HttpErrorResponse,
-  HttpRequest,
-} from '@angular/common/http';
-import { NEVER, throwError } from 'rxjs';
+import { HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { LocalStorageService } from './local-storage.service';
 
-export abstract class BaseService {
+export abstract class RequestBaseService {
   protected api: string = environment.api;
   protected localStorageService: LocalStorageService = new LocalStorageService();
 
@@ -33,7 +29,7 @@ export abstract class BaseService {
   }
 
   protected extractData(response: any) {
-    return response.data || {};
+    return response;
   }
 
   protected serviceError(response: Response | any) {

@@ -1,8 +1,8 @@
-<form class="login-input" (ngSubmit)="submit()">
+<form [formGroup]="form" class="login-input" (ngSubmit)="submit()">
   <div class="fields">
     <mat-form-field appearance="outline" class="row-separator">
       <mat-label>Informe seu e-mail</mat-label>
-      <input matInput autocomplete="off" placeholder="Informe seu e-mail" />
+      <input formControlName="email" matInput autocomplete="off" placeholder="Informe seu e-mail" />
       <mat-icon matSuffix>email</mat-icon>
     </mat-form-field>
   </div>

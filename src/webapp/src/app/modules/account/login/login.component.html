@@ -5,7 +5,10 @@
       <h1>Orangotango</h1>
     </div>
 
-    <app-login-email *ngIf="isViewEmail" (submitEvent)="submitEmailEvent($event)"></app-login-email>
-    <app-login-password *ngIf="!isViewEmail"></app-login-password>
+    <app-login-email *ngIf="emailIsVisible" (submitEvent)="emailEvent($event)">
+    </app-login-email>
+
+    <app-login-password [email]="email" *ngIf="!emailIsVisible">
+    </app-login-password>
   </div>
 </div>

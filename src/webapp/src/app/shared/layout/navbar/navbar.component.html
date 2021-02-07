@@ -6,11 +6,12 @@
   <span class="title no-selected">Orangotango</span>
   <span class="spacer"></span>
 
-
   <app-notifications></app-notifications>
 
   <button mat-icon-button>
-    <mat-icon matTooltip="Opções" [matMenuTriggerFor]="menu">more_vert</mat-icon>
+    <mat-icon matTooltip="Opções" [matMenuTriggerFor]="menu"
+      >more_vert</mat-icon
+    >
   </button>
 
   <mat-menu #menu="matMenu">
@@ -21,7 +22,7 @@
 
     <mat-divider></mat-divider>
 
-    <nav mat-menu-item [routerLink]="['account/login']">
+    <nav mat-menu-item (click)="logoff()">
       <mat-icon>login</mat-icon>
       <mat-label>Sair</mat-label>
     </nav>

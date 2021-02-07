@@ -1,17 +1,29 @@
-import { UserAuthentication } from '../models/user';
+import { Injectable } from '@angular/core';
+import { UserAuthenticated } from '../models/user-authenticated';
 
+@Injectable()
 export class LocalStorageService {
-  public getUser(): UserAuthentication | null {
+  private key: string = 'orangotango.user';
+
+  public getName(): string {
+    return this.getUser()?.name ?? '';
+  }
+
+  public getEmail(): string {
+    return this.getUser()?.email ?? '';
+  }
+
+  public getUser(): UserAuthenticated | null {
     if (!this.hasData()) {
       return null;
     }
 
-    const user: UserAuthentication = JSON.parse(this.getData());
+    const user: UserAuthenticated = JSON.parse(this.getData());
     return user;
   }
 
   private getData(): string {
-    const data = localStorage.getItem('orangotango.user');
+    const data = localStorage.getItem(this.key);
     return data ?? '';
   }
 
@@ -21,6 +33,14 @@ export class LocalStorageService {
   }
 
   public hasData(): boolean {
-    return !!localStorage.getItem('orangotango.user');
+    return !!localStorage.getItem(this.key);
+  }
+
+  public save(userAuthenticated: UserAuthenticated): void {
+    localStorage.setItem(this.key, JSON.stringify(userAuthenticated));
+  }
+
+  public clear(): void {
+    localStorage.clear();
   }
 }

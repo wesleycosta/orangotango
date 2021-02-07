@@ -17,10 +17,9 @@ namespace Orangotango.Tests.Infrastructure
                         config.AddMaps(typeof(AutoMapperProfile));
                     });
 
-
-                    IMapper mapper = mappingConfig.CreateMapper();
-                    _mapper = mapper;
+                    _mapper = mappingConfig.CreateMapper();
                 }
+
                 return _mapper;
             }
         }

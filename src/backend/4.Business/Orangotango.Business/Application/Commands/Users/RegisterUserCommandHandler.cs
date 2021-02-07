@@ -29,7 +29,7 @@ namespace Orangotango.Business.Application.Commands.Users
             if (!await BusinessIsValid(message.Input))
                 return Response();
 
-            return Response(AddUserAndSaveData(message));
+            return Response(await AddUserAndSaveData(message));
         }
 
         private async Task<ValidationResult> AddUserAndSaveData(RegisterUserCommand message)

@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using AutoMapper;
+using MediatR;
 using Orangotango.Business.Application.Inputs;
 using Orangotango.Business.Intefaces.Infrastructure;
 using Orangotango.Business.Intefaces.Repositories;
@@ -15,12 +16,15 @@ namespace Orangotango.Business.Application.Commands.Users
     {
         private readonly IUserRepository _userRepository;
         private readonly IJwtAuthentication _jwtAuthentication;
+        private readonly IMapper _mapper;
 
         public SignInUserCommandHandler(IUserRepository userRepository,
-                                        IJwtAuthentication jwtAuthentication)
+                                        IJwtAuthentication jwtAuthentication,
+                                        IMapper mapper)
         {
             _userRepository = userRepository;
             _jwtAuthentication = jwtAuthentication;
+            _mapper = mapper;
         }
 
         public async Task<CommandHandlerResult> Handle(SignInUserCommand message, CancellationToken cancellationToken)
@@ -31,7 +35,7 @@ namespace Orangotango.Business.Application.Commands.Users
             if (!await BusinessIsValid(message))
                 return Response();
 
-            return Response(GenerateToken(message));
+            return Response(await GenerateToken(message));
         }
 
         private async Task<bool> BusinessIsValid(SignInUserCommand message)
@@ -49,7 +53,8 @@ namespace Orangotango.Business.Application.Commands.Users
         private async Task<UserAuthResponseViewModel> GenerateToken(SignInUserCommand message)
         {
             var user = await GetUserByCredential(message.Input);
-            var token = _jwtAuthentication.GenerateToken(ToUserAuthViewModel(user));
+            var userAuthViewModel = _mapper.Map<UserAuthViewModel>(user);
+            var token = _jwtAuthentication.GenerateToken(userAuthViewModel);
 
             return new UserAuthResponseViewModel
             {
@@ -57,15 +62,6 @@ namespace Orangotango.Business.Application.Commands.Users
                 Name = user.Name,
                 Email = user.Email.Address,
                 Token = token
-            };
-        }
-
-        private static UserAuthViewModel ToUserAuthViewModel(User user)
-        {
-            return new UserAuthViewModel
-            {
-                Id = user.Id,
-                Email = user.Email.Address
             };
         }
 

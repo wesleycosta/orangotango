@@ -84,8 +84,6 @@ export class LoginPasswordComponent implements OnInit {
     const userModel = this.getModel(password);
     this.authService.signIn(userModel).subscribe(
       (response) => {
-        console.log(response);
-        debugger;
         this.loading = false;
         if (!response.success) {
           this.notificationService.error('A senha é inválida');

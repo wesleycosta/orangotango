@@ -28,26 +28,45 @@ namespace Orangotango.Business.Application.Commands.Users
             if (!message.IsValid())
                 return Response(message);
 
+            if (!await BusinessIsValid(message))
+                return Response();
+
+            return Response(GenerateToken(message));
+        }
+
+        private async Task<bool> BusinessIsValid(SignInUserCommand message)
+        {
             var user = await GetUserByCredential(message.Input);
             if (user == null)
             {
                 NotifyError("E-mail ou senha inválido");
-                return Response();
+                return false;
             }
 
-            var token = _jwtAuthentication.GenerateToken(new UserAuthViewModel
-            {
-                Id = user.Id,
-                Email = user.Email.Address
-            });
+            return true;
+        }
 
-            return Response(new UserAuthResponseViewModel
+        private async Task<UserAuthResponseViewModel> GenerateToken(SignInUserCommand message)
+        {
+            var user = await GetUserByCredential(message.Input);
+            var token = _jwtAuthentication.GenerateToken(ToUserAuthViewModel(user));
+
+            return new UserAuthResponseViewModel
             {
                 Id = user.Id,
                 Name = user.Name,
                 Email = user.Email.Address,
                 Token = token
-            });
+            };
+        }
+
+        private static UserAuthViewModel ToUserAuthViewModel(User user)
+        {
+            return new UserAuthViewModel
+            {
+                Id = user.Id,
+                Email = user.Email.Address
+            };
         }
 
         private async Task<User> GetUserByCredential(SignInUserInputModel input)

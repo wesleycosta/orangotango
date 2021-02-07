@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using FluentValidation.Results;
+using MediatR;
 using Orangotango.Business.Application.Events.Users;
 using Orangotango.Business.Application.Inputs.Users;
 using Orangotango.Business.Intefaces.Repositories;
@@ -28,10 +29,15 @@ namespace Orangotango.Business.Application.Commands.Users
             if (!await BusinessIsValid(message.Input))
                 return Response();
 
+            return Response(AddUserAndSaveData(message));
+        }
+
+        private async Task<ValidationResult> AddUserAndSaveData(RegisterUserCommand message)
+        {
             var user = AddUser(message.Input);
             SendFirstAccessEmailEvent(user);
 
-            return Response(await SaveData(_userRepository.UnitOfWork));
+            return await SaveData(_userRepository.UnitOfWork);
         }
 
         private async Task<bool> BusinessIsValid(RegisterUserInputModel inputModel)

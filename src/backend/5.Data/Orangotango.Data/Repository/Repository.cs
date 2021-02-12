@@ -82,6 +82,7 @@ namespace Orangotango.Data.Repository
         public void Dispose()
         {
             Context?.Dispose();
+            GC.SuppressFinalize(this);
         }
     }
 }

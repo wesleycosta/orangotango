@@ -1,6 +1,7 @@
 ﻿using Orangotango.Business.Intefaces.Services;
 using Orangotango.Business.Models.Types;
 using Orangotango.Business.ViewModels.IntegrationEvents;
+using Orangotango.Business.ViewModels.SendEmail;
 using Orangotango.MessageBus;
 using System.Text.Json;
 
@@ -35,9 +36,23 @@ namespace Orangotango.Business.Services
         {
             _messageBus.Subscribe(async (string json) =>
            {
-               var integration = JsonSerializer.Deserialize<EmailIntegrationEventViewModel>(json);
-               await _emailService.Send(integration.Email, "Primeiro acesso", $"Olá <b>{integration.Name}</b>");
+               var integrationEvent = JsonSerializer.Deserialize<EmailIntegrationEventViewModel>(json);
+               var emailContent = GetEmailContent(integrationEvent);
+
+               await _emailService.Send(emailContent);
            });
+        }
+
+        private static EmailContentViewModel GetEmailContent(EmailIntegrationEventViewModel integrationEvent)
+        {
+            var emailContent = new EmailContentViewModel
+            {
+                Subject = "Primeiro acesso",
+                Body = $"Olá <b>{integrationEvent.Name}</b>"
+            };
+
+            emailContent.AddEmail(integrationEvent.Email);
+            return emailContent;
         }
     }
 }

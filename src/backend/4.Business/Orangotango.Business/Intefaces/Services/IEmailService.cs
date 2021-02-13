@@ -1,9 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using Orangotango.Business.ViewModels.SendEmail;
+using System.Threading.Tasks;
 
 namespace Orangotango.Business.Intefaces.Services
 {
     public interface IEmailService
     {
-        Task<bool> Send(string to, string subject, string body);
+        Task<bool> Send(EmailContentViewModel emailContent);
     }
 }

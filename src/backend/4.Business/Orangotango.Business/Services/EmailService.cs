@@ -1,5 +1,6 @@
 ﻿using Orangotango.Business.Configurations.Settings;
 using Orangotango.Business.Intefaces.Services;
+using Orangotango.Business.ViewModels.SendEmail;
 using Orangotango.Core.Services;
 using System;
 using System.Net;
@@ -17,13 +18,14 @@ namespace Orangotango.Business.Services
             _loggerService = loggerService;
         }
 
-        public async Task<bool> Send(string to, string subject, string body)
+        public async Task<bool> Send(EmailContentViewModel emailContent)
         {
             try
             {
-                var message = GetMailMessage(to, subject, body);
+                var message = GetMailMessage(emailContent);
                 var client = GetSmtpClient();
                 client.Send(message);
+
                 return true;
             }
             catch (Exception ex)
@@ -33,18 +35,27 @@ namespace Orangotango.Business.Services
             }
         }
 
-        private static MailMessage GetMailMessage(string toAddress, string subject, string body)
+        private static MailMessage GetMailMessage(EmailContentViewModel emailContent)
         {
             var settings = EmailSettings.GetSettings();
             var from = new MailAddress(settings.Email, settings.From);
-            var to = new MailAddress(toAddress);
 
-            return new MailMessage(from, to)
+            var mailMessage = new MailMessage
             {
-                Subject = subject,
-                Body = body,
+                From = from,
+                Subject = emailContent.Subject,
+                Body = emailContent.Body,
                 IsBodyHtml = true
             };
+
+            AddToEmailsAddress(mailMessage, emailContent);
+
+            return mailMessage;
+        }
+
+        private static void AddToEmailsAddress(MailMessage mailMessage, EmailContentViewModel emailContent)
+        {
+            emailContent?.To?.ForEach(mail => mailMessage.To.Add(mail));
         }
 
         private static SmtpClient GetSmtpClient()

@@ -28,6 +28,7 @@ namespace Orangotango.Data.Repository
         public virtual void Add(TEntity entity)
         {
             entity.Created = DateTime.UtcNow;
+            entity.LastUpdated = DateTime.UtcNow;
             Context.AddCommand(() => DbSet.InsertOneAsync(entity), entity);
         }
 

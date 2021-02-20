@@ -1,5 +1,4 @@
-﻿using FluentValidation.Results;
-using MediatR;
+﻿using MediatR;
 using Orangotango.Business.Application.Events.Users;
 using Orangotango.Business.Application.Inputs.Users;
 using Orangotango.Business.Intefaces.Repositories;
@@ -31,15 +30,6 @@ namespace Orangotango.Business.Application.Commands.Users
 
             return Response(await AddUserAndSaveData(message));
         }
-
-        private async Task<ValidationResult> AddUserAndSaveData(RegisterUserCommand message)
-        {
-            var user = AddUser(message.Input);
-            SendFirstAccessEmailEvent(user);
-
-            return await SaveData(_userRepository.UnitOfWork);
-        }
-
         private async Task<bool> BusinessIsValid(RegisterUserInputModel inputModel)
         {
             if (await _userRepository.HasEmail(new Email(inputModel.EmailAddress)))
@@ -49,6 +39,14 @@ namespace Orangotango.Business.Application.Commands.Users
             }
 
             return true;
+        }
+
+        private async Task<CommandHandlerResult> AddUserAndSaveData(RegisterUserCommand message)
+        {
+            var user = AddUser(message.Input);
+            SendFirstAccessEmailEvent(user);
+
+            return await SaveData(_userRepository.UnitOfWork);
         }
 
         private User AddUser(RegisterUserInputModel inputModel)

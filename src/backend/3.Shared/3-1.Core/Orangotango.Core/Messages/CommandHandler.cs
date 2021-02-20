@@ -18,12 +18,24 @@ namespace Orangotango.Core.Messages
             ValidationResult.Errors.Add(new ValidationFailure(string.Empty, message));
         }
 
-        public async Task<ValidationResult> SaveData(IUnitOfWork uow)
+        public async Task<CommandHandlerResult> SaveData(IUnitOfWork unitOfWork)
         {
-            if (!await uow.Commit())
-                NotifyError("Houve um erro ao persistir os dados");
+            return await SaveData(unitOfWork, null);
+        }
 
-            return ValidationResult;
+        public async Task<CommandHandlerResult> SaveData(IUnitOfWork unitOfWork, object data)
+        {
+            if (!await unitOfWork.Commit())
+            {
+                NotifyError("Houve um erro ao persistir os dados");
+                data = null;
+            }
+
+            return new CommandHandlerResult
+            {
+                ValidationResult = ValidationResult,
+                Data = data
+            };
         }
 
         public CommandHandlerResult Response()
@@ -59,6 +71,11 @@ namespace Orangotango.Core.Messages
                 ValidationResult = ValidationResult,
                 Data = data
             };
+        }
+
+        public static CommandHandlerResult Response(CommandHandlerResult data)
+        {
+            return data;
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Text.Json;
 
 namespace Orangotango.DependencyInjection.Environments
 {
-    public class EnvironmentReader
+    public static class EnvironmentReader
     {
         public static readonly string Folder = "Environments";
         public static readonly string FileName = "appsettings.json";

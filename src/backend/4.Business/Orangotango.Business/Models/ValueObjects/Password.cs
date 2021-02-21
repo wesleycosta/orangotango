@@ -9,6 +9,7 @@ namespace Orangotango.Business.Models.ValueObjects
     public class Password
     {
         public static readonly byte MinLength = 6;
+        public static readonly byte MaxLength = 20;
         public string Hash { get; private set; }
         public DateTime Created { get; private set; }
 
@@ -41,7 +42,7 @@ namespace Orangotango.Business.Models.ValueObjects
 
         public static bool IsValid(string value)
         {
-            if (string.IsNullOrEmpty(value) || value.Length < MinLength)
+            if (string.IsNullOrEmpty(value) || value.Length < MinLength || value.Length > MaxLength)
                 return false;
 
             return Regex.IsMatch(value, @"(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$");

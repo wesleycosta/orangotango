@@ -5,8 +5,8 @@ namespace Orangotango.Business.Models.ValueObjects
 {
     public class Email
     {
-        public static readonly byte MaxLength = 254;
         public static readonly byte MinLength = 5;
+        public static readonly byte MaxLength = 254;
         public string Address { get; private set; }
 
         public Email(string emailAddress)

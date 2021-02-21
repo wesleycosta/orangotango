@@ -5,7 +5,7 @@ using Orangotango.Business.ViewModels.SendEmail;
 using Orangotango.MessageBus;
 using System.Text.Json;
 
-namespace Orangotango.Business.Services
+namespace Orangotango.Business.Application.Events.Users
 {
     public class EmailIntegrationHandler : IEmailIntegrationHandler
     {
@@ -34,7 +34,7 @@ namespace Orangotango.Business.Services
 
         public void Execute()
         {
-            _messageBus.Subscribe(async (string json) =>
+            _messageBus.Subscribe(async (json) =>
            {
                var integrationEvent = JsonSerializer.Deserialize<EmailIntegrationEventViewModel>(json);
                var emailContent = GetEmailContent(integrationEvent);

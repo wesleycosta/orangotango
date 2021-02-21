@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Orangotango.Business.Application.Events.Users;
 using Orangotango.Business.Intefaces.Services;
 using Orangotango.Business.Services;
 using Orangotango.Core.Services;

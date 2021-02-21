@@ -1,4 +1,4 @@
-﻿namespace Orangotango.Business.Configurations.Settings
+﻿namespace Orangotango.Core.Settings
 {
     public class EmailSettings
     {

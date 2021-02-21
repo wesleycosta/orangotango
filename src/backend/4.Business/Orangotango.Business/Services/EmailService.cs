@@ -1,7 +1,7 @@
-﻿using Orangotango.Business.Configurations.Settings;
-using Orangotango.Business.Intefaces.Services;
+﻿using Orangotango.Business.Intefaces.Services;
 using Orangotango.Business.ViewModels.SendEmail;
 using Orangotango.Core.Services;
+using Orangotango.Core.Settings;
 using System;
 using System.Net;
 using System.Net.Mail;

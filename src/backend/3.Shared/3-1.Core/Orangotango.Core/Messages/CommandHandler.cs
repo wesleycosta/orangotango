@@ -1,6 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using FluentValidation.Results;
 using Orangotango.Core.Data;
+using Orangotango.Core.DomainObjects;
 
 namespace Orangotango.Core.Messages
 {
@@ -76,6 +78,11 @@ namespace Orangotango.Core.Messages
         public static CommandHandlerResult Response(CommandHandlerResult data)
         {
             return data;
+        }
+
+        public static void EntryNotFoundException()
+        {
+            throw new DomainException("Registro não encontrado na base de dados");
         }
     }
 }

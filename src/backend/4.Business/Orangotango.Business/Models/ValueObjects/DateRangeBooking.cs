@@ -7,24 +7,24 @@ namespace Orangotango.Business.Models.ValueObjects
     {
         public static readonly DateTime MinValue = new DateTime(1900, 1, 1);
 
-        public DateTime CheckInDate { get; private set; }
-        public DateTime CheckOutDate { get; private set; }
+        public DateTime CheckIn { get; private set; }
+        public DateTime CheckOut { get; private set; }
 
-        public DateRangeBooking(DateTime checkInDate, DateTime checkOutDate)
+        public DateRangeBooking(DateTime checkIn, DateTime checkOut)
         {
-            if (!IsValidDate(checkInDate))
+            if (!IsValidDate(checkIn))
                 throw new DomainException("CheckInDate is invalid");
 
-            if (!IsValidDate(checkOutDate))
+            if (!IsValidDate(checkOut))
                 throw new DomainException("CheckOutDate is invalid");
 
-            CheckInDate = checkInDate;
-            CheckOutDate = checkOutDate;
+            CheckIn = checkIn;
+            CheckOut = checkOut;
         }
 
-        public static bool IsValid(DateTime checkInDate, DateTime checkOutDate)
+        public static bool IsValid(DateTime checkIn, DateTime checkOut)
         {
-            return IsValidDate(checkInDate) && IsValidDate(checkOutDate);
+            return IsValidDate(checkIn) && IsValidDate(checkOut);
         }
 
         private static bool IsValidDate(DateTime date)
@@ -37,17 +37,17 @@ namespace Orangotango.Business.Models.ValueObjects
             if (obj is not DateRangeBooking date)
                 return false;
 
-            return CheckInDate.Date.Equals(date.CheckInDate.Date) && CheckOutDate.Date.Equals(date.CheckOutDate.Date);
+            return CheckIn.Date.Equals(date.CheckIn.Date) && CheckOut.Date.Equals(date.CheckOut.Date);
         }
 
         public override int GetHashCode()
         {
-            return GetType().GetHashCode() * 907 + CheckInDate.GetHashCode();
+            return GetType().GetHashCode() * 907 + CheckIn.GetHashCode() + CheckOut.GetHashCode();
         }
 
         public override string ToString()
         {
-            return $"{CheckInDate} of {CheckOutDate}";
+            return $"{CheckIn.Date} of {CheckOut.Date}";
         }
     }
 }

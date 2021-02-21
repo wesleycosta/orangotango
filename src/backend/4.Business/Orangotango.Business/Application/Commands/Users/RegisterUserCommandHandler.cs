@@ -20,15 +20,15 @@ namespace Orangotango.Business.Application.Commands.Users
             _userRepository = userRepository;
         }
 
-        public async Task<CommandHandlerResult> Handle(RegisterUserCommand message, CancellationToken cancellationToken)
+        public async Task<CommandHandlerResult> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
         {
-            if (!message.IsValid())
-                return Response(message);
+            if (!request.IsValid())
+                return Response(request);
 
-            if (!await BusinessIsValid(message.Input))
+            if (!await BusinessIsValid(request.Input))
                 return Response();
 
-            return Response(await AddUserAndSaveData(message));
+            return Response(await AddUserAndSaveData(request));
         }
         private async Task<bool> BusinessIsValid(RegisterUserInputModel inputModel)
         {
@@ -41,20 +41,21 @@ namespace Orangotango.Business.Application.Commands.Users
             return true;
         }
 
-        private async Task<CommandHandlerResult> AddUserAndSaveData(RegisterUserCommand message)
+        private async Task<CommandHandlerResult> AddUserAndSaveData(RegisterUserCommand request)
         {
-            var user = AddUser(message.Input);
+            var user = AddUser(request);
             SendFirstAccessEmailEvent(user);
 
             return await SaveData(_userRepository.UnitOfWork);
         }
 
-        private User AddUser(RegisterUserInputModel inputModel)
+        private User AddUser(RegisterUserCommand request)
         {
             var user = new User
             {
-                Name = inputModel.Name,
-                Email = new Email(inputModel.EmailAddress)
+                Id = request.AggregateId,
+                Name = request.Input.Name,
+                Email = new Email(request.Input.EmailAddress)
             };
 
             _userRepository.Add(user);

@@ -5,31 +5,31 @@ using System;
 
 namespace Orangotango.Business.Application.Commands.RoomTypes
 {
-    public class RegisterRoomTypeCommand : Command
+    public class UpdateRoomTypeCommand : Command
     {
-        public RegisterRoomTypeInputModel Input { get; private set; }
+        public UpdateRoomTypeInputModel Input { get; private set; }
 
-        public RegisterRoomTypeCommand(RegisterRoomTypeInputModel input)
+        public UpdateRoomTypeCommand(UpdateRoomTypeInputModel input)
         {
-            AggregateId = Guid.NewGuid();
+            AggregateId = input.Id;
             Input = input;
         }
 
         public override bool IsValid()
         {
-            ValidationResult = new RegisterRoomTypeValidation().Validate(this);
+            ValidationResult = new UpdateRoomTypeValidation().Validate(this);
             return ValidationResult.IsValid;
         }
 
-        public class RegisterRoomTypeValidation : AbstractValidator<RegisterRoomTypeCommand>
+        public class UpdateRoomTypeValidation : AbstractValidator<UpdateRoomTypeCommand>
         {
-            public RegisterRoomTypeValidation()
+            public UpdateRoomTypeValidation()
             {
-                RuleFor(registerRoomTypeCommand => registerRoomTypeCommand.AggregateId)
+                RuleFor(updateRoomTypeCommand => updateRoomTypeCommand.AggregateId)
                     .NotEqual(Guid.Empty)
                     .WithMessage("Id do usuário inválido");
 
-                RuleFor(registerRoomTypeCommand => registerRoomTypeCommand.Input.Name)
+                RuleFor(updateRoomTypeCommand => updateRoomTypeCommand.Input.Name)
                     .NotEmpty()
                     .WithMessage("O nome da categoria do quarto não foi informado");
             }

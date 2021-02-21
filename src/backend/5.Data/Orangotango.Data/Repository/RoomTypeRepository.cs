@@ -2,6 +2,7 @@
 using Orangotango.Business.Intefaces.Repositories;
 using Orangotango.Business.Models;
 using Orangotango.Data.Extensions;
+using System;
 using System.Threading.Tasks;
 
 namespace Orangotango.Data.Repository
@@ -15,6 +16,11 @@ namespace Orangotango.Data.Repository
         public async Task<bool> HasName(string name)
         {
             return await DbSet.AnyAsync(Filter.Where(roomType => roomType.Name.Equals(name) && roomType.Active));
+        }
+
+        public async Task<bool> HasNameAndHasTheRightId(string name, Guid id)
+        {
+            return await DbSet.AnyAsync(Filter.Where(roomType => roomType.Name.Equals(name) && roomType.Active && roomType.Id != id));
         }
     }
 }

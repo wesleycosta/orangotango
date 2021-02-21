@@ -14,6 +14,7 @@ namespace Orangotango.DependencyInjection.ServiceCollectionConfig
             services.AddScoped<IRequestHandler<SignInUserCommand, CommandHandlerResult>, SignInUserCommandHandler>();
 
             services.AddScoped<IRequestHandler<RegisterRoomTypeCommand, CommandHandlerResult>, RegisterRoomTypeCommandHandler>();
+            services.AddScoped<IRequestHandler<UpdateRoomTypeCommand, CommandHandlerResult>, UpdateRoomTypeCommandHandler>();
 
             return services;
         }

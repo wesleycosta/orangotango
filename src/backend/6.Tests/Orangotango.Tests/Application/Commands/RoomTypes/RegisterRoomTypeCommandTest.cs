@@ -61,7 +61,7 @@ namespace Orangotango.Tests.Application.Commands.RoomTypes
             roomTypeRepository.Setup(respository => respository.HasName(It.Is<string>(roomType => !roomType.Equals(roomTypeMock.Name))))
                                                                .ReturnsAsync(false);
 
-            roomTypeRepository.Setup(o => o.UnitOfWork).Returns(new UnitOfWorkFake());
+            roomTypeRepository.Setup(respository => respository.UnitOfWork).Returns(new UnitOfWorkFake());
 
             return roomTypeRepository;
         }

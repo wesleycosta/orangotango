@@ -55,7 +55,7 @@ namespace Orangotango.Business.Application.Commands.RoomTypes
         {
             var roomType = new RoomType
             {
-                Id = request.Id,
+                Id = request.AggregateId,
                 Name = request.Input.Name
             };
 

@@ -8,13 +8,11 @@ namespace Orangotango.Business.Application.Commands.Users
 {
     public class RegisterUserCommand : Command
     {
-        public Guid Id { get; set; }
         public RegisterUserInputModel Input { get; private set; }
 
         public RegisterUserCommand(RegisterUserInputModel input)
         {
-            Id = Guid.NewGuid();
-            AggregateId = Id;
+            AggregateId = Guid.NewGuid();
             Input = input;
         }
 
@@ -28,15 +26,15 @@ namespace Orangotango.Business.Application.Commands.Users
         {
             public RegisterUserValidation()
             {
-                RuleFor(user => user.Id)
+                RuleFor(registerUserCommand => registerUserCommand.AggregateId)
                     .NotEqual(Guid.Empty)
                     .WithMessage("Id do usuário inválido");
 
-                RuleFor(user => user.Input.Name)
+                RuleFor(registerUserCommand => registerUserCommand.Input.Name)
                     .NotEmpty()
                     .WithMessage("O nome do usuário não foi informado");
 
-                RuleFor(user => user.Input.EmailAddress)
+                RuleFor(registerUserCommand => registerUserCommand.Input.EmailAddress)
                     .Must(email => Email.IsValid(email))
                     .WithMessage("O e-mail informado é inválido");
             }

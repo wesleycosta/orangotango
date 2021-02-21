@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Orangotango.MessageBus.RabbitMQ
 {
-    public static class RabbitMQExtensions
+    internal static class RabbitMQExtensions
     {
         public static IModel QueueDeclare(this IModel model, QueueSettings queueSettings)
         {

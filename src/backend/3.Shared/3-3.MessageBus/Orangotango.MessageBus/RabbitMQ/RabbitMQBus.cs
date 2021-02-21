@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Orangotango.MessageBus.RabbitMQ
 {
-    public class RabbitMQBus : IMessageBus
+    internal class RabbitMQBus : IMessageBus
     {
         private readonly ILoggerService _loggerService;
         private BusSettings _busSettings;

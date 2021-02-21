@@ -49,7 +49,7 @@ namespace Orangotango.MessageBus.RabbitMQ
                          .Or<AuthenticationFailureException>()
                          .Or<PossibleAuthenticationFailureException>()
                          .Or<BrokerUnreachableException>()
-                         .WaitAndRetry(retryCount: 3, sleepDurationProvider: retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)));
+                         .WaitAndRetryForever(sleepDurationProvider: retryAttempt => TimeSpan.FromSeconds(15));
         }
 
         public void Publish<T>(T integrationEvent) where T : IntegrationEvent

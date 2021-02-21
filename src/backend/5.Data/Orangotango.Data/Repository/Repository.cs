@@ -23,8 +23,6 @@ namespace Orangotango.Data.Repository
             DbSet = Context.GetCollection<TEntity>(typeof(TEntity).Name);
         }
 
-        #region INSERTS AND UPDATEDS
-
         public virtual void Add(TEntity entity)
         {
             entity.Created = DateTime.UtcNow;
@@ -63,10 +61,6 @@ namespace Orangotango.Data.Repository
             return await Context.Commit();
         }
 
-        #endregion
-
-        #region QUERIES
-
         public virtual async Task<TEntity> GetById(Guid id)
         {
             return await DbSet.FirstOrDefaultAsync(Filter.Where(entity => entity.Id == id));
@@ -77,8 +71,6 @@ namespace Orangotango.Data.Repository
             var all = await DbSet.FindAsync(Filter.Empty);
             return await all.ToListAsync();
         }
-
-        #endregion
 
         public void Dispose()
         {

@@ -1,7 +1,7 @@
 ﻿using Orangotango.Business.Intefaces.Infrastructure;
 using Orangotango.Business.ViewModels.Users;
 
-namespace Orangotango.Tests.Fakes
+namespace Orangotango.Tests.Infrastructure.Fakes
 {
     public class AutenticationFake : IJwtAuthentication
     {

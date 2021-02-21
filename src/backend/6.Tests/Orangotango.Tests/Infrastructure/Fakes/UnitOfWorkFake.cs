@@ -1,7 +1,7 @@
 ﻿using Orangotango.Core.Data;
 using System.Threading.Tasks;
 
-namespace Orangotango.Tests.Fakes
+namespace Orangotango.Tests.Infrastructure.Fakes
 {
     public class UnitOfWorkFake : IUnitOfWork
     {

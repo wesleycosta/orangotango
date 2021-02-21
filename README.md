@@ -18,7 +18,7 @@ Arquitetura construida com preocupações de separação de responsabilidades, s
 
 ## Diagrama de classes
 <p align="center">
-  <img src="https://raw.githubusercontent.com/wesleycosta/orangotango/master/docs/class%20diagram/class_diagram.png" />
+  <img src="https://github.com/wesleycosta/orangotango/blob/master/docs/diagram/diagram.png" />
 </p>
 
 ## Tecnologias utlizadas
@@ -48,8 +48,7 @@ Disponibilizamos imagens docker para criar os recursos da aplicação:
 - [MongoDB]
 - [RabbitMQ]
 - [Redis]
-- [Kibana]
-- [ElasticSearch]
+- [ELK]
 
 > **Requisito:** É necessário ter o docker instalado em seu sistema operacional
 

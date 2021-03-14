@@ -1,5 +1,5 @@
 <p align="center">
-  <img  height="256" src="https://github.com/wesleycosta/orangotango/blob/master/docs/design/oragotango_with_title.PNG" />
+  <img  height="256" src="./docs/design/oragotango_with_title.PNG" />
 </p>
 <p  align="center">Sistema para gerenciamento de reservas de hotéis e pousadas.</p>
 
@@ -16,9 +16,14 @@ Arquitetura construida com preocupações de separação de responsabilidades, s
 * Message Bus;
 * Repository.
 
+## Diagrama de Arquitetura do Software
+<p align="center">
+  <img src="./docs/diagram/software_architecture_and_design.PNG" />
+</p>
+
 ## Diagrama de classes
 <p align="center">
-  <img src="https://github.com/wesleycosta/orangotango/blob/master/docs/diagram/diagram.png" />
+  <img src="./docs/diagram/class_diagram.png" />
 </p>
 
 ## Tecnologias utlizadas
@@ -29,7 +34,7 @@ Arquitetura construida com preocupações de separação de responsabilidades, s
 * FluentValidator;
 * JWT;
 * MediatR;
-* MongoDB Driver (MongoDB.Bson e MongoDB.Driver);
+* MongoDB;
 * Moq;
 * NetDevPackBr;
 * NUnit;
@@ -38,8 +43,7 @@ Arquitetura construida com preocupações de separação de responsabilidades, s
 * Swagger;
 * Xunit;
 * Angular 11;
-* Angular Material;
-* Gridster2.
+* Angular Material.
 
 ## Ambiente de DEV
 #### Rodando o Back-End
@@ -48,7 +52,6 @@ Disponibilizamos imagens docker para criar os recursos da aplicação:
 - [MongoDB]
 - [RabbitMQ]
 - [Redis]
-- [ELK]
 
 > **Requisito:** É necessário ter o docker instalado em seu sistema operacional
 

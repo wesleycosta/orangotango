@@ -1,7 +1,7 @@
 <p align="center">
   <img  height="256" src="https://github.com/wesleycosta/orangotango/blob/master/docs/design/oragotango_with_title.PNG" />
 </p>
-<p  align="center">Sistema para gerenciamento de reservas de hotéis e pousadas.</p>
+<p  align="center">Sistema distribuido com uma arquitetura hexagonal para gerenciamento de reservas de hotéis e pousadas.</p>
 
 ## Arquitetura
 
@@ -25,11 +25,10 @@ Arquitetura construida com preocupações de separação de responsabilidades, s
 * .NET 5.0;
 * ASP.NET WebApi;
 * AutoMapper; 
-* ELK Stack;
 * FluentValidator;
 * JWT;
 * MediatR;
-* MongoDB Driver (MongoDB.Bson e MongoDB.Driver);
+* MongoDB;
 * Moq;
 * NetDevPackBr;
 * NUnit;
@@ -38,8 +37,7 @@ Arquitetura construida com preocupações de separação de responsabilidades, s
 * Swagger;
 * Xunit;
 * Angular 11;
-* Angular Material;
-* Gridster2.
+* Angular Material.
 
 ## Ambiente de DEV
 #### Rodando o Back-End
@@ -48,7 +46,6 @@ Disponibilizamos imagens docker para criar os recursos da aplicação:
 - [MongoDB]
 - [RabbitMQ]
 - [Redis]
-- [ELK]
 
 > **Requisito:** É necessário ter o docker instalado em seu sistema operacional
 

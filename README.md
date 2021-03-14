@@ -16,7 +16,7 @@ Arquitetura construida com preocupações de separação de responsabilidades, s
 * Message Bus;
 * Repository.
 
-## Diagrama de Arquitetura do Software
+## Arquitetura do Software
 <p align="center">
   <img src="./docs/diagram/software_architecture_and_design.PNG" />
 </p>

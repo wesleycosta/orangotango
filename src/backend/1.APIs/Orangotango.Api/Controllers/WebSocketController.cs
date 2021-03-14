@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Orangotango.Api.Infrastructure.Controllers;
-using Orangotango.Business.Hubs;
+using Orangotango.Business.WebSocket;
 using Orangotango.Core.Notifications;
 using System;
 using System.Threading.Tasks;

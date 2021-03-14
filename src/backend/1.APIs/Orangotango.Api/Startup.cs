@@ -2,13 +2,14 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Orangotango.Api.Infrastructure.Swagger;
-using Orangotango.Business.Hubs;
 using Orangotango.DependencyInjection.Infrastructure;
 using Orangotango.Api.Infrastructure.Authentication;
 using Orangotango.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Serilog;
 using Orangotango.Api.Infrastructure.Cors;
+using Orangotango.Api.WebSocket;
+using Orangotango.Business.WebSocket;
 
 namespace Orangotango.Api
 {
@@ -25,6 +26,7 @@ namespace Orangotango.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.ConfigureInfrastructureAndDependencyInjection()
+                    .AddHostedService<WebSocketWorker>()
                     .AddJwtInfrastructure(EnvironmentConfig.Builder());
 
             services.AddControllers();

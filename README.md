@@ -1,7 +1,7 @@
 <p align="center">
   <img  height="256" src="./docs/design/oragotango_with_title.PNG" />
 </p>
-<p  align="center">Sistema distribuido com uma arquitetura hexagonal para gerenciamento de reservas de hotéis e pousadas.</p>
+<p  align="center">Sistema distribuído com uma arquitetura hexagonal para gerenciamento de reservas de hotéis e pousadas.</p>
 
 ## Arquitetura
 
@@ -16,7 +16,7 @@ Arquitetura construida com preocupações de separação de responsabilidades, s
 * Message Bus;
 * Repository.
 
-## Diagrama de Arquitetura do Software
+## Arquitetura do Software
 <p align="center">
   <img src="./docs/diagram/software_architecture_and_design.PNG" />
 </p>

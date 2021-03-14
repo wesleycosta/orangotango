@@ -1,7 +1,7 @@
 <p align="center">
   <img  height="256" src="./docs/design/oragotango_with_title.PNG" />
 </p>
-<p  align="center">Sistema distribuido com uma arquitetura hexagonal para gerenciamento de reservas de hotéis e pousadas.</p>
+<p  align="center">Sistema distribuído com uma arquitetura hexagonal para gerenciamento de reservas de hotéis e pousadas.</p>
 
 ## Arquitetura
 

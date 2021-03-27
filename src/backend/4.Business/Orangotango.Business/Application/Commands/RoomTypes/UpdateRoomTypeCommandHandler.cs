@@ -27,7 +27,7 @@ namespace Orangotango.Business.Application.Commands.RoomTypes
             if (!request.IsValid())
                 return Response(request);
 
-            if (!await BusinessIsValid(request.Input))
+            if (!await BusinessIsValid(request.InputModel))
                 return Response();
 
             return Response(await AddRoomTypeAndSaveData(request));
@@ -37,7 +37,7 @@ namespace Orangotango.Business.Application.Commands.RoomTypes
         {
             if (await _roomTypeRepository.HasNameAndHasTheRightId(inputModel.Name, inputModel.Id))
             {
-                NotifyError($"Ja existe uma categoria cadastrada com o nome {inputModel.Name}");
+                NotifyError($"Já existe uma categoria cadastrada com o nome {inputModel.Name}");
                 return false;
             }
 
@@ -49,7 +49,7 @@ namespace Orangotango.Business.Application.Commands.RoomTypes
             var roomType = await UpdateRoomType(request);
             var viewModel = _mapper.Map<RoomTypeViewModel>(roomType);
 
-            return await SaveData(_roomTypeRepository.UnitOfWork, viewModel);
+            return await SaveData(unitOfWork: _roomTypeRepository.UnitOfWork, responseCommand: viewModel);
         }
 
         private async Task<RoomType> UpdateRoomType(UpdateRoomTypeCommand request)
@@ -66,7 +66,7 @@ namespace Orangotango.Business.Application.Commands.RoomTypes
             if (roomType == null)
                 EntryNotFoundException();
 
-            roomType.Name = request.Input.Name;
+            roomType.Name = request.InputModel.Name;
             return roomType;
         }
     }

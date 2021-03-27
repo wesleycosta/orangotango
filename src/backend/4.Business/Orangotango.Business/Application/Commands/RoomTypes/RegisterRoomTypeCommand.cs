@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using Orangotango.Business.Application.Inputs.RoomTypes;
+using Orangotango.Business.Helpers;
 using Orangotango.Core.Messages;
 using System;
 
@@ -7,12 +8,12 @@ namespace Orangotango.Business.Application.Commands.RoomTypes
 {
     public class RegisterRoomTypeCommand : Command
     {
-        public RegisterRoomTypeInputModel Input { get; private set; }
+        public RegisterRoomTypeInputModel InputModel { get; private set; }
 
-        public RegisterRoomTypeCommand(RegisterRoomTypeInputModel input)
+        public RegisterRoomTypeCommand(RegisterRoomTypeInputModel inputModel)
         {
             AggregateId = Guid.NewGuid();
-            Input = input;
+            InputModel = inputModel;
         }
 
         public override bool IsValid()
@@ -27,11 +28,11 @@ namespace Orangotango.Business.Application.Commands.RoomTypes
             {
                 RuleFor(registerRoomTypeCommand => registerRoomTypeCommand.AggregateId)
                     .NotEqual(Guid.Empty)
-                    .WithMessage("Id do usuário inválido");
+                    .WithMessage(ValidationMessageHelper.IdentifierIsInvalid());
 
-                RuleFor(registerRoomTypeCommand => registerRoomTypeCommand.Input.Name)
+                RuleFor(registerRoomTypeCommand => registerRoomTypeCommand.InputModel.Name)
                     .NotEmpty()
-                    .WithMessage("O nome da categoria do quarto não foi informado");
+                    .WithMessage(ValidationMessageHelper.NotInformed("nome da categoria do quarto"));
             }
         }
     }

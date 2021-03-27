@@ -5,6 +5,6 @@ namespace Orangotango.Business.Intefaces.Services
 {
     public interface IEmailService
     {
-        Task<bool> Send(EmailContentViewModel emailContent);
+        Task<bool> Send(EmailContentInputModel emailContent);
     }
 }

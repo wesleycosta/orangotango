@@ -10,7 +10,6 @@ namespace Orangotango.DependencyInjection.ServiceCollectionConfig
     {
         internal static IServiceCollection AddServices(this IServiceCollection services)
         {
-            services.AddScoped<IEmailService, EmailService>();
             services.AddScoped<IQueueFactory, QueueFactory>();
             services.AddScoped<IEmailIntegrationHandler, EmailIntegrationHandler>();
             services.AddScoped<ILoggerService, LoggerService>();

@@ -40,7 +40,7 @@ namespace Orangotango.Business.Application.Commands.Users
 
         private async Task<bool> BusinessIsValid(SignInUserCommand message)
         {
-            var user = await GetUserByCredential(message.Input);
+            var user = await GetUserByCredential(message.InputModel);
             if (user == null)
             {
                 NotifyError("E-mail ou senha inválido");
@@ -52,7 +52,7 @@ namespace Orangotango.Business.Application.Commands.Users
 
         private async Task<UserAuthResponseViewModel> GenerateToken(SignInUserCommand message)
         {
-            var user = await GetUserByCredential(message.Input);
+            var user = await GetUserByCredential(message.InputModel);
             var userAuthViewModel = _mapper.Map<UserAuthViewModel>(user);
             var token = _jwtAuthentication.GenerateToken(userAuthViewModel);
 

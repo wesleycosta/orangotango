@@ -43,9 +43,9 @@ namespace Orangotango.Business.Application.Events.Users
            });
         }
 
-        private static EmailContentViewModel GetEmailContent(EmailIntegrationEventViewModel integrationEvent)
+        private static EmailContentInputModel GetEmailContent(EmailIntegrationEventViewModel integrationEvent)
         {
-            var emailContent = new EmailContentViewModel
+            var emailContent = new EmailContentInputModel
             {
                 Subject = "Primeiro acesso",
                 Body = $"Olá <b>{integrationEvent.Name}</b>"

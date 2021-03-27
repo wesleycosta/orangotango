@@ -3,7 +3,7 @@ using Orangotango.Business.ViewModels.Users;
 
 namespace Orangotango.Tests.Infrastructure.Fakes
 {
-    public class AutenticationFake : IJwtAuthentication
+    public class AuthenticationFake : IJwtAuthentication
     {
         public string GenerateToken(UserAuthViewModel user)
         {

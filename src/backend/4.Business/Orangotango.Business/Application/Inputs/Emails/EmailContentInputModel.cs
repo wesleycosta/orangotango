@@ -2,13 +2,13 @@
 
 namespace Orangotango.Business.ViewModels.SendEmail
 {
-    public class EmailContentViewModel
+    public class EmailContentInputModel
     {
-        public List<string> To { get; set; }
         public string Subject { get; set; }
         public string Body { get; set; }
+        public List<string> To { get; set; }
 
-        public EmailContentViewModel()
+        public EmailContentInputModel()
         {
             To = new List<string>();
         }

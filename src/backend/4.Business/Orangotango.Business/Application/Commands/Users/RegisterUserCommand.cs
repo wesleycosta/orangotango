@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using Orangotango.Business.Application.Inputs.Users;
+using Orangotango.Business.Helpers;
 using Orangotango.Business.Models.ValueObjects;
 using Orangotango.Core.Messages;
 using System;
@@ -8,12 +9,12 @@ namespace Orangotango.Business.Application.Commands.Users
 {
     public class RegisterUserCommand : Command
     {
-        public RegisterUserInputModel Input { get; private set; }
+        public RegisterUserInputModel InputModel { get; private set; }
 
-        public RegisterUserCommand(RegisterUserInputModel input)
+        public RegisterUserCommand(RegisterUserInputModel inputModel)
         {
             AggregateId = Guid.NewGuid();
-            Input = input;
+            InputModel = inputModel;
         }
 
         public override bool IsValid()
@@ -28,15 +29,15 @@ namespace Orangotango.Business.Application.Commands.Users
             {
                 RuleFor(registerUserCommand => registerUserCommand.AggregateId)
                     .NotEqual(Guid.Empty)
-                    .WithMessage("Id do usuário inválido");
+                    .WithMessage(ValidationMessageHelper.IdentifierIsInvalid());
 
-                RuleFor(registerUserCommand => registerUserCommand.Input.Name)
+                RuleFor(registerUserCommand => registerUserCommand.InputModel.Name)
                     .NotEmpty()
-                    .WithMessage("O nome do usuário não foi informado");
+                    .WithMessage(ValidationMessageHelper.NotInformed("nome do usuário"));
 
-                RuleFor(registerUserCommand => registerUserCommand.Input.EmailAddress)
+                RuleFor(registerUserCommand => registerUserCommand.InputModel.EmailAddress)
                     .Must(email => Email.IsValid(email))
-                    .WithMessage("O e-mail informado é inválido");
+                    .WithMessage(ValidationMessageHelper.IsInvalid("email"));
             }
         }
     }

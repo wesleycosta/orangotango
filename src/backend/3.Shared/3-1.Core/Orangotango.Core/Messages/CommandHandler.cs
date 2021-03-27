@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using FluentValidation.Results;
 using Orangotango.Core.Data;
 using Orangotango.Core.DomainObjects;
@@ -25,18 +24,18 @@ namespace Orangotango.Core.Messages
             return await SaveData(unitOfWork, null);
         }
 
-        public async Task<CommandHandlerResult> SaveData(IUnitOfWork unitOfWork, object data)
+        public async Task<CommandHandlerResult> SaveData(IUnitOfWork unitOfWork, object responseCommand)
         {
             if (!await unitOfWork.Commit())
             {
                 NotifyError("Houve um erro ao persistir os dados");
-                data = null;
+                responseCommand = null;
             }
 
             return new CommandHandlerResult
             {
                 ValidationResult = ValidationResult,
-                Data = data
+                Response = responseCommand
             };
         }
 
@@ -66,18 +65,18 @@ namespace Orangotango.Core.Messages
             };
         }
 
-        public CommandHandlerResult Response(object data)
+        public CommandHandlerResult Response(object responseCommand)
         {
             return new CommandHandlerResult
             {
                 ValidationResult = ValidationResult,
-                Data = data
+                Response = responseCommand
             };
         }
 
-        public static CommandHandlerResult Response(CommandHandlerResult data)
+        public static CommandHandlerResult Response(CommandHandlerResult commandHandlerResult)
         {
-            return data;
+            return commandHandlerResult;
         }
 
         public static void EntryNotFoundException()

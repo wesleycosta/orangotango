@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using Orangotango.Business.Application.Inputs;
+using Orangotango.Business.Helpers;
 using Orangotango.Business.Models.ValueObjects;
 using Orangotango.Core.Messages;
 
@@ -7,7 +8,7 @@ namespace Orangotango.Business.Application.Commands.Users
 {
     public class SignInUserCommand : Command
     {
-        public SignInUserInputModel Input { get; init; }
+        public SignInUserInputModel InputModel { get; init; }
 
         public override bool IsValid()
         {
@@ -19,13 +20,13 @@ namespace Orangotango.Business.Application.Commands.Users
         {
             public LoginUserValidation()
             {
-                RuleFor(user => user.Input.EmailAdrress)
+                RuleFor(signInUserCommand => signInUserCommand.InputModel.EmailAdrress)
                     .Must(email => Email.IsValid(email))
-                    .WithMessage("O e-mail informado é inválido");
+                    .WithMessage(ValidationMessageHelper.IsInvalid("e-mail"));
 
-                RuleFor(password => password.Input.Password)
+                RuleFor(signInUserCommand => signInUserCommand.InputModel.Password)
                     .Must(password => Password.IsValid(password))
-                    .WithMessage("A senha informada é inválida");
+                    .WithMessage(ValidationMessageHelper.IsInvalid("senha"));
             }
         }
     }

@@ -17,6 +17,7 @@ namespace Orangotango.Tests.Application.Commands.RoomTypes
         [Fact]
         public async Task RegisterRoomType_Executed_ReturnFalse()
         {
+            // Arrange
             var registerRoomTypeCommand = new RegisterRoomTypeCommand(new RegisterRoomTypeInputModel
             {
                 Name = "Premium"
@@ -24,8 +25,11 @@ namespace Orangotango.Tests.Application.Commands.RoomTypes
 
             var roomTypeRepository = GetRoomTypeRepositoryMock();
             var registerRoomTypeCommandHandler = new RegisterRoomTypeCommandHandler(roomTypeRepository.Object, AutoMapperSingleton.Mapper);
+            
+            // Act
             var commandHandlerResult = await registerRoomTypeCommandHandler.Handle(registerRoomTypeCommand, new CancellationToken());
 
+            // Assert
             Assert.NotNull(commandHandlerResult);
             Assert.True(commandHandlerResult.IsInvalid);
         }
@@ -33,6 +37,7 @@ namespace Orangotango.Tests.Application.Commands.RoomTypes
         [Fact]
         public async Task RegisterRoomType_Executed_ReturnTrue()
         {
+            // Arrange
             var registerRoomTypeCommand = new RegisterRoomTypeCommand(new RegisterRoomTypeInputModel
             {
                 Name = "Master"
@@ -40,8 +45,11 @@ namespace Orangotango.Tests.Application.Commands.RoomTypes
 
             var roomTypeRepository = GetRoomTypeRepositoryMock();
             var registerRoomTypeCommandHandler = new RegisterRoomTypeCommandHandler(roomTypeRepository.Object, AutoMapperSingleton.Mapper);
+
+            // Act
             var commandHandlerResult = await registerRoomTypeCommandHandler.Handle(registerRoomTypeCommand, new CancellationToken());
 
+            // Assert
             Assert.NotNull(commandHandlerResult);
             Assert.False(commandHandlerResult.IsInvalid);
         }

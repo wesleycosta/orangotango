@@ -18,6 +18,7 @@ namespace Orangotango.Tests.Application.Commands.RoomTypes
         [Fact]
         public async Task UpdateRoomTypeWithTheSameName_Executed_DoesNotUpdate()
         {
+            // Arrange
             var updateRoomTypeCommand = new UpdateRoomTypeCommand(new UpdateRoomTypeInputModel
             {
                 Id = Guid.Parse("26c24541-32e7-4078-9e32-98eba9c8c32c"),
@@ -26,8 +27,11 @@ namespace Orangotango.Tests.Application.Commands.RoomTypes
 
             var roomTypeRepository = GetRoomTypeRepositoryMock();
             var UpdateRoomTypeCommandHandler = new UpdateRoomTypeCommandHandler(roomTypeRepository.Object, AutoMapperSingleton.Mapper);
+
+            // Act
             var commandHandlerResult = await UpdateRoomTypeCommandHandler.Handle(updateRoomTypeCommand, new CancellationToken());
 
+            // Assert
             Assert.NotNull(commandHandlerResult);
             Assert.True(commandHandlerResult.IsInvalid);
         }
@@ -35,6 +39,7 @@ namespace Orangotango.Tests.Application.Commands.RoomTypes
         [Fact]
         public async Task UpdateEntityWithUniqueName_Executed_UpdatedEntity()
         {
+            // Arrange
             var updateRoomTypeCommand = new UpdateRoomTypeCommand(new UpdateRoomTypeInputModel
             {
                 Id = Guid.Parse("26c24541-32e7-4078-9e32-98eba9c8c32c"),
@@ -43,8 +48,11 @@ namespace Orangotango.Tests.Application.Commands.RoomTypes
 
             var roomTypeRepository = GetRoomTypeRepositoryMock();
             var UpdateRoomTypeCommandHandler = new UpdateRoomTypeCommandHandler(roomTypeRepository.Object, AutoMapperSingleton.Mapper);
+
+            // Act
             var commandHandlerResult = await UpdateRoomTypeCommandHandler.Handle(updateRoomTypeCommand, new CancellationToken());
 
+            // Assert
             Assert.NotNull(commandHandlerResult);
             Assert.False(commandHandlerResult.IsInvalid);
         }
@@ -52,6 +60,7 @@ namespace Orangotango.Tests.Application.Commands.RoomTypes
         [Fact]
         public void UpdateEntityDoesNotExistInDatabase_Executed_ReturnException()
         {
+            // Arrange
             var updateRoomTypeCommand = new UpdateRoomTypeCommand(new UpdateRoomTypeInputModel
             {
                 Id = Guid.Parse("3d399527-a852-4eec-9b3f-c41b00736890"),
@@ -61,9 +70,11 @@ namespace Orangotango.Tests.Application.Commands.RoomTypes
             var roomTypeRepository = GetRoomTypeRepositoryMock();
             var UpdateRoomTypeCommandHandler = new UpdateRoomTypeCommandHandler(roomTypeRepository.Object, AutoMapperSingleton.Mapper);
 
+            // Act
             var domainException = Record.Exception(() => UpdateRoomTypeCommandHandler.Handle
                                                         (updateRoomTypeCommand, new CancellationToken()).Wait());
 
+            // Assert
             Assert.NotNull(domainException);
             Assert.IsType<DomainException>(domainException.InnerException);
         }

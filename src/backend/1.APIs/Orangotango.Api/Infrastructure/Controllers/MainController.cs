@@ -32,7 +32,7 @@ namespace Orangotango.Api.Infrastructure.Controllers
             if (result.IsInvalid)
                 return CustomResponse(result.ValidationResult);
 
-            return CustomResponse(result.Data);
+            return CustomResponse(result.Response);
         }
 
         protected ActionResult CustomResponse(ValidationResult validationResult)

@@ -25,11 +25,12 @@ namespace Orangotango.Business.Application.Commands.Users
             if (!request.IsValid())
                 return Response(request);
 
-            if (!await BusinessIsValid(request.Input))
+            if (!await BusinessIsValid(request.InputModel))
                 return Response();
 
             return Response(await AddUserAndSaveData(request));
         }
+
         private async Task<bool> BusinessIsValid(RegisterUserInputModel inputModel)
         {
             if (await _userRepository.HasEmail(new Email(inputModel.EmailAddress)))
@@ -54,8 +55,8 @@ namespace Orangotango.Business.Application.Commands.Users
             var user = new User
             {
                 Id = request.AggregateId,
-                Name = request.Input.Name,
-                Email = new Email(request.Input.EmailAddress)
+                Name = request.InputModel.Name,
+                Email = new Email(request.InputModel.EmailAddress)
             };
 
             _userRepository.Add(user);

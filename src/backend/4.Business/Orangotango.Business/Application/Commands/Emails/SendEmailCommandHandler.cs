@@ -1,28 +1,38 @@
-﻿using Orangotango.Business.Intefaces.Services;
+﻿using MediatR;
 using Orangotango.Business.ViewModels.SendEmail;
+using Orangotango.Core.Messages;
 using Orangotango.Core.Services;
 using Orangotango.Core.Settings;
 using System;
 using System.Net;
 using System.Net.Mail;
+using System.Threading;
 using System.Threading.Tasks;
 
-namespace Orangotango.Business.Services
+namespace Orangotango.Business.Application.Commands.Emails
 {
-    public class EmailService : IEmailService
+    public class SendEmailCommandHandler : CommandHandler, IRequestHandler<SendEmailCommand, CommandHandlerResult>
     {
         private readonly ILoggerService _loggerService;
 
-        public EmailService(ILoggerService loggerService)
+        public SendEmailCommandHandler(ILoggerService loggerService)
         {
             _loggerService = loggerService;
         }
 
-        public async Task<bool> Send(EmailContentViewModel emailContent)
+        public async Task<CommandHandlerResult> Handle(SendEmailCommand request, CancellationToken cancellationToken)
+        {
+            if (!request.IsValid())
+                return Response();
+
+            return Response(await SendEmail(request.InputModel));
+        }
+
+        private async Task<bool> SendEmail(EmailContentInputModel inputModel)
         {
             try
             {
-                var message = GetMailMessage(emailContent);
+                var message = GetMailMessage(inputModel);
                 var client = GetSmtpClient();
                 client.Send(message);
 
@@ -35,7 +45,7 @@ namespace Orangotango.Business.Services
             }
         }
 
-        private static MailMessage GetMailMessage(EmailContentViewModel emailContent)
+        private static MailMessage GetMailMessage(EmailContentInputModel inputModel)
         {
             var settings = EmailSettings.GetSettings();
             var from = new MailAddress(settings.Email, settings.From);
@@ -43,19 +53,19 @@ namespace Orangotango.Business.Services
             var mailMessage = new MailMessage
             {
                 From = from,
-                Subject = emailContent.Subject,
-                Body = emailContent.Body,
+                Subject = inputModel.Subject,
+                Body = inputModel.Body,
                 IsBodyHtml = true
             };
 
-            AddToEmailsAddress(mailMessage, emailContent);
+            AddToEmailsAddress(mailMessage, inputModel);
 
             return mailMessage;
         }
 
-        private static void AddToEmailsAddress(MailMessage mailMessage, EmailContentViewModel emailContent)
+        private static void AddToEmailsAddress(MailMessage mailMessage, EmailContentInputModel inputModel)
         {
-            emailContent?.To?.ForEach(mail => mailMessage.To.Add(mail));
+            inputModel?.To?.ForEach(mail => mailMessage.To.Add(mail));
         }
 
         private static SmtpClient GetSmtpClient()

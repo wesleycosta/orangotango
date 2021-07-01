@@ -16,11 +16,6 @@ Arquitetura construida com preocupações de separação de responsabilidades, s
 * Message Bus;
 * Repository.
 
-## Arquitetura do Software
-<p align="center">
-  <img src="./docs/diagram/software_architecture_and_design.PNG" />
-</p>
-
 ## Diagrama de classes
 <p align="center">
   <img src="./docs/diagram/class_diagram.png" />

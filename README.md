@@ -1,5 +1,4 @@
-# pixel-hotel
-
+![Logo](https://github.com/wesleycosta/pixel-hotel/raw/main/images/logos/logo_full.png)
 
 
 ## Projects

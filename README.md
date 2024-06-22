@@ -1,5 +1,8 @@
 ![Logo](https://github.com/wesleycosta/pixel-hotel/raw/main/images/logos/logo_full.png)
 
+Welcome to the Pixel Hotel!
+
+Pixel Hotel is a hotel reservation system that utilizes a modern and scalable microservices architecture.
 
 ## Projects
 

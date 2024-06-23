@@ -1,6 +1,6 @@
-![Logo](https://github.com/wesleycosta/pixel-hotel/raw/main/images/logos/favicon.png)
+# blue-whale
 
-Welcome to the BlueWhale!
+![Logo](https://github.com/wesleycosta/pixel-hotel/raw/main/images/logos/favicon.png)
 
 BlueWhale is a hotel reservation system that utilizes a modern and scalable microservices architecture.
 

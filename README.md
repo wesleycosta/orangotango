@@ -1,14 +1,14 @@
 ![Logo](https://github.com/wesleycosta/pixel-hotel/raw/main/images/logos/logo_full.png)
 
-Welcome to the Pixel Hotel!
+Welcome to the BlueWhale!
 
-Pixel Hotel is a hotel reservation system that utilizes a modern and scalable microservices architecture.
+BlueWhale is a hotel reservation system that utilizes a modern and scalable microservices architecture.
 
 ## Projects
 
-- [pixel-hotel-app](https://github.com/wesleycosta/pixel-hotel-app)
-- [pixel-hotel-core](https://github.com/wesleycosta/pixel-hotel-core)
-- [pixel-hotel-api-gateway](https://github.com/wesleycosta/pixel-hotel-api-gateway)
-- [pixel-hotel-rooms](https://github.com/wesleycosta/pixel-hotel-rooms)
-- [pixel-hotel-reservations](https://github.com/wesleycosta/pixel-hotel-reservations)
-- [pixel-hotel-notifications](https://github.com/wesleycosta/pixel-hotel-notifications)
+- [blue-whale-app](https://github.com/wesleycosta/pixel-hotel-app)
+- [blue-whale-core](https://github.com/wesleycosta/pixel-hotel-core)
+- [blue-whale-api-gateway](https://github.com/wesleycosta/pixel-hotel-api-gateway)
+- [blue-whale-rooms](https://github.com/wesleycosta/pixel-hotel-rooms)
+- [blue-whale-reservations](https://github.com/wesleycosta/pixel-hotel-reservations)
+- [blue-whale-notifications](https://github.com/wesleycosta/pixel-hotel-notifications)

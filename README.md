@@ -1,14 +1,14 @@
-# blue-whale
+# orangotango
 
-![Logo](https://github.com/wesleycosta/pixel-hotel/raw/main/images/logos/favicon.png)
+![Logo](https://github.com/wesleycosta/orangotango/raw/main/images/logos/logo.png)
 
-BlueWhale is a hotel reservation system that utilizes a modern and scalable microservices architecture.
+Orangotango is a hotel reservation system that utilizes a modern and scalable microservices architecture.
 
 ## Projects
 
-- [blue-whale-app](https://github.com/wesleycosta/pixel-hotel-app)
-- [blue-whale-core](https://github.com/wesleycosta/pixel-hotel-core)
-- [blue-whale-api-gateway](https://github.com/wesleycosta/pixel-hotel-api-gateway)
-- [blue-whale-rooms](https://github.com/wesleycosta/pixel-hotel-rooms)
-- [blue-whale-reservations](https://github.com/wesleycosta/pixel-hotel-reservations)
-- [blue-whale-notifications](https://github.com/wesleycosta/pixel-hotel-notifications)
+- [orangotango-app](https://github.com/wesleycosta/orangotango-app)
+- [orangotango-core](https://github.com/wesleycosta/orangotango-core)
+- [orangotango-api-gateway](https://github.com/wesleycosta/orangotango-api-gateway)
+- [orangotango-rooms](https://github.com/wesleycosta/orangotango-rooms)
+- [orangotango-reservations](https://github.com/wesleycosta/orangotango-reservations)
+- [orangotango-notifications](https://github.com/wesleycosta/orangotango-notifications)

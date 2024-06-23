@@ -1,4 +1,4 @@
-![Logo](https://github.com/wesleycosta/pixel-hotel/raw/main/images/logos/logo_full.png)
+![Logo](https://github.com/wesleycosta/pixel-hotel/raw/main/images/logos/favicon.png)
 
 Welcome to the BlueWhale!
 

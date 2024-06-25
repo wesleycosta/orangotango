@@ -1,5 +1,3 @@
-# Orangotango
-
 ![Logo](https://github.com/wesleycosta/orangotango/raw/main/images/logos/logo_full.png)
 
 **Orangotango** is a hotel reservation system that utilizes a modern and scalable microservices architecture.

@@ -35,6 +35,9 @@ The system emphasizes responsibility separation, adhering to SOLID, Clean Code, 
 3. **Domain Layer**: Comprises Entities, Commands, Validations, and Repository Abstractions.
 4. **Infrastructure Layer**: Implements Repositories, the EF Context, and a Messaging Bus.
 
+See below an example of implementation using the aforementioned layers in orangotango-rooms:
+![DotnetLayers](https://github.com/wesleycosta/orangotango/blob/main/images/diagrams/dotnet_layers.png)
+
 ### Design Patterns and Principles
 
 - Hexagonal / Event-Driven Architecture (EDA).

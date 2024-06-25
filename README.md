@@ -7,7 +7,7 @@
 Orangotango is composed of six main projects, each playing a specific role in the system's architecture:
 
 - [**orangotango-app**](https://github.com/wesleycosta/orangotango-app): A Single Page Application (SPA) built with Angular that communicates with the **orangotango-api-gateway**.
-- [**orangotango-api-gateway**](https://github.com/wesleycosta/orangotango-api-gateway): An API gateway using Ocelot that manages communication between external services and internal microservices.
+- [**orangotango-api-gateway**](https://github.com/wesleycosta/orangotango-api-gateway): API Gateway using Ocelot to centralize requests for rooms and reservations microservices into a single entry point.
 - [**orangotango-rooms**](https://github.com/wesleycosta/orangotango-rooms): A microservice responsible for providing information about the available rooms at the hotel.
 - [**orangotango-reservations**](https://github.com/wesleycosta/orangotango-reservations): A microservice responsible for managing the reservation process at the hotel.
 - [**orangotango-notifications**](https://github.com/wesleycosta/orangotango-notifications): A microservice responsible for sending notifications.

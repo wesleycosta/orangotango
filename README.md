@@ -11,7 +11,7 @@ Orangotango is composed of six main projects, each playing a specific role in th
 - [**orangotango-rooms**](https://github.com/wesleycosta/orangotango-rooms): A microservice responsible for providing information about the available rooms at the hotel.
 - [**orangotango-reservations**](https://github.com/wesleycosta/orangotango-reservations): A microservice responsible for managing the reservation process at the hotel.
 - [**orangotango-notifications**](https://github.com/wesleycosta/orangotango-notifications): A microservice responsible for sending notifications.
-- [**orangotango-core**](https://github.com/wesleycosta/orangotango-core): Shared packages among the microservices, providing common functionalities, which are:
+- [**orangotango-packages**](https://github.com/wesleycosta/orangotango-packages): Shared packages among the microservices, providing common functionalities, which are:
   - **`Orangotango.Core`**: The kernel package for microservices, encompassing abstractions for messaging, events, repositories, services, aggregations, and more. [![NuGet](https://img.shields.io/nuget/v/Orangotango.Core.svg)](https://www.nuget.org/packages/Orangotango.Core)
 
   - **`Orangotango.Api`**: This package provides APIs centralizing Swagger configuration, standardized response patterns, middleware for logging incoming requests and outgoing responses. [![NuGet](https://img.shields.io/nuget/v/Orangotango.Api.svg)](https://www.nuget.org/packages/Orangotango.Api)

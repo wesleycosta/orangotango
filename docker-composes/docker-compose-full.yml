@@ -1,0 +1,78 @@
+version: '3.7'
+
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.11.1
+    ports:
+      - 9200:9200
+      - 9300:9300
+    networks:
+      - orangotango
+    environment:
+      discovery.type: single-node
+      ES_JAVA_OPTS: "-Xms1g -Xmx1g"
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.11.1
+    ports:
+      - "5601:5601"
+    networks:
+      - orangotango
+    depends_on:
+      - elasticsearch
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    ports:
+      - "1432:1433"
+    volumes:
+      - mssql2019:/var/opt/mssql
+    environment:
+      SA_PASSWORD: "sqlserver@123"
+      ACCEPT_EULA: "Y"
+    networks:
+      - orangotango
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - orangotango
+
+  orangotango-api-gateway:
+    depends_on:
+      - elasticsearch
+    image: wesleycosta/orangotango-api-gateway
+    ports:
+      - "8080:8080"
+    networks:
+      - orangotango
+    environment:
+      - Elasticsearch__Uri=http://elasticsearch:9200
+      - NEW_RELIC_LICENSE_KEY=
+
+  orangotango-rooms:
+    depends_on:
+      - elasticsearch
+      - sqlserver
+      - rabbitmq
+    image: wesleycosta/orangotango-rooms
+    ports:
+      - "8081:8080"
+    networks:
+      - orangotango
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=sqlserver,1433;Database=rooms;User Id=sa;Password=sqlserver@123;TrustServerCertificate=True;
+      - Elasticsearch__Uri=http://elasticsearch:9200
+      - RabbitMQ__ConnectionString=amqp://guest:guest@rabbitmq:5672
+      - NEW_RELIC_LICENSE_KEY=
+
+volumes:
+  mssql2019:
+    driver: local
+
+networks:
+  orangotango:
+    driver: bridge

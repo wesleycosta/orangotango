@@ -6,7 +6,7 @@
 
 Orangotango is composed of six main projects, each playing a specific role in the system's architecture:
 
-- [**orangotango-app**](https://github.com/wesleycosta/orangotango-app): A Single Page Application (SPA) built with Angular that communicates with the **orangotango-api-gateway**.
+- [**orangotango-app**](https://github.com/wesleycosta/orangotango-app): A Single Page Application (SPA) built with Angular that communicates with the **orangotango-api-gateway**.[![Docker Hub](https://img.shields.io/badge/docker-hub-black.svg)](https://hub.docker.com/repository/docker/wesleycosta/orangotango-app)
 - [**orangotango-api-gateway**](https://github.com/wesleycosta/orangotango-api-gateway): API Gateway using Ocelot to centralize requests for rooms and reservations microservices into a single entry point. [![Docker Hub](https://img.shields.io/badge/docker-hub-black.svg)](https://hub.docker.com/repository/docker/wesleycosta/orangotango-api-gateway)
 - [**orangotango-rooms**](https://github.com/wesleycosta/orangotango-rooms): A microservice responsible for providing information about the available rooms at the hotel. [![Docker Hub](https://img.shields.io/badge/docker-hub-black.svg)](https://hub.docker.com/repository/docker/wesleycosta/orangotango-rooms)
 - [**orangotango-reservations**](https://github.com/wesleycosta/orangotango-reservations): A microservice responsible for managing the reservation process at the hotel. [![Docker Hub](https://img.shields.io/badge/docker-hub-black.svg)](https://hub.docker.com/repository/docker/wesleycosta/orangotango-reservations)

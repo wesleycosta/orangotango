@@ -41,18 +41,6 @@ services:
     networks:
       - orangotango
 
-  orangotango-api-gateway:
-    depends_on:
-      - elasticsearch
-    image: wesleycosta/orangotango-api-gateway
-    ports:
-      - "8080:8080"
-    networks:
-      - orangotango
-    environment:
-      - Elasticsearch__Uri=http://elasticsearch:9200
-      - NEW_RELIC_LICENSE_KEY=
-
   orangotango-rooms:
     depends_on:
       - elasticsearch
@@ -68,6 +56,25 @@ services:
       - Elasticsearch__Uri=http://elasticsearch:9200
       - RabbitMQ__ConnectionString=amqp://guest:guest@rabbitmq:5672
       - NEW_RELIC_LICENSE_KEY=
+
+  orangotango-api-gateway:
+    depends_on:
+      - elasticsearch
+    image: wesleycosta/orangotango-api-gateway
+    ports:
+      - "8080:8080"
+    networks:
+      - orangotango
+    environment:
+      - Elasticsearch__Uri=http://elasticsearch:9200
+      - NEW_RELIC_LICENSE_KEY=
+
+  orangotango-app:
+    image: wesleycosta/orangotango-app:20240627141838
+    ports:
+      - "81:80"
+    networks:
+      - orangotango
 
 volumes:
   mssql2019:

@@ -54,6 +54,24 @@ services:
     environment:
       - ConnectionStrings__DefaultConnection=Server=sqlserver,1433;Database=rooms;User Id=sa;Password=sqlserver@123;TrustServerCertificate=True;
       - Elasticsearch__Uri=http://elasticsearch:9200
+      - Elasticsearch__IndexFormat=orangotango-rooms-{0:yyyy.MM}
+      - RabbitMQ__ConnectionString=amqp://guest:guest@rabbitmq:5672
+      - NEW_RELIC_LICENSE_KEY=
+
+  orangotango-reservations:
+    depends_on:
+      - elasticsearch
+      - sqlserver
+      - rabbitmq
+    image: wesleycosta/orangotango-reservations
+    ports:
+      - "8082:8080"
+    networks:
+      - orangotango
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=sqlserver,1433;Database=reservations;User Id=sa;Password=sqlserver@123;TrustServerCertificate=True;
+      - Elasticsearch__Uri=http://elasticsearch:9200
+      - Elasticsearch__IndexFormat=orangotango-reservations-{0:yyyy.MM}
       - RabbitMQ__ConnectionString=amqp://guest:guest@rabbitmq:5672
       - NEW_RELIC_LICENSE_KEY=
 
@@ -67,10 +85,11 @@ services:
       - orangotango
     environment:
       - Elasticsearch__Uri=http://elasticsearch:9200
+      - Elasticsearch__IndexFormat=orangotango-api-gateway-{0:yyyy.MM}
       - NEW_RELIC_LICENSE_KEY=
 
   orangotango-app:
-    image: wesleycosta/orangotango-app:20240627141838
+    image: wesleycosta/orangotango-app
     ports:
       - "81:80"
     networks:

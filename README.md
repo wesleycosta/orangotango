@@ -47,6 +47,87 @@ See below an example of implementation using the aforementioned layers in orango
 
 Feel free to contribute to this project. For more information, refer to the individual repositories of each project.
 
+## How to Run with Docker
+
+To run the project using Docker, you can use the `docker-compose.yml` file, which sets up all the necessary services for Orangotango. Follow the steps below:
+
+1. **Make sure you have Docker and Docker Compose installed.**
+
+   - To install Docker, follow the instructions [here](https://docs.docker.com/get-docker/).
+   - To install Docker Compose, follow the instructions [here](https://docs.docker.com/compose/install/).
+
+2. **Clone the Orangotango repository.**
+
+   ```bash
+   git clone https://github.com/wesleycosta/orangotango.git
+   ```
+
+3. **Run Docker Compose.**
+
+   In the root directory of the project, run the command below to start all the services defined in the `docker-compose.yml` file:
+
+   ```bash
+   docker-compose up
+   ```
+
+   This will start the following services:
+   - **Elasticsearch**
+   - **Kibana**
+   - **SQL Server**
+   - **RabbitMQ**
+   - **orangotango-rooms**
+   - **orangotango-reservations**
+   - **orangotango-api-gateway**
+   - **orangotango-app**
+
+4. **Access the services.**
+
+   - **Web Application (SPA)**: [http://localhost:81](http://localhost:81)
+   - **API Gateway**: [http://localhost:8080](http://localhost:8080)
+   - **Rooms Service**: [http://localhost:8081](http://localhost:8081)
+   - **Reservations Service**: [http://localhost:8082](http://localhost:8082)
+   - **Elasticsearch**: [http://localhost:9200](http://localhost:9200)
+   - **Kibana**: [http://localhost:5601](http://localhost:5601)
+   - **RabbitMQ Management**: [http://localhost:15672](http://localhost:15672)
+
+5. **Shut down the services.**
+
+   To stop all the services, press `Ctrl+C` in the terminal where the services are running, and then run:
+
+   ```bash
+   docker-compose -f docker-compose/docker-compose-full.yml down
+   ```
+
+## Logs and Tracing
+
+To monitor communication between microservices, a `TraceId` field has been added to logs. This field enables tracking all stages of a specific operation, facilitating comprehensive tracing of its journey.
+
+### Operation Example
+
+In the following example, a new room named `Master 01` is created in the **rooms** microservice. Using the `TraceId`, we can trace every step of this process, from the initial request to the final processing in the **reservations** microservice.
+
+### Kibana Logs
+
+Below is the sequence of logs captured in Kibana for this operation:
+
+[![Blueprint](https://github.com/wesleycosta/orangotango/blob/main/images/tracing/kibana.png)](https://github.com/wesleycosta/orangotango/blob/main/images/tracing/kibana.png)
+
+[![Blueprint](https://github.com/wesleycosta/orangotango/blob/main/images/tracing/kibana_received_request.png)](https://github.com/wesleycosta/orangotango/blob/main/images/tracing/kibana_received_request)
+
+### Explanation of Logs
+
+1. **ReceivedRequest** (orangotango-rooms, 15:55:13.090): The **rooms** microservice receives the request to create a new room.
+2. **EventPublished** (orangotango-rooms, 15:55:13.249): After creating the room, the `RoomUpsertedEvent` is published by the **rooms** microservice.
+3. **ReturnedResponse** (orangotango-rooms, 15:55:13.251): The **rooms** microservice returns the response to the POST request.
+4. **EventReceived** (orangotango-reservations, 15:55:13.336): The **reservations** microservice receives the `RoomUpsertedEvent`.
+5. **EventProcessedSuccessfully** (orangotango-reservations, 15:55:13.379): The **reservations** microservice successfully processes the `RoomUpsertedEvent`.
+
+### Using TraceId
+
+The `TraceId` field in each log entry allows correlating these events, making it easier to visualize the complete flow of an operation across different microservices.
+
+This detailed logging and tracing mechanism is crucial for debugging and monitoring the system, ensuring all operations can be audited and analyzed in case of failures or for future optimizations.
+
 ## How to Contribute
 
 1. Fork the project

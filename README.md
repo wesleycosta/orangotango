@@ -47,6 +47,58 @@ See below an example of implementation using the aforementioned layers in orango
 
 Feel free to contribute to this project. For more information, refer to the individual repositories of each project.
 
+## How to Run with Docker
+
+To run the project using Docker, you can use the `docker-compose/docker-compose-full.yml` file, which sets up all the necessary services for Orangotango. Follow the steps below:
+
+1. **Make sure you have Docker and Docker Compose installed.**
+
+   - To install Docker, follow the instructions [here](https://docs.docker.com/get-docker/).
+   - To install Docker Compose, follow the instructions [here](https://docs.docker.com/compose/install/).
+
+2. **Clone the Orangotango repository.**
+
+   ```bash
+   git clone https://github.com/wesleycosta/orangotango.git
+   cd orangotango
+   ```
+
+3. **Run Docker Compose.**
+
+   In the root directory of the project, run the command below to start all the services defined in the `docker-compose-full.yml` file:
+
+   ```bash
+   docker-compose -f docker-compose/docker-compose-full.yml up
+   ```
+
+   This will start the following services:
+   - **Elasticsearch**
+   - **Kibana**
+   - **SQL Server**
+   - **RabbitMQ**
+   - **orangotango-rooms**
+   - **orangotango-reservations**
+   - **orangotango-api-gateway**
+   - **orangotango-app**
+
+4. **Access the services.**
+
+   - **Web Application (SPA)**: [http://localhost:81](http://localhost:81)
+   - **API Gateway**: [http://localhost:8080](http://localhost:8080)
+   - **Rooms Service**: [http://localhost:8081](http://localhost:8081)
+   - **Reservations Service**: [http://localhost:8082](http://localhost:8082)
+   - **Elasticsearch**: [http://localhost:9200](http://localhost:9200)
+   - **Kibana**: [http://localhost:5601](http://localhost:5601)
+   - **RabbitMQ Management**: [http://localhost:15672](http://localhost:15672)
+
+5. **Shut down the services.**
+
+   To stop all the services, press `Ctrl+C` in the terminal where the services are running, and then run:
+
+   ```bash
+   docker-compose -f docker-compose/docker-compose-full.yml down
+   ```
+   
 ## How to Contribute
 
 1. Fork the project

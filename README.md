@@ -98,7 +98,38 @@ To run the project using Docker, you can use the `docker-compose/docker-compose-
    ```bash
    docker-compose -f docker-compose/docker-compose-full.yml down
    ```
-   
+
+## Logs and Tracing
+
+### Objective
+
+To monitor communication between microservices, a `TraceId` field has been added to logs. This field enables tracking all stages of a specific operation, facilitating comprehensive tracing of its journey.
+
+### Operation Example
+
+In the following example, a new room named `Master 01` is created in the **rooms** microservice. Using the `TraceId`, we can trace every step of this process, from the initial request to the final processing in the **reservations** microservice.
+
+### Kibana Logs
+
+Below is the sequence of logs captured in Kibana for this operation:
+
+[![Blueprint](https://github.com/wesleycosta/orangotango/blob/main/images/tracing/kibana.png)](https://github.com/wesleycosta/orangotango/blob/main/images/tracing/kibana.png)
+
+[![Blueprint](https://github.com/wesleycosta/orangotango/blob/main/images/tracing/kibana_received_request.png)](https://github.com/wesleycosta/orangotango/blob/main/images/tracing/kibana_received_request)
+
+### Explanation of Logs
+
+1. **ReceivedRequest** (orangotango-rooms, 15:55:13.090): The **rooms** microservice receives the request to create a new room.
+2. **EventPublished** (orangotango-rooms, 15:55:13.249): After creating the room, the `RoomUpsertedEvent` is published by the **rooms** microservice.
+3. **ReturnedResponse** (orangotango-rooms, 15:55:13.251): The **rooms** microservice returns the response to the POST request.
+4. **EventReceived** (orangotango-reservations, 15:55:13.336): The **reservations** microservice receives the `RoomUpsertedEvent`.
+5. **EventProcessedSuccessfully** (orangotango-reservations, 15:55:13.379): The **reservations** microservice successfully processes the `RoomUpsertedEvent`.
+
+### Using TraceId
+
+The `TraceId` field in each log entry allows correlating these events, making it easier to visualize the complete flow of an operation across different microservices.
+This detailed logging and tracing mechanism is crucial for debugging and monitoring the system, ensuring all operations can be audited and analyzed in case of failures or for future optimizations.
+
 ## How to Contribute
 
 1. Fork the project

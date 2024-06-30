@@ -101,8 +101,6 @@ To run the project using Docker, you can use the `docker-compose/docker-compose-
 
 ## Logs and Tracing
 
-### Objective
-
 To monitor communication between microservices, a `TraceId` field has been added to logs. This field enables tracking all stages of a specific operation, facilitating comprehensive tracing of its journey.
 
 ### Operation Example
@@ -128,6 +126,7 @@ Below is the sequence of logs captured in Kibana for this operation:
 ### Using TraceId
 
 The `TraceId` field in each log entry allows correlating these events, making it easier to visualize the complete flow of an operation across different microservices.
+
 This detailed logging and tracing mechanism is crucial for debugging and monitoring the system, ensuring all operations can be audited and analyzed in case of failures or for future optimizations.
 
 ## How to Contribute

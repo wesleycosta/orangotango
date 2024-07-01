@@ -49,7 +49,7 @@ Feel free to contribute to this project. For more information, refer to the indi
 
 ## How to Run with Docker
 
-To run the project using Docker, you can use the `docker-compose/docker-compose-full.yml` file, which sets up all the necessary services for Orangotango. Follow the steps below:
+To run the project using Docker, you can use the `docker-compose.yml` file, which sets up all the necessary services for Orangotango. Follow the steps below:
 
 1. **Make sure you have Docker and Docker Compose installed.**
 
@@ -60,15 +60,14 @@ To run the project using Docker, you can use the `docker-compose/docker-compose-
 
    ```bash
    git clone https://github.com/wesleycosta/orangotango.git
-   cd orangotango
    ```
 
 3. **Run Docker Compose.**
 
-   In the root directory of the project, run the command below to start all the services defined in the `docker-compose-full.yml` file:
+   In the root directory of the project, run the command below to start all the services defined in the `docker-compose.yml` file:
 
    ```bash
-   docker-compose -f docker-compose/docker-compose-full.yml up
+   docker-compose up
    ```
 
    This will start the following services:

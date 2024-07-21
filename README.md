@@ -95,7 +95,7 @@ To run the project using Docker, you can use the `docker-compose.yml` file, whic
    To stop all the services, press `Ctrl+C` in the terminal where the services are running, and then run:
 
    ```bash
-   docker-compose -f docker-compose/docker-compose-full.yml down
+   docker-compose down
    ```
 
 ## Logs and Tracing

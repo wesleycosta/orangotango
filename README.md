@@ -26,6 +26,11 @@ Below is a diagram of the application architecture, illustrating how the microse
 
 [![Blueprint](https://github.com/wesleycosta/orangotango/blob/main/images/diagrams/blueprint.drawio.png)](https://github.com/wesleycosta/orangotango/blob/main/images/diagrams/blueprint.drawio.png)
 
+### C4 Model Container
+
+[![C4Model](https://github.com/wesleycosta/orangotango/blob/main/images/diagrams/c4_model_container.png)](https://github.com/wesleycosta/orangotango/blob/main/images/diagrams/c4_model_container.png)
+
+
 Orangotango's microservices, implemented in .NET, are designed using a Hexagonal / Event-Driven Architecture (EDA). 
 
 The system emphasizes responsibility separation, adhering to SOLID, Clean Code, and Domain-Driven Design (DDD) principles. The microservices are organized into distinct layers:
@@ -95,7 +100,11 @@ To run the project using Docker, you can use the `docker-compose.yml` file, whic
    To stop all the services, press `Ctrl+C` in the terminal where the services are running, and then run:
 
    ```bash
+<<<<<<< HEAD
    docker-compose -f docker-compose/docker-compose-full.yml down
+=======
+   docker-compose down
+>>>>>>> 08beac97c223a39b453e53871d3da2b247a26514
    ```
 
 ## Logs and Tracing

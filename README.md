@@ -26,13 +26,6 @@ Below is a diagram of the application architecture, illustrating how the microse
 
 [![Blueprint](https://github.com/wesleycosta/orangotango/blob/main/images/diagrams/blueprint.drawio.png)](https://github.com/wesleycosta/orangotango/blob/main/images/diagrams/blueprint.drawio.png)
 
-### C4 Model Container
-
-The C4 Model Container diagram visualizes the interactions between various microservices in the Orangotango system. It was created using Structurizr with a [DSL](https://github.com/wesleycosta/orangotango/blob/main/source/c4_model_container.dsl) (Domain-Specific Language) and [Structurizr](https://structurizr.com).
-
-[![C4Model](https://github.com/wesleycosta/orangotango/blob/main/images/diagrams/c4_model_container.png)](https://github.com/wesleycosta/orangotango/blob/main/images/diagrams/c4_model_container.png)
-
-
 Orangotango's microservices, implemented in .NET, are designed using a Hexagonal / Event-Driven Architecture (EDA). 
 
 The system emphasizes responsibility separation, adhering to SOLID, Clean Code, and Domain-Driven Design (DDD) principles. The microservices are organized into distinct layers:
